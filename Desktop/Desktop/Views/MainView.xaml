@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:md ="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Desktop.Views"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -11,43 +12,79 @@
         Background="Transparent"
         WindowStartupLocation="CenterScreen"
         Title="MainView" Height="780" Width="1280">
+
     <Border Padding="20" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown" BorderBrush="Transparent" CornerRadius="20" Background="#0D0D0D">
 
         <Grid>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="90"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="16"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-            <Border CornerRadius="25" Background="#1B1C1E">
+            <Grid Grid.Column="1" Grid.Row="0">
+                <StackPanel
+                  HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                  Orientation="Horizontal">
+                    <Button
+                  Height="20"
+                  Click="Minimize_Click"
+                  Name="Minimize"
+                  Style="{DynamicResource MaterialDesignFlatButton}">
+                        <md:PackIcon 
+                           Foreground="#7E7E7E"
+                           Height="13"
+                           Width="13"  
+                          Kind="Minimize"/>
+                    </Button>
+
+                    <Button
+                          Height="20"    
+                          Click="Close_Click"
+                          Name="Close"
+                          Style="{DynamicResource MaterialDesignFlatButton}">
+                        <md:PackIcon 
+                              Foreground="#7E7E7E"
+                              Height="13"
+                              Width="13"   
+                              Kind="Close"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+
+            <Border Grid.Row="1" CornerRadius="25" Background="#1B1C1E">
 
                 <Border.Effect>
                     <DropShadowEffect ShadowDepth="5" BlurRadius="10" Color="#2A2D36" Opacity="1"/>
                 </Border.Effect>
 
                 <StackPanel VerticalAlignment="Center">
-                    <Button Style="{StaticResource menuButton}" HorizontalAlignment="Center">
+                    <Button  Command="{Binding DashboardCommand}" Style="{StaticResource menuButton}" HorizontalAlignment="Center">
                         <Icon:PackIconMaterial Kind="ViewDashboard" Style="{StaticResource menuButtonIcon}"/>
                     </Button>
 
-                    <Button Style="{StaticResource menuButton}" HorizontalAlignment="Center">
+                    <Button Command="{Binding ChartCommand}" Style="{StaticResource menuButton}" HorizontalAlignment="Center">
                         <Icon:PackIconMaterial Kind="ChartBar" Style="{StaticResource menuButtonIcon}"/>
                     </Button>
 
-                    <Button Style="{StaticResource menuButton}" HorizontalAlignment="Center">
+                    <Button Command="{Binding WalletCommand}" Style="{StaticResource menuButton}" HorizontalAlignment="Center">
                         <Icon:PackIconMaterial Kind="Wallet" Style="{StaticResource menuButtonIcon}"/>
                     </Button>
 
-                    <Button Style="{StaticResource menuButton}" HorizontalAlignment="Center">
+                    <Button Command="{Binding HistoryCommand}" Style="{StaticResource menuButton}" HorizontalAlignment="Center">
                         <Icon:PackIconMaterial Kind="History" Style="{StaticResource menuButtonIcon}"/>
                     </Button>
                 </StackPanel>
             </Border>
 
 
-            <ContentControl  Grid.Column="1" Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>
+            <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>
 
 
         </Grid>

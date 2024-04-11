@@ -11,7 +11,10 @@
     <ItemGroup>
       <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
       <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+      <PackageReference Include="Prism.Core" Version="8.1.97" />
       <PackageReference Include="SimpleInjector" Version="5.4.4" />
+	  <PackageReference Include="MaterialDesignColors" Version="2.1.4" />
+	  <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
 
 	</ItemGroup>
 

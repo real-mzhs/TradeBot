@@ -32,6 +32,11 @@ namespace Desktop
 
             Container.RegisterSingleton<MainViewModel>();
             Container.RegisterSingleton<DashboardViewModel>();
+            Container.RegisterSingleton<HistoryViewModel>();
+            Container.RegisterSingleton<ChartViewModel>();
+            Container.RegisterSingleton<WalletViewModel>();
+
+
 
             Container.Verify();
         }

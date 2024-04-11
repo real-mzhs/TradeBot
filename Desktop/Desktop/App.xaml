@@ -13,7 +13,7 @@
             <SolidColorBrush x:Key="GreyColor" Color="#B7B7B7"/>
 
 
-
+            
 
 
             <Style x:Key="menuButton" TargetType="Button">
@@ -52,10 +52,20 @@
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
+                            
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+
+
+
+            <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#DDDDDF" />
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="Margin" Value="20,10,0,0" />
             </Style>
 
 
@@ -66,6 +76,8 @@
                 <Setter Property="HorizontalAlignment" Value="Center"/>
             </Style>
 
+            
+
 
             <DataTemplate DataType="{x:Type ViewModel:MainViewModel}">
                 <View:MainView/>
@@ -74,6 +86,26 @@
             <DataTemplate DataType="{x:Type ViewModel:DashboardViewModel}">
                 <View:DashboardView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:HistoryViewModel}">
+                <View:HistoryView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:ChartViewModel}">
+                <View:ChartView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:WalletViewModel}">
+                <View:WalletView/>
+            </DataTemplate>
+
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
     </Application.Resources>
