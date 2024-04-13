@@ -1,4 +1,5 @@
-﻿using Desktop.Services.Interfaces;
+﻿using Desktop.Models;
+using Desktop.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,4 +10,8 @@ namespace Desktop.Services.Classes;
 
 class RegistrationService : IRegistrationService
 {
+    public bool Registration(User user)
+    {
+        return true;
+    }
 }

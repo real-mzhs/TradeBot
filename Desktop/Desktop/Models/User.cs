@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Desktop.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,6 +14,8 @@ public class User
     public string Email { get; set; }
     public string PasswordHash { get; set; }
     public int Balance { get; set; }
+
+    public User(){}
 
     public User(string email, string Password)
     {

@@ -40,6 +40,7 @@ namespace Desktop
             Container.RegisterSingleton<AuthViewModel>();
             Container.RegisterSingleton<RegistrationViewModel>();
             Container.RegisterSingleton<BaseViewModel>();
+            Container.RegisterSingleton<RecoveryViewModel>();
 
 
 

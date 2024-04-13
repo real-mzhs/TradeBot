@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Desktop.ViewModels;
@@ -18,16 +19,8 @@ class RegistrationViewModel : ViewModelBase
     private readonly INavigationServices _navigationService;
     private readonly IRegistrationService _registrationService;
     public User CurrentUser { get; set; }
-    public string Email
-    {
-        get { return CurrentUser.Email; }
-        set { CurrentUser.Email = value; }
-    }
-    public string Password
-    {
-        get { return CurrentUser.PasswordHash; }
-        set { CurrentUser.PasswordHash = value; }
-    }
+    public string Email { get; set; }
+    public string Password { get; set; }
     public string ConfirmPassword { get; set; }
     public DelegateCommand BackCommand { get; set; }
     public DelegateCommand RegistrationCommand { get; set; }
@@ -40,13 +33,23 @@ class RegistrationViewModel : ViewModelBase
         BackCommand = new DelegateCommand(
             () =>
             {
-
+                _navigationService.NavigateTo<AuthViewModel>();
             });
 
         RegistrationCommand = new DelegateCommand(
             () =>
             {
+                try
+                {
+                    _registrationService.Registration(CurrentUser);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
 
+                MessageBox.Show("Registration completed successfully.");
+                _navigationService.NavigateTo<AuthViewModel>();            
 
             });
 

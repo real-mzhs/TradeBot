@@ -105,6 +105,10 @@
                 <View:BaseView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type ViewModel:RecoveryViewModel}">
+                <View:RecoveryView/>
+            </DataTemplate>
+
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

@@ -13,7 +13,6 @@ namespace Desktop.Services.Classes;
 public class NavigationService : INavigationServices
 {
     private readonly IMessenger _messenger;
-
     public NavigationService(IMessenger messenger)
     {
         _messenger = messenger;
