@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Desktop.Views
 {
     /// <summary>
-    /// Interaction logic for ChartView.xaml
+    /// Interaction logic for AuthView.xaml
     /// </summary>
-    public partial class ChartView : UserControl
+    public partial class AuthView : UserControl
     {
-        public ChartView()
+        public AuthView()
         {
             InitializeComponent();
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.ViewModels;
 
-public class ChartViewModel : ViewModelBase
+public class TradeViewModel : ViewModelBase
 {
 
 }

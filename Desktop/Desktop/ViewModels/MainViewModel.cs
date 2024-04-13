@@ -26,49 +26,12 @@ public class MainViewModel : ViewModelBase
     }
 
 
-
-
-    public DelegateCommand HistoryCommand { get; set; }
-    public DelegateCommand DashboardCommand { get; set; }
-    public DelegateCommand ChartCommand { get; set; }
-    public DelegateCommand WalletCommand { get; set; }
-
-
-
-
-
-
     public MainViewModel(IMessenger messenger)
     {
-
         _messenger = messenger;
         CurrentView = App.Container.GetInstance<DashboardViewModel>();
 
         _messenger.Register<NavigationMessage>(this, message => CurrentView = message.ViewModelType);
-
-
-
-        DashboardCommand = new(() =>
-        {
-            CurrentView = App.Container.GetInstance<DashboardViewModel>();
-        });
-
-        HistoryCommand = new(() =>
-        {
-            CurrentView = App.Container.GetInstance<HistoryViewModel>();
-        });
-
-        ChartCommand = new(() =>
-        {
-            CurrentView = App.Container.GetInstance<ChartViewModel>();
-        });
-
-        WalletCommand = new(() =>
-        {
-            CurrentView = App.Container.GetInstance<WalletViewModel>();
-        });
-
-
 
     }
 }

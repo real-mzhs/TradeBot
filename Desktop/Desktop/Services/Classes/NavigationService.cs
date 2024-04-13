@@ -24,7 +24,7 @@ public class NavigationService : INavigationServices
     {
         _messenger.Send(new NavigationMessage()
         {
-            ViewModelType = App.Container.GetInstance<T>() //  ViewModelType = SignInPageModel
+            ViewModelType = App.Container.GetInstance<T>() 
         }
         );
     }

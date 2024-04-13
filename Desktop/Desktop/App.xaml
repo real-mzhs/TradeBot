@@ -2,9 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:ViewModel="clr-namespace:Desktop.ViewModels"
              xmlns:View="clr-namespace:Desktop.Views"
-             xmlns:local="clr-namespace:Desktop">
+             xmlns:ViewModel="clr-namespace:Desktop.ViewModels">
     <Application.Resources>
 
         <ResourceDictionary>
@@ -74,9 +73,7 @@
                 <Setter Property="Width" Value="18"/>
                 <Setter Property="Height" Value="18"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
-            </Style>
-
-            
+            </Style>           
 
 
             <DataTemplate DataType="{x:Type ViewModel:MainViewModel}">
@@ -91,12 +88,24 @@
                 <View:HistoryView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:ChartViewModel}">
-                <View:ChartView/>
+            <DataTemplate DataType="{x:Type ViewModel:TradeViewModel}">
+                <View:TradeView/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type ViewModel:WalletViewModel}">
                 <View:WalletView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModel:RegistrationViewModel}">
+                <View:RegistrationView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type ViewModel:AuthViewModel}">
+                <View:AuthView/>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type ViewModel:BaseViewModel}">
+                <View:BaseView/>
             </DataTemplate>
 
 
