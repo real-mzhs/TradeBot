@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace Desktop.Services.Classes;
 
-class LoginService : ILoginService
+class TradeService : ITradeService
 {
 }

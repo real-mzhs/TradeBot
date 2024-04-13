@@ -1,5 +1,6 @@
 ﻿using Desktop.Models;
 using Desktop.Services.Interfaces;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using Prism.Commands;
@@ -12,7 +13,7 @@ using System.Windows.Controls;
 
 namespace Desktop.ViewModels;
 
-class RegistrationViewModel
+class RegistrationViewModel : ViewModelBase
 {
     private readonly INavigationServices _navigationService;
     private readonly IRegistrationService _registrationService;
@@ -37,17 +38,17 @@ class RegistrationViewModel
         _registrationService = registrationService;
 
         BackCommand = new DelegateCommand(
-    () =>
-    {
+            () =>
+            {
 
-    });
+            });
 
         RegistrationCommand = new DelegateCommand(
-    () =>
-    {
+            () =>
+            {
 
 
-    });
+            });
 
     }
 }

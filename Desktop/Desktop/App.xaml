@@ -9,10 +9,7 @@
         <ResourceDictionary>
 
             <SolidColorBrush x:Key="BlackColor" Color="#083353"/>
-            <SolidColorBrush x:Key="GreyColor" Color="#B7B7B7"/>
-
-
-            
+            <SolidColorBrush x:Key="GreyColor" Color="#B7B7B7"/>            
 
 
             <Style x:Key="menuButton" TargetType="Button">

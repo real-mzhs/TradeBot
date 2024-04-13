@@ -13,7 +13,7 @@ namespace Desktop.ViewModels;
 class AuthViewModel : ViewModelBase
 {
     private readonly INavigationServices _navigationService;
-    private readonly ILoginService _loginService;
+    private readonly IAuthenticationService _loginService;
     public User CurrentUser { get; set; }
     public string Email
     {
@@ -26,11 +26,22 @@ class AuthViewModel : ViewModelBase
         set { CurrentUser.PasswordHash = value; }
     }
     public DelegateCommand LoginCommand { get; set; }
+    public DelegateCommand RegisrationCommand { get; set; }
 
-    public AuthViewModel(INavigationServices navigationService, ILoginService loginService)
+    public AuthViewModel(INavigationServices navigationService, IAuthenticationService loginService)
     {
         _navigationService = navigationService;
         _loginService = loginService;
 
+        LoginCommand = new DelegateCommand(
+            () =>
+            {
+                _navigationService.NavigateTo<BaseViewModel>();
+            });
+        RegisrationCommand = new DelegateCommand(
+            () =>
+            {
+                _navigationService.NavigateTo<RegistrationViewModel>();
+            });
     }
 }

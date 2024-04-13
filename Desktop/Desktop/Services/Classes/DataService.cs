@@ -20,7 +20,7 @@ public class DataService : IDataService
 
     public void SendData<T>(T data) where T : IData
     {
-        _messenger.Send(new DataMessage()
+        _messenger.Send(new UserDataMessage()
         {
             Data = data
         });

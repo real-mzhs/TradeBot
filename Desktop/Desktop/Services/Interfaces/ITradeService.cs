@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace Desktop.Services.Interfaces;
 
-interface IBotService
+interface ITradeService
 {
 }

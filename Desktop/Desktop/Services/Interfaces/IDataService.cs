@@ -8,5 +8,5 @@ namespace Desktop.Services.Interfaces;
 
 public interface IDataService
 {
-    public void SendData<T>(T data) where T : IData;
+    public void SendData<T>(T data);
 }
