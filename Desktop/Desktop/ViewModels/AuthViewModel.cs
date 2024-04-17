@@ -1,5 +1,4 @@
-﻿using Desktop.Models;
-using Desktop.Services.Interfaces;
+﻿using Desktop.Services.Interfaces;
 using GalaSoft.MvvmLight.Views;
 using GalaSoft.MvvmLight;
 using Prism.Commands;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Desktop.Models.MainModels;
 
 namespace Desktop.ViewModels;
 class AuthViewModel : ViewModelBase
@@ -28,7 +28,7 @@ class AuthViewModel : ViewModelBase
     }
     public DelegateCommand LoginCommand { get; set; }
     public DelegateCommand RegisrationCommand { get; set; }
-    public DelegateCommand ConfirmPasswordCommand { get; set; }
+    public DelegateCommand ForgotPasswordCommand { get; set; }
 
     public AuthViewModel(INavigationServices navigationService, IAuthenticationService AuthService)
     {
@@ -53,7 +53,7 @@ class AuthViewModel : ViewModelBase
             {
                 _navigationService.NavigateTo<RegistrationViewModel>();
             });
-        ConfirmPasswordCommand = new DelegateCommand(
+        ForgotPasswordCommand = new DelegateCommand(
             () =>
             {
                 _navigationService.NavigateTo<RecoveryViewModel>();

@@ -6,16 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Desktop.Models;
+namespace Desktop.Models.MainModels;
 
 public class User
 {
-    public string Id { get; set; } 
+    public string Id { get; set; }
     public string Email { get; set; }
     public string PasswordHash { get; set; }
     public int Balance { get; set; }
 
-    public User(){}
+    public User() { }
 
     public User(string email, string Password)
     {

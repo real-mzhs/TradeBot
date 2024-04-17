@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Desktop.Models;
+namespace Desktop.Models.MainModels;
 
 public class OpenPosition
 {

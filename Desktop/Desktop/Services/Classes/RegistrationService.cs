@@ -1,4 +1,4 @@
-﻿using Desktop.Models;
+﻿using Desktop.Models.MainModels;
 using Desktop.Services.Interfaces;
 using System;
 using System.Collections.Generic;

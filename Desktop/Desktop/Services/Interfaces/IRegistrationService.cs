@@ -1,4 +1,4 @@
-﻿using Desktop.Models;
+﻿using Desktop.Models.MainModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

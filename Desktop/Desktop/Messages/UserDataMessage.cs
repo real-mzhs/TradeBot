@@ -1,4 +1,4 @@
-﻿using Desktop.Models;
+﻿using Desktop.Models.MainModels;
 using Desktop.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,5 +10,5 @@ namespace Desktop.Messages;
 
 class UserDataMessage 
 {
-    public User Data { get; set; }
+    public User? Data { get; set; }
 }

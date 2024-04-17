@@ -1,4 +1,4 @@
-﻿using Desktop.Models;
+﻿using Desktop.Models.MainModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +9,5 @@ namespace Desktop.Services.Interfaces;
 
 interface IAuthenticationService
 {
-    public bool Authentication(User user);
+    public Task<bool> Authentication(User user);
 }

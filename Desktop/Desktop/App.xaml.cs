@@ -28,7 +28,6 @@ namespace Desktop
 
             Container.RegisterSingleton<IMessenger, Messenger>();
             Container.RegisterSingleton<INavigationServices, NavigationService>();
-            Container.RegisterSingleton<IDataService, DataService>();
             Container.RegisterSingleton<IAuthenticationService, AuthenticationService>();
             Container.RegisterSingleton<IRegistrationService, RegistrationService>();
 
