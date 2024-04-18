@@ -30,6 +30,8 @@ namespace Desktop
             Container.RegisterSingleton<INavigationServices, NavigationService>();
             Container.RegisterSingleton<IAuthenticationService, AuthenticationService>();
             Container.RegisterSingleton<IRegistrationService, RegistrationService>();
+            Container.RegisterSingleton<IClientAPI, ClientTradeAPI>();
+            Container.RegisterSingleton<IHistoryService, HistoryService>();
 
             Container.RegisterSingleton<MainViewModel>();
             Container.RegisterSingleton<DashboardViewModel>();
