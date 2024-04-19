@@ -1,5 +1,6 @@
 ﻿using Desktop.Models.MainModels;
 using Desktop.Services.Interfaces;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +20,10 @@ class HistoryService : IHistoryService
 
     public async Task<TradesHistory> TradesHistory (User user)
     {
-        string resource = $"/users/{user.Id}/history";
+        var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.GetOrPost);
+        var parameters = new Parameter[] { parameter };
 
-        var userHistory = await _clientAPI.Get<TradesHistory>(resource);
-
+        var userHistory = await _clientAPI.Get<TradesHistory>("/history", parameters);
         return userHistory;
     }
 
