@@ -1,5 +1,6 @@
 ﻿using Desktop.Models.MainModels;
 using Desktop.Services.Interfaces;
+using Desktop.Services.Network;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,9 @@ namespace Desktop.Services.Classes;
 
 class HistoryService : IHistoryService
 {
-    IClientAPI _clientAPI { get; set; }
+    ITradeClient _clientAPI { get; set; }
 
-    public HistoryService(IClientAPI clientAPI)
+    public HistoryService(ITradeClient clientAPI)
     {
         _clientAPI = clientAPI;
     }

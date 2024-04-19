@@ -1,4 +1,5 @@
 ﻿using Desktop.Models.MainModels;
+using Desktop.Services.Network;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Desktop.Services.Interfaces;
 
 interface IRegistrationService
 {
-    public bool Registration(User user);
+    public Task<DataResponse<RegistrationResponse>> Registration(User user);
 
 }

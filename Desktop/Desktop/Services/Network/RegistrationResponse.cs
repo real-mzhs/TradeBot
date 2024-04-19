@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Desktop.Models.ModelPresentation;
+namespace Desktop.Services.Network;
 
-class Coin
+class RegistrationResponse
 {
-
+    public string Token { get; set; }
 }

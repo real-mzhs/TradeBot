@@ -12,6 +12,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Desktop.Services.Network;
 
 namespace Desktop
 {
@@ -30,7 +31,7 @@ namespace Desktop
             Container.RegisterSingleton<INavigationServices, NavigationService>();
             Container.RegisterSingleton<IAuthenticationService, AuthenticationService>();
             Container.RegisterSingleton<IRegistrationService, RegistrationService>();
-            Container.RegisterSingleton<IClientAPI, ClientTradeAPI>();
+            Container.RegisterSingleton<ITradeClient, TradeClient>();
             Container.RegisterSingleton<IHistoryService, HistoryService>();
 
             Container.RegisterSingleton<MainViewModel>();
