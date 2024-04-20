@@ -1,4 +1,6 @@
 ﻿using Desktop.Models.MainModels;
+using Desktop.Services.Network;
+using Desktop.Services.Network.Responses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +11,6 @@ namespace Desktop.Services.Interfaces;
 
 interface IAuthenticationService
 {
-    public Task<bool> Authentication(User user);
+    public Task<DataResponse<AuthResponse>> Authentication(User user);
+
 }

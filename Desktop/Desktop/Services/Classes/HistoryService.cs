@@ -1,6 +1,7 @@
 ﻿using Desktop.Models.MainModels;
 using Desktop.Services.Interfaces;
 using Desktop.Services.Network;
+using Desktop.Services.Network.Responses;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -12,19 +13,19 @@ namespace Desktop.Services.Classes;
 
 class HistoryService : IHistoryService
 {
-    ITradeClient _clientAPI { get; set; }
+    ITradeClient _tradeClient { get; set; }
 
     public HistoryService(ITradeClient clientAPI)
     {
-        _clientAPI = clientAPI;
+        _tradeClient = clientAPI;
     }
 
-    public async Task<TradesHistory> TradesHistory (User user)
+    public async Task<DataResponse<HistoryResponse>> TradesHistory (User user)
     {
-        var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.GetOrPost);
+        var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.UrlSegment);
         var parameters = new Parameter[] { parameter };
 
-        var userHistory = await _clientAPI.Get<TradesHistory>("/history", parameters);
+        var userHistory = await _tradeClient.Get<HistoryResponse>("/history", parameters); //GET https://myAPI.com/history?UserId={user.Id}
         return userHistory;
     }
 

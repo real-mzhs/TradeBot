@@ -1,6 +1,7 @@
 ﻿using Desktop.Models.MainModels;
 using Desktop.Services.Interfaces;
 using Desktop.Services.Network;
+using Desktop.Services.Network.Responses;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -12,17 +13,17 @@ namespace Desktop.Services.Classes;
 
 class RegistrationService : IRegistrationService
 {
-    private readonly ITradeClient _clientAPI;
+    private readonly ITradeClient _tradeClient;
 
     public RegistrationService(ITradeClient clientAPI)
     {
-        _clientAPI = clientAPI;
+        _tradeClient = clientAPI;
     }
 
     public async Task<DataResponse<RegistrationResponse>> Registration(User user)
     {
 
-        return await _clientAPI.Post<RegistrationResponse>("/registration", user); 
+        return await _tradeClient.Post<RegistrationResponse>("/registration", user); 
 
     }
 }
