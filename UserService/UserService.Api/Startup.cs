@@ -9,7 +9,6 @@ using UserService.Domain.Interfaces.JwtContracts;
 using UserService.Domain.Services;
 using UserService.Domain.Services.JwtServices;
 using UserService.Infrastructure.Context;
-using UserService.Infrastructure.Context.Entities;
 using UserService.Infrastructure.Entities;
 using UserService.Infrastructure.Interfaces;
 using UserService.Infrastructure.Repositories;
@@ -94,7 +93,6 @@ public class Startup(IConfiguration configuration)
         
         services.AddDbContext<AppIdentityDbContext>(
             options => options.UseNpgsql(configuration.GetConnectionString("UserDefaultConnection")));
-
 
         services.AddScoped<IConfirmationCodeRepository, ConfirmationCodeRepository>();
         services.AddScoped<IUserConfirmationService, UserConfirmationService>();

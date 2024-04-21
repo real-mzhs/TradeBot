@@ -1,4 +1,4 @@
-using UserService.Api;
+namespace UserService.Api;
 
 public static class Program
 {

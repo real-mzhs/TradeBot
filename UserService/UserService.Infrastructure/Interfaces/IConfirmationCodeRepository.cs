@@ -1,4 +1,3 @@
-using UserService.Infrastructure.Context.Entities;
 using UserService.Infrastructure.Entities;
 
 namespace UserService.Infrastructure.Interfaces;
