@@ -74,5 +74,8 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 
+**/appsettings.json
+**/appsettings.Development.json
+
 .DS_Store
 **/.idea/
