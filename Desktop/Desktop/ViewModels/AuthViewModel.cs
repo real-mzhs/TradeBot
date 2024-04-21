@@ -38,15 +38,9 @@ class AuthViewModel : ViewModelBase
 
         LoginCommand = new DelegateCommand(
             () =>
-            {                
-                if (_AuthService.Authentication(CurrentUser))
-                {
-                    _navigationService.NavigateTo<BaseViewModel>();
-                }
-                else
-                {
-                    MessageBox.Show("Wrong Email or password!!!");
-                }
+            {
+                _AuthService.Authentication(CurrentUser);
+                
             });
         RegisrationCommand = new DelegateCommand(
             () =>

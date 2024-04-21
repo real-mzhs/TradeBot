@@ -1,6 +1,6 @@
 ﻿using Desktop.Models.MainModels;
 using Desktop.Services.Interfaces;
-using Desktop.Services.Network;
+using Desktop.Services.Network.API;
 using Desktop.Services.Network.Responses;
 using RestSharp;
 using System;

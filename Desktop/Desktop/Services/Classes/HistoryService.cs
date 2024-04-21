@@ -1,6 +1,6 @@
 ﻿using Desktop.Models.MainModels;
 using Desktop.Services.Interfaces;
-using Desktop.Services.Network;
+using Desktop.Services.Network.API;
 using Desktop.Services.Network.Responses;
 using RestSharp;
 using System;
@@ -22,11 +22,11 @@ class HistoryService : IHistoryService
 
     public async Task<DataResponse<HistoryResponse>> TradesHistory (User user)
     {
-        var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.UrlSegment);
+        var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.QueryString);
         var parameters = new Parameter[] { parameter };
 
-        var userHistory = await _tradeClient.Get<HistoryResponse>("/history", parameters); //GET https://myAPI.com/history?UserId={user.Id}
-        return userHistory;
+        return await _tradeClient.Get<HistoryResponse>("/history", parameters); //GET https://myAPI.com/history?UserId={user.Id}
+        
     }
 
 }

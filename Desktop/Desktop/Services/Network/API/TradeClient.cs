@@ -1,11 +1,12 @@
-﻿using RestSharp;
+﻿using Desktop.Services.Network.Responses;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Desktop.Services.Network;
+namespace Desktop.Services.Network.API;
 
 class TradeClient : ITradeClient
 {
@@ -28,7 +29,7 @@ class TradeClient : ITradeClient
         };
     }
 
-    public async Task<DataResponse<T>> Get<T>(string resource, Parameter[] parameters = null) where T : new()
+    public async Task<DataResponse<T>> Get<T>(string resource, Parameter[]? parameters = null) where T : new()
     {
         var request = new RestRequest(resource, Method.Get);
         if (parameters != null)
@@ -41,7 +42,7 @@ class TradeClient : ITradeClient
         return await Execute<T>(request);
     }
 
-    public async Task<DataResponse<T>> Post<T>(string resource, object body = null, Parameter[] parameters = null) where T : new()
+    public async Task<DataResponse<T>> Post<T>(string resource, object body = null, Parameter[]? parameters = null) where T : new()
     {
         var request = new RestRequest(resource, Method.Post);
         if (body != null)
@@ -58,7 +59,7 @@ class TradeClient : ITradeClient
         return await Execute<T>(request);
     }
 
-    public async Task<DataResponse<T>> Put<T>(string resource, object body = null, Parameter[] parameters = null) where T : new()
+    public async Task<DataResponse<T>> Put<T>(string resource, object body = null, Parameter[]? parameters = null) where T : new()
     {
         var request = new RestRequest(resource, Method.Put);
         if (body != null)
@@ -75,7 +76,7 @@ class TradeClient : ITradeClient
         return await Execute<T>(request);
     }
 
-    public async Task<DataResponse<T>> Delete<T>(string resource, Parameter[] parameters = null) where T : new()
+    public async Task<DataResponse<T>> Delete<T>(string resource, Parameter[]? parameters = null) where T : new()
     {
         var request = new RestRequest(resource, Method.Delete);
         if (parameters != null)

@@ -1,4 +1,5 @@
 ﻿using Desktop.Enums;
+using Desktop.Models.PresentationModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace Desktop.Models.MainModels;
 
 public class TradesHistory
 {
-    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public string Id { get; set; }
     public int Amount { get; set; }
-    public string StockId { get; set; }
+    public Coin Coin { get; set; }
     public int EntryPrice { get; set; }
     public int ExitPrice { get; set; }
     public int Margin { get; set; }

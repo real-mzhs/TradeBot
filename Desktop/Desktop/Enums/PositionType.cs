@@ -8,6 +8,6 @@ namespace Desktop.Enums;
 
 public enum PositionType
 {
-    Short,
-    Long
+    Sell,
+    Buy
 }

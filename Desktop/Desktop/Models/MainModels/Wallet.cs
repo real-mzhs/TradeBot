@@ -4,20 +4,21 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Desktop.Models.PresentationModels;
 
-namespace Desktop.Models.PresentationModels;
+namespace Desktop.Models.MainModels;
 
 class Wallet
 {
-    public decimal balance { get; private set; }
+    public int balance { get; private set; }
     private ObservableCollection<Transaction> transactions;
-    public decimal Balance
+    public int Balance
     {
-        get => Math.Round(balance, 2);
+        get => balance;
         private set => balance = value;
     }
 
-    public Wallet(decimal initialBalance)
+    public Wallet(int initialBalance)
     {
         Balance = initialBalance;
         transactions = new ObservableCollection<Transaction>();
@@ -27,7 +28,7 @@ class Wallet
         return transactions;
     }
 
-    public void Deposit(decimal amount)
+    public void Deposit(int amount)
     {
         if (amount <= 0)
         {
@@ -39,7 +40,7 @@ class Wallet
         transactions.Add(transaction);
     }
 
-    public void Withdraw(decimal amount)
+    public void Withdraw(int amount)
     {
         if (amount <= 0)
         {

@@ -8,4 +8,5 @@ namespace Desktop.Services.Network.Responses;
 
 class AuthResponse
 {
+    public string Token {  get; set; }  
 }

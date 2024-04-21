@@ -12,15 +12,13 @@ public class User
 {
     public string Id { get; set; }
     public string Email { get; set; }
-    public string PasswordHash { get; set; }
-    public int Balance { get; set; }
+    public string PasswordHash { get; set; }    
 
     public User() { }
 
     public User(string email, string Password)
     {
-        Id = Guid.NewGuid().ToString();
-        Balance = 0;
+        Id = Guid.NewGuid().ToString();       
         Email = email;
         PasswordHash = Password;
     }

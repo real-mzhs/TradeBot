@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Desktop.Models.MainModels;
+using Desktop.Services.Network.Responses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,4 +10,6 @@ namespace Desktop.Services.Interfaces;
 
 interface IHistoryService
 {
+    public Task<DataResponse<HistoryResponse>> TradesHistory(User user);
+
 }

@@ -1,16 +1,13 @@
 ﻿using Desktop.Services.Interfaces;
 using Desktop.Services.Network.Responses;
-using Desktop.Services.Network;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Desktop.Models.MainModels;
-using Desktop.Models.PresentationModels;
 using RestSharp;
-
-
+using Desktop.Services.Network.API;
 
 
 namespace Desktop.Services.Classes;

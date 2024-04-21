@@ -1,11 +1,12 @@
-﻿using RestSharp;
+﻿using Desktop.Services.Network.Responses;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Desktop.Services.Network;
+namespace Desktop.Services.Network.API;
 
 interface ITradeClient
 {
