@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Desktop.Views.SmallViews"
              mc:Ignorable="d" 
              d:Background="#0D0D0D"
-             d:DesignHeight="780" d:DesignWidth="1200">
+             d:DesignHeight="730" d:DesignWidth="1200">
     <Grid Margin="300 100 300 100">
 
 

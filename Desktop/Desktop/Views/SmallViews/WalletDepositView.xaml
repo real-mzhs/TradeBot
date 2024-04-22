@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Desktop.Views"
              mc:Ignorable="d" 
              d:Background="#0D0D0D"
-             d:DesignHeight="780" d:DesignWidth="1200">
+             d:DesignHeight="730" d:DesignWidth="1200">
     <Grid>
 
 
@@ -77,8 +77,8 @@
 
                 <StackPanel VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="1" Orientation="Horizontal">
 
-                    <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding DepositCommand}"  Background="#FF3A6F">Deposit</Button>
-                    <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding WidthdrawCommand}" Background="#3359F9">Back</Button>
+                    <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding DepositCommand}"  Background="#3359F9">Deposit</Button>
+                    <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding WidthdrawCommand}" Background="#FF3A6F">Back</Button>
 
                 </StackPanel>
 

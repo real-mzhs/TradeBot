@@ -5,29 +5,35 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Desktop.Views.SmallViews"
              mc:Ignorable="d" 
-             d:DesignHeight="780" d:DesignWidth="1200">
+             d:DesignHeight="730" d:DesignWidth="1200">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.4*"/>    
+            <RowDefinition Height="0.2*"/>    
             <RowDefinition/>    
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="950"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="950"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Padding="5" BorderBrush="Transparent" CornerRadius="20" Background="#1B1C1E" Grid.Row="0" Grid.Column="0">
+
+
+            </Border>
+
+            <StackPanel VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="1" Orientation="Vertical">
+
+                <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding DepositCommand}"  Background="#3359F9">Deposit</Button>
+                <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding WidthdrawCommand}" Background="#FF3A6F">Withdraw</Button>
+
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <!--Тут история транзакций-->
+        </Grid>
 
 
 
-        <Border Padding="5" BorderBrush="Transparent" CornerRadius="20" Background="#1B1C1E" Grid.Row="0">
-
-
-        </Border>
-
-        <StackPanel VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="1" Orientation="Vertical">
-
-            <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding DepositCommand}"  Background="#FF3A6F">Deposit</Button>
-            <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding WidthdrawCommand}" Background="#3359F9">Withdraw</Button>
-
-        </StackPanel>
     </Grid>
 </UserControl>
