@@ -14,7 +14,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Chart" Style="{StaticResource HeaderTextStyle}"/>
+            <TextBlock Text="Trade" Style="{StaticResource HeaderTextStyle}"/>
 
 
         </Grid>

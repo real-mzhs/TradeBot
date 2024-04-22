@@ -16,6 +16,30 @@
 
             <TextBlock Text="History" Style="{StaticResource HeaderTextStyle}"/>
 
+            <DataGrid   
+             ItemsSource="{Binding TradesHistoryCollection}"
+             Grid.Row="1"
+             RowStyle="{DynamicResource DataGridRowStyleSuperAdmine}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyleSuperAdmine}" CellStyle="{DynamicResource DataGridCellStyleSuperAdmine}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyleSuperAdmine}">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Name" IsReadOnly="True" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding }" VerticalAlignment="Center" Margin="0 0 10 0"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header="Currency" Binding="{Binding }" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Entry Price" Binding="{Binding }" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Exit Price" Binding="{Binding }" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Margin" Binding="{Binding }" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding }" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Position Type" Binding="{Binding }" IsReadOnly="True" Width="*"/>
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+
 
         </Grid>
     </Border>

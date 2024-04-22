@@ -5,16 +5,40 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Desktop.Views"
              mc:Ignorable="d" 
-           d:DesignHeight="780" d:DesignWidth="1280">
+             d:DesignHeight="780" d:DesignWidth="1280">
     <Border Padding="10" BorderBrush="Transparent" CornerRadius="20" Background="#0D0D0D">
-        <Grid>
 
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="0.2*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
             <TextBlock Text="Wallet" Style="{StaticResource HeaderTextStyle}"/>
+
+            <Grid Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="950"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+
+                <Border Padding="5" BorderBrush="Transparent" CornerRadius="20" Background="#1B1C1E" Grid.Row="0">
+
+
+                </Border>
+
+                <StackPanel VerticalAlignment="Center"  HorizontalAlignment="Left" Grid.Column="1" Orientation="Vertical">
+
+                    <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding DepositCommand}"  Background="#FF3A6F">Deposit</Button>
+                    <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding WidthdrawCommand}" Background="#3359F9">Withdraw</Button>
+
+                </StackPanel>
+            </Grid>
+            <ContentControl Grid.Row="2"  Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>
 
 
         </Grid>

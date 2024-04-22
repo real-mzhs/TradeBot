@@ -46,9 +46,9 @@ namespace Desktop
             Container.RegisterSingleton<RegistrationViewModel>();
             Container.RegisterSingleton<BaseViewModel>();
             Container.RegisterSingleton<RecoveryViewModel>();
-
-            
-
+            Container.RegisterSingleton<WalletListContentViewModel>();
+            Container.RegisterSingleton<WalletDepositContentViewModel>();
+            Container.RegisterSingleton<WalletWidthdrawContentViewModel>();
 
 
             Container.Verify();
