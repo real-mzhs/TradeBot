@@ -2,10 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:View="clr-namespace:Desktop.Views"
+             xmlns:BigView="clr-namespace:Desktop.Views.BigViews"
+             xmlns:SmallView="clr-namespace:Desktop.Views.SmallViews"
              xmlns:md ="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf" 
-             xmlns:ViewModel="clr-namespace:Desktop.ViewModels"
+             xmlns:BigViewModel="clr-namespace:Desktop.ViewModels.BigViewModels"
+             xmlns:SmallViewModel="clr-namespace:Desktop.ViewModels.SmallViewModels"
              xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
 
     <Application.Resources>
@@ -66,7 +68,7 @@
                 <Setter Property="FontSize" Value="17" />
                 <Setter Property="FontWeight" Value="DemiBold" />
                 <Setter Property="Height" Value="54" />
-                <Setter Property="Width" Value="140" />
+                <Setter Property="Width" Value="110" />
                 <Setter Property="FocusVisualStyle" Value="{x:Null}" />
                 <Setter Property="Margin" Value="10 1 0 1" />
                 <Setter Property="Template">
@@ -459,53 +461,53 @@
 
 
 
-            <DataTemplate DataType="{x:Type ViewModel:MainViewModel}">
-                <View:MainView/>
+            <DataTemplate DataType="{x:Type BigViewModel:MainViewModel}">
+                <BigView:MainView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:DashboardViewModel}">
-                <View:DashboardView/>
+            <DataTemplate DataType="{x:Type BigViewModel:DashboardViewModel}">
+                <BigView:DashboardView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:HistoryViewModel}">
-                <View:HistoryView/>
+            <DataTemplate DataType="{x:Type BigViewModel:HistoryViewModel}">
+                <BigView:HistoryView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:TradeViewModel}">
-                <View:TradeView/>
+            <DataTemplate DataType="{x:Type BigViewModel:TradeViewModel}">
+                <BigView:TradeView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:WalletViewModel}">
-                <View:WalletView/>
+            <DataTemplate DataType="{x:Type BigViewModel:WalletViewModel}">
+                <BigView:WalletView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:RegistrationViewModel}">
-                <View:RegistrationView/>
+            <DataTemplate DataType="{x:Type BigViewModel:RegistrationViewModel}">
+                <BigView:RegistrationView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:AuthViewModel}">
-                <View:AuthView/>
+            <DataTemplate DataType="{x:Type BigViewModel:AuthViewModel}">
+                <BigView:AuthView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:BaseViewModel}">
-                <View:BaseView/>
+            <DataTemplate DataType="{x:Type BigViewModel:BaseViewModel}">
+                <BigView:BaseView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:RecoveryViewModel}">
-                <View:RecoveryView/>
+            <DataTemplate DataType="{x:Type BigViewModel:RecoveryViewModel}">
+                <BigView:RecoveryView/>
             </DataTemplate>
 
 
-            <DataTemplate DataType="{x:Type ViewModel:WalletListContentViewModel}">
-                <View:WalletListContentView/>
+            <DataTemplate DataType="{x:Type SmallViewModel:WalletContentViewModel}">
+                <SmallView:WalletContentView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:WalletDepositContentViewModel}">
-                <View:WalletDepositView/>
+            <DataTemplate DataType="{x:Type SmallViewModel:WalletDepositViewModel}">
+                <SmallView:WalletDepositView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:WalletWidthdrawContentViewModel}">
-                <View:WalletWidthdrawContentView/>
+            <DataTemplate DataType="{x:Type SmallViewModel:WalletWidthdrawViewModel}">
+                <SmallView:WalletWidthdrawView/>
             </DataTemplate>
 
 

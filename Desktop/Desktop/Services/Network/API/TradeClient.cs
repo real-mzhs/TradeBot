@@ -10,13 +10,14 @@ namespace Desktop.Services.Network.API;
 
 class TradeClient : ITradeClient
 {
-    private readonly RestClient _client;
+    private readonly RestClient _client = new("https://API.com");
 
-    public TradeClient(string baseUrl)
-    {
-        _client = new RestClient(baseUrl);
-    }
+    //public TradeClient(string baseUrl)
+    //{
+    //    _client = new RestClient(baseUrl);
+    //}
 
+    
     private async Task<DataResponse<T>> Execute<T>(RestRequest request) where T : new()
     {
         var response = await _client.ExecuteAsync<T>(request);

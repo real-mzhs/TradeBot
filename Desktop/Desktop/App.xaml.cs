@@ -1,17 +1,12 @@
 ﻿using Desktop.Services.Classes;
 using Desktop.Services.Interfaces;
-using Desktop.ViewModels;
-using Desktop.Views;
 using GalaSoft.MvvmLight.Messaging;
 using System.ComponentModel;
 using SimpleInjector;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using Desktop.ViewModels.BigViewModels;
+using Desktop.ViewModels.SmallViewModels;
+using Desktop.Views.BigViews;
 using Desktop.Services.Network.API;
 
 namespace Desktop
@@ -32,10 +27,6 @@ namespace Desktop
             Container.RegisterSingleton<IAuthenticationService, AuthenticationService>();
             Container.RegisterSingleton<IRegistrationService, RegistrationService>();
             Container.RegisterSingleton<ITradeClient, TradeClient>();
-            Container.RegisterSingleton<IHistoryService, HistoryService>();
-            Container.RegisterSingleton<IWalletService, WalletService>();
-            Container.RegisterSingleton<IMarketService, MarketService>();
-            Container.RegisterSingleton<ITradeService, TradeService>();
 
             Container.RegisterSingleton<MainViewModel>();
             Container.RegisterSingleton<DashboardViewModel>();
@@ -46,9 +37,13 @@ namespace Desktop
             Container.RegisterSingleton<RegistrationViewModel>();
             Container.RegisterSingleton<BaseViewModel>();
             Container.RegisterSingleton<RecoveryViewModel>();
-            Container.RegisterSingleton<WalletListContentViewModel>();
-            Container.RegisterSingleton<WalletDepositContentViewModel>();
-            Container.RegisterSingleton<WalletWidthdrawContentViewModel>();
+            Container.RegisterSingleton<WalletDepositViewModel>();
+            Container.RegisterSingleton<WalletWidthdrawViewModel>();
+            Container.RegisterSingleton<WalletContentViewModel>();
+
+
+
+
 
 
             Container.Verify();
