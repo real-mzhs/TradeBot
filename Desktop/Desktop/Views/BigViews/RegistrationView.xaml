@@ -11,7 +11,7 @@
 
     <Border BorderBrush="Transparent" CornerRadius="20">
         <Border.Background>
-            <ImageBrush ImageSource="C:\Users\mziya\OneDrive\Рабочий стол\TradeBot\Desktop\Desktop\Images\Frame 5(7).png" Stretch="UniformToFill" />
+            <ImageBrush ImageSource="C:\Users\rusta\OneDrive\Рабочий стол\Study\TradeBot\Desktop\Desktop\Images\Frame 5(7).png" Stretch="UniformToFill" />
         </Border.Background>
 
         <Grid>
@@ -26,7 +26,7 @@
 
                 <Border Height="650" Width="508" HorizontalAlignment="Right" Margin="0 0 102 0" CornerRadius="25" Panel.ZIndex="1">
                     <Border.Background>
-                        <ImageBrush ImageSource="C:\Users\mziya\OneDrive\Рабочий стол\TradeBot\Desktop\Desktop\Images\9b9e2b051d286f8f500a8020e8e9c270.png" Stretch="UniformToFill" />
+                        <ImageBrush ImageSource="C:\Users\rusta\OneDrive\Рабочий стол\Study\TradeBot\Desktop\Desktop\Images\9b9e2b051d286f8f500a8020e8e9c272.png" Stretch="UniformToFill" />
                     </Border.Background>
                     <Border.Effect>
                         <BlurEffect Radius="0" KernelType="Gaussian" />
@@ -35,7 +35,7 @@
 
                 <Border Width="582" HorizontalAlignment="Center" Margin="0,46,0,28" CornerRadius="25" Panel.ZIndex="0">
                     <Border.Background>
-                        <ImageBrush ImageSource="C:\Users\mziya\OneDrive\Рабочий стол\TradeBot\Desktop\Desktop\Images\9b9e2b051d286f8f500a8020e8e9c270.png" Stretch="None" />
+                        <ImageBrush ImageSource="C:\Users\rusta\OneDrive\Рабочий стол\Study\TradeBot\Desktop\Desktop\Images\9b9e2b051d286f8f500a8020e8e9c270.png" Stretch="None" />
                     </Border.Background>
                     <Border.Effect>
                         <BlurEffect Radius="100" KernelType="Gaussian" />

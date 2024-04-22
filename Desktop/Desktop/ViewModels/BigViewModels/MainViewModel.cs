@@ -29,7 +29,7 @@ public class MainViewModel : ViewModelBase
     public MainViewModel(IMessenger messenger)
     {
         _messenger = messenger;
-        CurrentView = App.Container.GetInstance<BaseViewModel>();
+        CurrentView = App.Container.GetInstance<AuthViewModel>();
 
         _messenger.Register<NavigationMessage>(this, message => CurrentView = message.ViewModelType);
 

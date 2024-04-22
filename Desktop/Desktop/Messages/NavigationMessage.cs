@@ -12,3 +12,5 @@ public class NavigationMessage
     public ViewModelBase ViewModelType { get; set; } 
 
 }
+
+

@@ -15,7 +15,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="History" Style="{StaticResource HeaderTextStyle}"/>
-
+            
             <DataGrid   
              ItemsSource="{Binding TradesHistoryCollection}"
              Grid.Row="1"
@@ -29,12 +29,13 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     
-                    <DataGridTextColumn Header="Currency" Binding="{Binding }" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Entry Price" Binding="{Binding }" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Exit Price" Binding="{Binding }" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Margin" Binding="{Binding }" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Quantity" Binding="{Binding }" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Position Type" Binding="{Binding }" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Coin" Binding="{Binding TradeHistory.Coin.Name}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Amount" Binding="{Binding TradeHistory.Amount}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Entry Price" Binding="{Binding TradeHistory.EntryPrice }" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Exit Price" Binding="{Binding TradeHistory.ExitPrice }" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Margin" Binding="{Binding TradeHistory.Margin}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding TradeHistory.Quantity}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Position Type" Binding="{Binding TradeHistory.Type}" IsReadOnly="True" Width="*"/>
 
 
                 </DataGrid.Columns>

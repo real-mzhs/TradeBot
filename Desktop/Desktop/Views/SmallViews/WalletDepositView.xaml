@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Desktop.Views"
+             xmlns:local="clr-namespace:Desktop.Views" xmlns:smallviewmodels="clr-namespace:Desktop.ViewModels.SmallViewModels" d:DataContext="{d:DesignInstance Type=smallviewmodels:WalletDepositViewModel}"
              mc:Ignorable="d" 
              d:Background="#0D0D0D"
              d:DesignHeight="730" d:DesignWidth="1200">
@@ -78,7 +78,7 @@
                 <StackPanel VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="1" Orientation="Horizontal">
 
                     <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding DepositCommand}"  Background="#3359F9">Deposit</Button>
-                    <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding WidthdrawCommand}" Background="#FF3A6F">Back</Button>
+                    <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding BackCommand}" Background="#FF3A6F">Back</Button>
 
                 </StackPanel>
 

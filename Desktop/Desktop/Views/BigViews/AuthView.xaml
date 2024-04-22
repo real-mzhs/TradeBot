@@ -10,7 +10,7 @@
     <Border BorderBrush="Transparent" CornerRadius="20">
 
         <Border.Background>
-            <ImageBrush ImageSource="C:\Users\mziya\OneDrive\Рабочий стол\TradeBot\Desktop\Desktop\Images\Frame 5(7).png" Stretch="UniformToFill" />
+            <ImageBrush ImageSource="C:\Users\rusta\OneDrive\Рабочий стол\Study\TradeBot\Desktop\Desktop\Images\Frame 5(7).png" />
         </Border.Background>
 
         <Grid>
@@ -26,7 +26,7 @@
 
                 <Border Height="650" Width="508" HorizontalAlignment="Right" Margin="0 0 102 0" CornerRadius="25" Panel.ZIndex="1">
                     <Border.Background>
-                        <ImageBrush ImageSource="C:\Users\mziya\OneDrive\Рабочий стол\TradeBot\Desktop\Desktop\Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg" Stretch="UniformToFill" />
+                        <ImageBrush ImageSource="C:\Users\rusta\OneDrive\Рабочий стол\Study\TradeBot\Desktop\Desktop\Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg" Stretch="UniformToFill" />
                     </Border.Background>
                     <Border.Effect>
                         <BlurEffect Radius="0" KernelType="Gaussian" />
@@ -35,7 +35,7 @@
 
                 <Border Width="604" HorizontalAlignment="Left" Margin="-55,37,0,37" CornerRadius="25" Panel.ZIndex="0">
                     <Border.Background>
-                        <ImageBrush ImageSource="C:\Users\mziya\OneDrive\Рабочий стол\TradeBot\Desktop\Desktop\Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg" Stretch="None" />
+                        <ImageBrush ImageSource="C:\Users\rusta\OneDrive\Рабочий стол\Study\TradeBot\Desktop\Desktop\Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg" Stretch="None" />
                     </Border.Background>
                     <Border.Effect>
                         <BlurEffect Radius="100" KernelType="Gaussian" />
@@ -128,7 +128,7 @@
 
 
 
-                    <Button HorizontalAlignment="Left" Opacity="0.9" BorderBrush="#78787C" BorderThickness="2" Width="370" Height="60" Margin="0 20 0 0" Command="{Binding RegistrationCommand}">
+                    <Button HorizontalAlignment="Left" Opacity="0.9" BorderBrush="#78787C" BorderThickness="2" Width="370" Height="60" Margin="0 20 0 0" Command="{Binding LoginCommand}">
                         <Button.Background>
                             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                 <GradientStop Color="#4C5056" Offset="0"/>

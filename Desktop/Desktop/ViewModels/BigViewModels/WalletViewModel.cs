@@ -35,27 +35,10 @@ public class WalletViewModel : ViewModelBase
 
     public WalletViewModel(INavigationServices navigationServices, IMessenger _messenger)
     {
-
         _navigationServices = navigationServices;
 
         CurrentView = App.Container.GetInstance<WalletContentViewModel>();
-        _messenger.Register<NavigationMessage>(this, message => CurrentView = message.ViewModelType);
-
-
-        WidthdrawCommand = new DelegateCommand(
-          () =>
-          {
-
-          });
-        DepositCommand = new DelegateCommand(
-            () =>
-            {
-                CurrentView = App.Container.GetInstance<WalletDepositViewModel>();
-
-            });
-
-
-
+        _messenger.Register<WalletNavigationMessage>(this, message => CurrentView = message.ViewModelType);
     }
 
 

@@ -27,6 +27,21 @@ public class NavigationService : INavigationServices
         }
         );
     }
-
+    public void MenuNavigateTo<T>() where T : ViewModelBase
+    {
+        _messenger.Send(new MenuNavigationMessage()
+        {
+            ViewModelType = App.Container.GetInstance<T>() 
+        }
+        );
+    }
+    public void WalletNavigateTo<T>() where T : ViewModelBase
+    {
+        _messenger.Send(new WalletNavigationMessage()
+        {
+            ViewModelType = App.Container.GetInstance<T>()
+        }
+        );
+    }
 
 }

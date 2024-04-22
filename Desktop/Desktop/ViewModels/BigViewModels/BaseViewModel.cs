@@ -43,31 +43,31 @@ class BaseViewModel : ViewModelBase
         _navigationServices = navigationServices;
 
         CurrentView = App.Container.GetInstance<DashboardViewModel>();
-        _messenger.Register<NavigationMessage>(this, message => CurrentView = message.ViewModelType);
+        _messenger.Register<MenuNavigationMessage>(this, message => CurrentView = message.ViewModelType);
 
 
 
         DashboardCommand = new DelegateCommand(
             () =>
             {
-                CurrentView = App.Container.GetInstance<DashboardViewModel>();
+                _navigationServices.MenuNavigateTo<DashboardViewModel>();
             });
         WalletCommand = new DelegateCommand(
             () =>
             {
-                CurrentView = App.Container.GetInstance<WalletViewModel>();
+                _navigationServices.MenuNavigateTo<WalletViewModel>();
 
             });
         TradeCommand = new DelegateCommand(
             () =>
             {
-                CurrentView = App.Container.GetInstance<TradeViewModel>();
+                _navigationServices.MenuNavigateTo<TradeViewModel>();
 
             });
         HistoryCommand = new DelegateCommand(
             () =>
             {
-                CurrentView = App.Container.GetInstance<HistoryViewModel>();
+                _navigationServices.MenuNavigateTo<HistoryViewModel>();
 
             });
 

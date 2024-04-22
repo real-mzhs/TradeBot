@@ -40,7 +40,8 @@ class AuthViewModel : ViewModelBase
         LoginCommand = new DelegateCommand(
             () =>
             {
-                _AuthService.Authentication(CurrentUser);
+                //_AuthService.Authentication(CurrentUser);
+                _navigationService.NavigateTo<BaseViewModel>();
 
             });
         RegisrationCommand = new DelegateCommand(
