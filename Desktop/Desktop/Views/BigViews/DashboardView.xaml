@@ -5,7 +5,7 @@
              xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:local="clr-namespace:Desktop.Views"
+             xmlns:local="clr-namespace:Desktop.Views.BigViews" xmlns:bigviewmodels="clr-namespace:Desktop.ViewModels.BigViewModels" d:DataContext="{d:DesignInstance Type=bigviewmodels:DashboardViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="780" d:DesignWidth="1200">
 
@@ -23,11 +23,11 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Border Margin="20,10,0,0" Grid.Column="1" Grid.Row="1"  CornerRadius="20" Padding="35 25" Background="#1B1C1E" >
+            <Border Margin="20,10,0,0" Grid.Column="1" Grid.Row="1"  CornerRadius="20"  Background="#1B1C1E" >
                 <Grid>
                     <TextBlock Foreground="#fff" FontSize="25" FontWeight="DemiBold" Text="Live Chart"/>
 
-                    <lvc:CartesianChart Margin="0 33 0 0"   Grid.Row="1" Series="{Binding Series}" XAxes="{Binding XAxes}"/>
+                    
                 </Grid>
             </Border>
 
@@ -62,8 +62,8 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             
-                            <lvc:CartesianChart Grid.Column="0" Series="{Binding Series}" XAxes="{Binding XAxes}"/>
-                            <lvc:PieChart Grid.Column="1" Series="{Binding PieSeries}"/>
+                            
+                            <lvc:PieChart Grid.Column="1" Series="{Binding PieChart}"/>
 
                         </Grid>
                     </Border>

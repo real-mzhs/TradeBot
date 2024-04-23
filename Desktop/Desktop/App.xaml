@@ -15,9 +15,8 @@
         <ResourceDictionary>
 
             <SolidColorBrush x:Key="BlackColor" Color="#083353"/>
+
             <SolidColorBrush x:Key="GreyColor" Color="#B7B7B7"/>
-
-
             <Style x:Key="menuButton" TargetType="Button">
                 <Setter Property="Background" Value="#262930" />
                 <Setter Property="Foreground" Value="#7E7E7E" />

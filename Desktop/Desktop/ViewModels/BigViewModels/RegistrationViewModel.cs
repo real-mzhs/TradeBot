@@ -1,5 +1,6 @@
 ﻿using Desktop.Models;
 using Desktop.Models.MainModels;
+using Desktop.Services.Classes;
 using Desktop.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
@@ -19,9 +20,17 @@ class RegistrationViewModel : ViewModelBase
 {
     private readonly INavigationServices _navigationService;
     private readonly IRegistrationService _registrationService;
-    public User CurrentUser { get; set; }
-    public string Email { get; set; }
-    public string Password { get; set; }
+    public User CurrentUser { get; set; } = new();
+    public string Email
+    {
+        get { return CurrentUser.Email; }
+        set { CurrentUser.Email = value; }
+    }
+    public string Password
+    {
+        get { return CurrentUser.Password; }
+        set { CurrentUser.Password = value; }
+    }
     public string ConfirmPassword { get; set; }
     public DelegateCommand BackCommand { get; set; }
     public DelegateCommand RegistrationCommand { get; set; }
@@ -45,7 +54,9 @@ class RegistrationViewModel : ViewModelBase
             {
                 try
                 {
-                    _registrationService.Registration(CurrentUser);
+                    CheckDataService.CheckUserData(CurrentUser.Email, CurrentUser.Password, ConfirmPassword);
+
+                    var response = _registrationService.Registration(CurrentUser);
                 }
                 catch (Exception e)
                 {

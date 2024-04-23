@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Desktop.Models.MainModels;
+using Desktop.Services.Classes;
 
 namespace Desktop.ViewModels.BigViewModels;
 class AuthViewModel : ViewModelBase
@@ -24,8 +25,8 @@ class AuthViewModel : ViewModelBase
     }
     public string Password
     {
-        get { return CurrentUser.PasswordHash; }
-        set { CurrentUser.PasswordHash = value; }
+        get { return CurrentUser.Password; }
+        set { CurrentUser.Password = value; }
     }
     public DelegateCommand LoginCommand { get; set; }
     public DelegateCommand RegisrationCommand { get; set; }
@@ -40,7 +41,16 @@ class AuthViewModel : ViewModelBase
         LoginCommand = new DelegateCommand(
             () =>
             {
-                //_AuthService.Authentication(CurrentUser);
+                try
+                {
+                    CheckDataService.CheckUserData(CurrentUser.Email, CurrentUser.Password);
+
+                    var response = _AuthService.Authentication(CurrentUser);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
                 _navigationService.NavigateTo<BaseViewModel>();
 
             });

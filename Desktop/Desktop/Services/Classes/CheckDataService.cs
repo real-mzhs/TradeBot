@@ -8,9 +8,10 @@ namespace Desktop.Services.Classes;
 
 static class CheckDataService
 {
-    public static void CheckUserData(string email, string password, string confirmPassword)
+    public static void CheckUserData(string email, string password, string? confirmPassword = null)
     {
-        if (password != confirmPassword)
+
+        if (confirmPassword != null && password != confirmPassword)
             throw new ArgumentException("Password mismatch!");
 
         if (!RegexCollection.PasswordRegex.IsMatch(password))
