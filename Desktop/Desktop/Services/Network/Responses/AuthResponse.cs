@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.Services.Network.Responses;
 
-class AuthResponse
+public class AuthResponse
 {
     public string Token {  get; set; }  
 }

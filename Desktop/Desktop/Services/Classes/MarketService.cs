@@ -1,15 +1,10 @@
 ﻿using Desktop.Services.Network.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Desktop.Services.Interfaces;
 using Desktop.Services.Network.API;
 
 namespace Desktop.Services.Classes;
 
-class MarketService : IMarketService
+public class MarketService : IMarketService
 {
     ITradeClient _tradeClient { get; set; }
     public MarketService(ITradeClient tradeClient)

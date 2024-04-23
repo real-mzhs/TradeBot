@@ -1,15 +1,9 @@
 ﻿using Desktop.Services.Network.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Desktop.Services.Interfaces
+namespace Desktop.Services.Interfaces;
+
+public interface IMarketService
 {
-    interface IMarketService
-    {
-        public Task<DataResponse<CoinsResponse>> GetCoins();
+    public Task<DataResponse<CoinsResponse>> GetCoins();
 
-    }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.Services.Network.Responses;
 
-class RegistrationResponse
+public class RegistrationResponse
 {
     public string Token { get; set; }
 }

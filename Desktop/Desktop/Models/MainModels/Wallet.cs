@@ -1,33 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using Desktop.Models.PresentationModels;
 
 namespace Desktop.Models.MainModels;
 
-class Wallet
+public class Wallet
 {
-    public int balance { get; private set; }
-    private ObservableCollection<Transaction> transactions;
-    public int Balance
-    {
-        get => balance;
-        private set => balance = value;
-    }
-
-    public Wallet(int initialBalance)
-    {
-        Balance = initialBalance;
-        transactions = new ObservableCollection<Transaction>();
-    }
-    public ObservableCollection<Transaction> GetTransactionHistory()
-    {
-        return transactions;
-    }
-
+    public ObservableCollection<Transaction> Transactions {  get; set; }
+    public int Balance { get; set; }
     public void Deposit(int amount)
     {
         if (amount <= 0)
@@ -37,7 +16,7 @@ class Wallet
 
         Balance += amount;
         var transaction = new Transaction { Amount = amount, Date = DateTime.Now };
-        transactions.Add(transaction);
+        Transactions.Add(transaction);
     }
 
     public void Withdraw(int amount)
@@ -54,6 +33,10 @@ class Wallet
 
         Balance -= amount;
         var transaction = new Transaction { Amount = -amount, Date = DateTime.Now };
-        transactions.Add(transaction);
+        Transactions.Add(transaction);
+    }
+    public ObservableCollection<Transaction> GetTransactionHistory()
+    {
+        return Transactions;
     }
 }

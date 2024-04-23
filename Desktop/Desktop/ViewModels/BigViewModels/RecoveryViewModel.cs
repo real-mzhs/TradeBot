@@ -1,13 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Desktop.ViewModels.BigViewModels;
 
-class RecoveryViewModel : ViewModelBase
+public class RecoveryViewModel : ViewModelBase
 {
 
 }

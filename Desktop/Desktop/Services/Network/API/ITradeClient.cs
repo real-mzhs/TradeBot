@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.Services.Network.API;
 
-interface ITradeClient
+public interface ITradeClient
 {
     public Task<DataResponse<T>> Get<T>(string resource, Parameter[]? parameters = null) where T : new();
     public Task<DataResponse<T>> Post<T>(string resource, object? body = null, Parameter[]? parameters = null) where T : new();

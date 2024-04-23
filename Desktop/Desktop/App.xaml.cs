@@ -8,12 +8,10 @@ using Desktop.ViewModels.BigViewModels;
 using Desktop.ViewModels.SmallViewModels;
 using Desktop.Views.BigViews;
 using Desktop.Services.Network.API;
+using Desktop.Models.MainModels;
 
 namespace Desktop
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
 
@@ -24,26 +22,25 @@ namespace Desktop
 
             Container.RegisterSingleton<IMessenger, Messenger>();
             Container.RegisterSingleton<INavigationServices, NavigationService>();
-            Container.RegisterSingleton<IAuthenticationService, AuthenticationService>();
-            Container.RegisterSingleton<IRegistrationService, RegistrationService>();
-            Container.RegisterSingleton<ITradeClient, TradeClient>();
+            Container.RegisterSingleton<Wallet>();              
 
-            Container.RegisterSingleton<MainViewModel>();
-            Container.RegisterSingleton<DashboardViewModel>();
-            Container.RegisterSingleton<HistoryViewModel>();
-            Container.RegisterSingleton<TradeViewModel>();
-            Container.RegisterSingleton<WalletViewModel>();
-            Container.RegisterSingleton<AuthViewModel>();
-            Container.RegisterSingleton<RegistrationViewModel>();
-            Container.RegisterSingleton<BaseViewModel>();
-            Container.RegisterSingleton<RecoveryViewModel>();
-            Container.RegisterSingleton<WalletDepositViewModel>();
-            Container.RegisterSingleton<WalletWidthdrawViewModel>();
-            Container.RegisterSingleton<WalletContentViewModel>();
+            Container.Register<IAuthenticationService, AuthenticationService>();
+            Container.Register<IRegistrationService, RegistrationService>();
+            Container.Register<ITradeClient, TradeClient>();
+            Container.Register<IWalletService, WalletService>();
 
-
-
-
+            Container.Register<MainViewModel>();
+            Container.Register<DashboardViewModel>();
+            Container.Register<HistoryViewModel>();
+            Container.Register<TradeViewModel>();
+            Container.Register<WalletViewModel>();
+            Container.Register<AuthViewModel>();
+            Container.Register<RegistrationViewModel>();
+            Container.Register<BaseViewModel>();
+            Container.Register<RecoveryViewModel>();
+            Container.Register<WalletDepositViewModel>();
+            Container.Register<WalletWidthdrawViewModel>();
+            Container.Register<WalletContentViewModel>();
 
 
             Container.Verify();

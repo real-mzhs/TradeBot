@@ -1,19 +1,12 @@
-﻿using Desktop.Models;
-using Desktop.Services.Interfaces;
-using GalaSoft.MvvmLight.Views;
+﻿using Desktop.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using Desktop.Models.MainModels;
 using Desktop.Services.Classes;
 
 namespace Desktop.ViewModels.BigViewModels;
-class AuthViewModel : ViewModelBase
+public class AuthViewModel : ViewModelBase
 {
     private readonly INavigationServices _navigationService;
     private readonly IAuthenticationService _AuthService;

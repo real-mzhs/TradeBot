@@ -3,15 +3,11 @@ using Desktop.Services.Interfaces;
 using Desktop.Services.Network.API;
 using Desktop.Services.Network.Responses;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Desktop.Services.Classes;
 
-class HistoryService : IHistoryService
+public class HistoryService : IHistoryService
 {
     ITradeClient _tradeClient { get; set; }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.Services.Network.Responses;
 
-class HistoryResponse
+public class HistoryResponse
 {
     public IEnumerable<TradesHistory> History { get; set; }
 }

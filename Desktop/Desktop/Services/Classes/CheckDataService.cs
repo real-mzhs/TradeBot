@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Desktop.Services.Classes;
 
-namespace Desktop.Services.Classes;
-
-static class CheckDataService
+public static class CheckDataService
 {
     public static void CheckUserData(string email, string password, string? confirmPassword = null)
     {

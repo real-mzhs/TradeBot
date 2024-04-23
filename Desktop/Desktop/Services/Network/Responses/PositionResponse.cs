@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.Services.Network.Responses;
 
-class PositionResponse
+public class PositionResponse
 {
     public IEnumerable<Position> Positions { get; set; }
 }

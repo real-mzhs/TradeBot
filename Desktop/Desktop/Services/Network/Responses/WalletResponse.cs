@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.Services.Network.Responses;
 
-class WalletResponse
+public class WalletResponse
 {
     public decimal balance { get; set; }
     public ObservableCollection<Transaction> transactions;

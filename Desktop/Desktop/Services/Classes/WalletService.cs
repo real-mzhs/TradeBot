@@ -1,18 +1,12 @@
 ﻿using Desktop.Services.Interfaces;
 using Desktop.Services.Network.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Desktop.Models.MainModels;
 using RestSharp;
 using Desktop.Services.Network.API;
 
-
 namespace Desktop.Services.Classes;
 
-class WalletService : IWalletService
+public class WalletService : IWalletService
 {
     private ITradeClient _tradeClient { get; set; }
     

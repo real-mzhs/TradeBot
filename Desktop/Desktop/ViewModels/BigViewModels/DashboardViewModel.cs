@@ -1,24 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
 using LiveChartsCore.Defaults;
 using LiveChartsCore.SkiaSharpView;
-using LiveChartsCore.SkiaSharpView.WPF;
-using Prism.Commands;
 using SkiaSharp;
-using System;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
-using System;
-using System.Linq;
 using LiveChartsCore;
-using LiveChartsCore.Defaults;
-using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
-using System.Drawing;
-using LiveChartsCore.Drawing;
 using Desktop.Models.PresentationModels;
-using System.Windows.Media;
-
 
 namespace Desktop.ViewModels.BigViewModels;
 

@@ -1,41 +1,77 @@
-﻿using Desktop.Messages;
+﻿using Desktop.Models.MainModels;
+using Desktop.Models.PresentationModels;
 using Desktop.Services.Interfaces;
+using Desktop.Services.Network.Responses;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using System.Windows;
 
-namespace Desktop.ViewModels.SmallViewModels
+namespace Desktop.ViewModels.SmallViewModels;
+
+public class WalletContentViewModel : ViewModelBase
 {
-    class WalletContentViewModel : ViewModelBase
+    private readonly INavigationServices _navigationServices;
+    public DelegateCommand WidthdrawCommand { get; set; }
+    public DelegateCommand DepositCommand { get; set; }
+    public DataResponse<WalletResponse> Response { get; set; }
+
+    private Wallet _wallet;
+    public ObservableCollection<Transaction> Transactions
     {
-        private readonly INavigationServices _navigationServices;
-        private readonly IMessenger _messenger;
-        public DelegateCommand WidthdrawCommand { get; set; }
-        public DelegateCommand DepositCommand { get; set; }
-      
-
-        public WalletContentViewModel(INavigationServices navigationServices, IMessenger _messenger)
+        get => _wallet.Transactions;
+        set
         {
+            if (_wallet.Transactions != value)
+            {
+                _wallet.Transactions = value;
+                RaisePropertyChanged(nameof(Transactions));
+            }
+        }
+    }
+    public decimal Balance
+    {
+        get => _wallet.Balance;
+        set
+        {
+            if (_wallet.Balance != value)
+            {
+                _wallet.Balance = (int)value;
+                RaisePropertyChanged(nameof(Balance));
+            }
+        }
+    }
 
-            _navigationServices = navigationServices;
+    public WalletContentViewModel(INavigationServices navigationServices, IWalletService walletService, Wallet wallet)
+    {
+        _navigationServices = navigationServices;   
+        _wallet = wallet;
 
-            WidthdrawCommand = new DelegateCommand(
-              () =>
-              {
-                  _navigationServices.WalletNavigateTo<WalletWidthdrawViewModel>();
-              });
-            DepositCommand = new DelegateCommand(
-              () =>
-              {
-                  _navigationServices.WalletNavigateTo<WalletDepositViewModel>();
-              });
+        try
+        {
+            Response = walletService.GetWalletData(new Models.MainModels.User()).GetAwaiter().GetResult();
+            Transactions = Response.Data.transactions;
+            Balance = Response.Data.balance;
 
         }
+        catch (Exception ex) 
+        {
+            MessageBox.Show($"{ex}: Status code - {Response.StatusCode}");
+        }
 
+
+        WidthdrawCommand = new DelegateCommand(
+          () =>
+          {
+              _navigationServices.WalletNavigateTo<WalletWidthdrawViewModel>();
+          });
+        DepositCommand = new DelegateCommand(
+          () =>
+          {
+              _navigationServices.WalletNavigateTo<WalletDepositViewModel>();
+          });
+        
     }
+
 }

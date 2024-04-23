@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace Desktop.Services.Classes;
 
-static class RegexCollection
+public static class RegexCollection
 {
     private readonly static string EmailPattern = "^[a-zA-Z0-9 -~]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
     private readonly static string NamePattern = @"^[A-Z][a-z]+$";

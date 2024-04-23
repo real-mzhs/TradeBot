@@ -1,13 +1,6 @@
-﻿using Desktop.Messages;
-using Desktop.Services.Interfaces;
+﻿using Desktop.Messages.NavigationMessages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
-using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Desktop.ViewModels.BigViewModels;
 

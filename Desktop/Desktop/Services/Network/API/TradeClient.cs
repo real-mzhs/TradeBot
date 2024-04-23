@@ -1,23 +1,12 @@
 ﻿using Desktop.Services.Network.Responses;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Desktop.Services.Network.API;
 
-class TradeClient : ITradeClient
+public class TradeClient : ITradeClient
 {
-    private readonly RestClient _client = new("https://API.com");
+    private readonly RestClient _client = new("http://api.tradebot.com/api");
 
-    //public TradeClient(string baseUrl)
-    //{
-    //    _client = new RestClient(baseUrl);
-    //}
-
-    
     private async Task<DataResponse<T>> Execute<T>(RestRequest request) where T : new()
     {
         var response = await _client.ExecuteAsync<T>(request);

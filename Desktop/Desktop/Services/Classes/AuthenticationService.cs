@@ -3,16 +3,10 @@ using Desktop.Services.Interfaces;
 using Desktop.Services.Network.API;
 using Desktop.Services.Network.Responses;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Authentication;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Desktop.Services.Classes;
 
-class AuthenticationService : IAuthenticationService
+public class AuthenticationService : IAuthenticationService
 {
     ITradeClient _tradeClient {  get; set; }
     public AuthenticationService(ITradeClient tradeClient)
@@ -24,7 +18,7 @@ class AuthenticationService : IAuthenticationService
         var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.UrlSegment);
         var parameters = new Parameter[] { parameter };
 
-        return await _tradeClient.Get<AuthResponse>("/auth", parameters); 
+        return await _tradeClient.Get<AuthResponse>("/auth/login", parameters); 
         
     }
 

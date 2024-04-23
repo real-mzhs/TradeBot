@@ -1,20 +1,15 @@
-﻿using Desktop.Messages;
+﻿using Desktop.Messages.NavigationMessages;
 using Desktop.Services.Interfaces;
-using Desktop.ViewModels.SmallViewModels;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Desktop.ViewModels.BigViewModels;
 
-class BaseViewModel : ViewModelBase
+public class BaseViewModel : ViewModelBase
 {
     private readonly INavigationServices _navigationServices;
+    private readonly IWalletService _walletService;
 
     public DelegateCommand DashboardCommand { get; set; }
     public DelegateCommand HistoryCommand { get; set; }
@@ -36,11 +31,11 @@ class BaseViewModel : ViewModelBase
     }
 
 
-
-    public BaseViewModel(INavigationServices navigationServices, IMessenger _messenger)
+    public BaseViewModel(INavigationServices navigationServices, IMessenger _messenger, IWalletService walletService)
     {
 
         _navigationServices = navigationServices;
+        _walletService = walletService;
 
         CurrentView = App.Container.GetInstance<DashboardViewModel>();
         _messenger.Register<MenuNavigationMessage>(this, message => CurrentView = message.ViewModelType);
@@ -56,6 +51,7 @@ class BaseViewModel : ViewModelBase
             () =>
             {
                 _navigationServices.MenuNavigateTo<WalletViewModel>();
+
 
             });
         TradeCommand = new DelegateCommand(
@@ -76,5 +72,6 @@ class BaseViewModel : ViewModelBase
             {
                 _navigationServices.NavigateTo<AuthViewModel>();
             });
+        
     }
 }

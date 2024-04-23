@@ -1,16 +1,11 @@
 ﻿using Desktop.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Desktop.ViewModels.SmallViewModels;
 
-class WalletDepositViewModel : ViewModelBase
+public class WalletDepositViewModel : ViewModelBase
 {
     private readonly INavigationServices _navigationServices;
     private string _cardNumber;

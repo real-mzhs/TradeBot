@@ -1,22 +1,13 @@
-﻿using Desktop.Models;
-using Desktop.Models.MainModels;
+﻿using Desktop.Models.MainModels;
 using Desktop.Services.Classes;
 using Desktop.Services.Interfaces;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Messaging;
-using GalaSoft.MvvmLight.Views;
 using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace Desktop.ViewModels.BigViewModels;
 
-class RegistrationViewModel : ViewModelBase
+public class RegistrationViewModel : ViewModelBase
 {
     private readonly INavigationServices _navigationService;
     private readonly IRegistrationService _registrationService;

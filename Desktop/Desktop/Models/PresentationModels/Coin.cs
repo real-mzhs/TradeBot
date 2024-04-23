@@ -1,6 +1,4 @@
-﻿
-
-namespace Desktop.Models.PresentationModels;
+﻿namespace Desktop.Models.PresentationModels;
 
 public class Coin
 {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.Services.Network.Responses;
 
-class DataResponse<T>
+public class DataResponse<T>
 {
     public HttpStatusCode StatusCode { get; set; }
     public string? ErrorMessage { get; set; }

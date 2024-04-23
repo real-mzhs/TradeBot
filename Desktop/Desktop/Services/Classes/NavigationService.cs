@@ -1,12 +1,8 @@
 ﻿using Desktop.Messages;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Desktop.Services.Interfaces;
+using Desktop.Messages.NavigationMessages;
 
 namespace Desktop.Services.Classes;
 

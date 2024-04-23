@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Desktop.Services.Network.Responses;
 
-class CoinsResponse
+public class CoinsResponse
 {
     public IEnumerable<Coin> Coins { get; set; }
 }
