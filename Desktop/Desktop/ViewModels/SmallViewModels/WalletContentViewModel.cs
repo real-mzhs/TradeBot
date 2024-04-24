@@ -47,12 +47,11 @@ public class WalletContentViewModel : ViewModelBase
     {
         _navigationServices = navigationServices;   
         _wallet = wallet;
-
-        try
+                try
         {
-            Response = walletService.GetWalletData(new Models.MainModels.User()).GetAwaiter().GetResult();
-            Transactions = Response.Data.transactions;
-            Balance = Response.Data.balance;
+            //Response = walletService.GetWalletData(new Models.MainModels.User()).GetAwaiter().GetResult();
+            //Transactions = Response.Data.transactions;
+            //Balance = Response.Data.balance;
 
         }
         catch (Exception ex) 
