@@ -17,8 +17,8 @@ public class DashboardViewModel : ViewModelBase
     public ObservableCollection<ISeries> Series { get; set; }
 
     private static readonly SKColor s_gray = new(195, 195, 195);
-    private static readonly SKColor s_gray1 = new(160, 160, 160);
-    private static readonly SKColor s_gray2 = new(90, 90, 90);
+    private static readonly SKColor s_gray2 = new(61, 61, 61);
+
     public FinancialData FinancialData { get; set; } = new FinancialData(
         [
             new DateTime(2021, 1, 1),
@@ -78,7 +78,7 @@ public class DashboardViewModel : ViewModelBase
                 Values = FinancialData.Amounts,
                 Fill = null,
                 GeometrySize = 0,
-                LineSmoothness = 0,
+                LineSmoothness = 0.5,
             }
         };
 
@@ -90,37 +90,12 @@ public class DashboardViewModel : ViewModelBase
                     .Select(x => x.Date.ToString("dd.MM.yyyy"))
                     .ToArray(),
                 
-                NamePaint = new SolidColorPaint(s_gray1),
+                
                 TextSize = 18,
                 Padding = new Padding(5, 15, 5, 5),
-                LabelsPaint = new SolidColorPaint(s_gray),
-                SeparatorsPaint = new SolidColorPaint
-                {
-                    Color = s_gray,
-                    StrokeThickness = 1,
-                    PathEffect = new DashEffect(new float[] { 3, 3 })
-                },
-                SubseparatorsPaint = new SolidColorPaint
-                {
-                    Color = s_gray2,
-                    StrokeThickness = 0.5f
-                },
-                SubseparatorsCount = 9,
-                ZeroPaint = new SolidColorPaint
-                {
-                    Color = s_gray1,
-                    StrokeThickness = 2
-                },
-                TicksPaint = new SolidColorPaint
-                {
-                    Color = s_gray,
-                    StrokeThickness = 1.5f
-                },
-                SubticksPaint = new SolidColorPaint
-                {
-                    Color = s_gray,
-                    StrokeThickness = 1
-                }
+                LabelsPaint = new SolidColorPaint(s_gray)         
+
+                
             }
         };
 
@@ -128,36 +103,15 @@ public class DashboardViewModel : ViewModelBase
         {
             new Axis
             {                
-                NamePaint = new SolidColorPaint(s_gray1),
+                
                 TextSize = 18,
                 Padding = new Padding(5, 0, 15, 0),
                 LabelsPaint = new SolidColorPaint(s_gray),
                 SeparatorsPaint = new SolidColorPaint
                 {
-                    Color = s_gray,
-                    StrokeThickness = 1,
-                    PathEffect = new DashEffect(new float[] { 3, 3 })
-                },
-                SubseparatorsPaint = new SolidColorPaint
-                {
                     Color = s_gray2,
-                    StrokeThickness = 0.5f
-                },
-                SubseparatorsCount = 9,
-                ZeroPaint = new SolidColorPaint
-                {
-                    Color = s_gray1,
-                    StrokeThickness = 2
-                },
-                TicksPaint = new SolidColorPaint
-                {
-                    Color = s_gray,
-                    StrokeThickness = 1.5f
-                },
-                SubticksPaint = new SolidColorPaint
-                {
-                    Color = s_gray,
-                    StrokeThickness = 1
+                    StrokeThickness = 1,
+                    
                 }
             }
         };
