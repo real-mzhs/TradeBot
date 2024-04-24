@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Desktop.Views.SmallViews.WalletContentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Desktop.Views.SmallViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="730" d:DesignWidth="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>    
+            <RowDefinition/>    
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="950"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Padding="5" BorderBrush="Transparent" CornerRadius="20" Background="#1B1C1E" Grid.Row="0" Grid.Column="0">
+
+
+            </Border>
+
+            <StackPanel VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="1" Orientation="Vertical">
+
+                <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding DepositCommand}"  Background="#3359F9">Deposit</Button>
+                <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding WidthdrawCommand}" Background="#FF3A6F">Withdraw</Button>
+
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <!--Тут история транзакций-->
+        </Grid>
+
+
+
+    </Grid>
+</UserControl>
