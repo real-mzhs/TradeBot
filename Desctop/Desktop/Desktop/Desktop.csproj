@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg" />
+      <None Remove="Images\9b9e2b051d286f8f500a8020e8e9c272.png" />
+      <None Remove="Images\Frame 5%287%29.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+      <Resource Include="Images\9b9e2b051d286f8f500a8020e8e9c272.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <Content Include="Images\Frame 5(7).png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+	  <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+      <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+      <PackageReference Include="Prism.Core" Version="8.1.97" />
+      <PackageReference Include="RestSharp" Version="110.2.0" />
+      <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="110.2.0" />
+      <PackageReference Include="SimpleInjector" Version="5.4.4" />
+		<PackageReference Include="MaterialDesignColors" Version="2.1.4" />
+
+		<PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+	  <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-rc2" />
+
+	</ItemGroup>
+
+</Project>
