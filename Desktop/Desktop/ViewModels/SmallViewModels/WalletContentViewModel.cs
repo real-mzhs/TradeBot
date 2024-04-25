@@ -1,4 +1,5 @@
-﻿using Desktop.Models.MainModels;
+﻿using Desktop.Messages.DataMessages;
+using Desktop.Models.MainModels;
 using Desktop.Models.PresentationModels;
 using Desktop.Services.Classes;
 using Desktop.Services.Interfaces;
@@ -14,6 +15,9 @@ namespace Desktop.ViewModels.SmallViewModels;
 public class WalletContentViewModel : ViewModelBase
 {
     private readonly INavigationServices _navigationServices;
+    private readonly IMessenger _messenger;
+    private readonly IWalletService _walletService;
+
     public DelegateCommand WidthdrawCommand { get; set; }
     public DelegateCommand DepositCommand { get; set; }
     public DataResponse<WalletResponse> Response { get; set; }
@@ -44,31 +48,34 @@ public class WalletContentViewModel : ViewModelBase
         }
     }
 
-    public WalletContentViewModel(INavigationServices navigationServices, IWalletService walletService, Wallet wallet)
+    public WalletContentViewModel(INavigationServices navigationServices, IWalletService walletService, IMessenger messenger, User user)
     {
-        _navigationServices = navigationServices;   
-        _wallet = wallet;
-                try
-        {
-            //Response = walletService.GetWalletData(new Models.MainModels.User()).GetAwaiter().GetResult();
-            //Transactions = Response.Data.transactions;
-            //Balance = Response.Data.balance;
+        _navigationServices = navigationServices;
+        _messenger = messenger;
+        _walletService = walletService;
+        //try
+        //{
+        //    Response = _walletService.GetWalletDataAsync(user).GetAwaiter().GetResult();
+        //    Transactions = Response.Data.transactions;
+        //    Balance = Response.Data.balance;
 
-        }
-        catch (Exception ex) 
-        {
-            MessageBox.Show($"Status code - {Response.StatusCode}: {ex.Message}");
-        }
+        //}
+        //catch (Exception ex) 
+        //{
+        //    MessageBox.Show($"Status code - {Response.StatusCode}: {ex.Message}");
+        //}
 
 
         WidthdrawCommand = new DelegateCommand(
           () =>
           {
+              _messenger.Send(new WalletDataMessage(){ Data = _wallet });
               _navigationServices.WalletNavigateTo<WalletWidthdrawViewModel>();
           });
         DepositCommand = new DelegateCommand(
           () =>
           {
+              _messenger.Send(new WalletDataMessage() { Data = _wallet });
               _navigationServices.WalletNavigateTo<WalletDepositViewModel>();
           });
         

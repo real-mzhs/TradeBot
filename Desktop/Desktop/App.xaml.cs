@@ -21,13 +21,12 @@ namespace Desktop
         {
 
             Container.RegisterSingleton<IMessenger, Messenger>();
-            Container.RegisterSingleton<INavigationServices, NavigationService>();
-            Container.RegisterSingleton<Wallet>();
+            Container.RegisterSingleton<INavigationServices, NavigationService>();            
+            Container.RegisterSingleton<ITradeClient, TradeClient>();
             Container.RegisterSingleton<User>();
 
             Container.Register<IAuthenticationService, AuthenticationService>();
             Container.Register<IRegistrationService, RegistrationService>();
-            Container.Register<ITradeClient, TradeClient>();
             Container.Register<IWalletService, WalletService>();
             Container.Register<IHistoryService, HistoryService>();
             Container.Register<ITradeService, TradeService>();

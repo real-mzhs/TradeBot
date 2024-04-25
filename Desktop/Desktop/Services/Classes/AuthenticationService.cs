@@ -13,7 +13,7 @@ public class AuthenticationService : IAuthenticationService
     {
         _tradeClient = tradeClient;
     }
-    public async Task<DataResponse<AuthResponse>> Authentication (User user)
+    public async Task<DataResponse<AuthResponse>> AuthenticationAsync (User user)
     {
         var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.UrlSegment);
         var parameters = new Parameter[] { parameter };

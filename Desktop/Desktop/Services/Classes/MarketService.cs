@@ -11,7 +11,7 @@ public class MarketService : IMarketService
     {
         _tradeClient = tradeClient;
     }
-    public async Task<DataResponse<CoinResponse>> GetCoins()
+    public async Task<DataResponse<CoinResponse>> GetCoinsAsync()
     {
         return await _tradeClient.Get<CoinResponse>("/coins");
     }

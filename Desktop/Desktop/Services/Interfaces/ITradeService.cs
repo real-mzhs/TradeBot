@@ -5,10 +5,10 @@ namespace Desktop.Services.Interfaces;
 
 public interface ITradeService
 {
-    public Task<DataResponse<PositionResponse>> UpdatePosition(Position Position);
+    public Task<DataResponse<PositionResponse>> UpdatePositionAsync(Position Position);
 
-    public Task<DataResponse<PositionResponse>> CreatePosition(Position Position);
-    public Task<DataResponse<PositionResponse>> GetPositions(User user);
+    public Task<DataResponse<PositionResponse>> CreatePositionAsync(Position Position);
+    public Task<DataResponse<PositionResponse>> GetPositionsAsync(User user);
 
 
 }

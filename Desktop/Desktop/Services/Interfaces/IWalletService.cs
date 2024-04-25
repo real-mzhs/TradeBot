@@ -6,7 +6,7 @@ namespace Desktop.Services.Interfaces;
 
 public interface IWalletService
 {
-    public Task<DataResponse<WalletResponse>> Update(Wallet wallet);
-    public Task<DataResponse<WalletResponse>> GetWalletData(User user);
+    public Task<DataResponse<WalletResponse>> UpdateWalletAsync(Wallet wallet);
+    public Task<DataResponse<WalletResponse>> GetWalletDataAsync(User user);
 
 }

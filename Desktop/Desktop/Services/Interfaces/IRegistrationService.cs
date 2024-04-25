@@ -5,7 +5,7 @@ namespace Desktop.Services.Interfaces;
 
 public interface IRegistrationService
 {
-    public Task<DataResponse<RegistrationResponse>> Registration(User user)
+    public Task<DataResponse<RegistrationResponse>> RegistrationAsync(User user)
 ;
 
 }

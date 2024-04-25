@@ -4,6 +4,6 @@ namespace Desktop.Services.Interfaces;
 
 public interface IMarketService
 {
-    public Task<DataResponse<CoinResponse>> GetCoins();
+    public Task<DataResponse<CoinResponse>> GetCoinsAsync();
 
 }

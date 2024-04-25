@@ -47,7 +47,7 @@ public class RegistrationViewModel : ViewModelBase
                 {
                     CheckDataService.CheckUserData(CurrentUser.Email, CurrentUser.Password, ConfirmPassword);
 
-                    var response = _registrationService.Registration(CurrentUser);
+                    var response = _registrationService.RegistrationAsync(CurrentUser);
                 }
                 catch (Exception e)
                 {

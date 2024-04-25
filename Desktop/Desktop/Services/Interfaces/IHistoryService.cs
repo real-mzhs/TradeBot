@@ -5,7 +5,7 @@ namespace Desktop.Services.Interfaces;
 
 public interface IHistoryService
 {
-    public Task<DataResponse<HistoryResponse>> GetTradesHistory(User user);
-    public Task<DataResponse<FinancialResponse>> GetFinancialHistory(User user);
+    public Task<DataResponse<HistoryResponse>> GetTradesHistoryAsync(User user);
+    public Task<DataResponse<FinancialResponse>> GetFinancialHistoryAsync(User user);
 
 }

@@ -13,17 +13,17 @@ public class TradeService : ITradeService
     {
         _tradeClient = tradeClient;
     }
-    public async Task<DataResponse<PositionResponse>> GetPositions(User user)
+    public async Task<DataResponse<PositionResponse>> GetPositionsAsync(User user)
     {
         var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.UrlSegment);
         var parameters = new Parameter[] { parameter };
         return await _tradeClient.Get<PositionResponse>("/Position");
     }
-    public async Task<DataResponse<PositionResponse>> CreatePosition(Position Position)
+    public async Task<DataResponse<PositionResponse>> CreatePositionAsync(Position Position)
     {
         return await _tradeClient.Post<PositionResponse>("/Position", Position);
     }
-    public async Task<DataResponse<PositionResponse>> UpdatePosition(Position Position)
+    public async Task<DataResponse<PositionResponse>> UpdatePositionAsync(Position Position)
     {
         return await _tradeClient.Put<PositionResponse>("/Position", Position);
     }

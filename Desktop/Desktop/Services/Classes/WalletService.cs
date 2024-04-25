@@ -14,7 +14,7 @@ public class WalletService : IWalletService
     {
          _tradeClient = tradeClient;
     }
-    public async Task<DataResponse<WalletResponse>> GetWalletData(User user)
+    public async Task<DataResponse<WalletResponse>> GetWalletDataAsync(User user)
     {
         var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.UrlSegment);
         var parameters = new Parameter[] { parameter };
@@ -22,11 +22,11 @@ public class WalletService : IWalletService
         return await _tradeClient.Get<WalletResponse>("/wallet", parameters);
     }
 
-    public async Task<DataResponse<WalletResponse>> Update(Wallet wallet)
+    public async Task<DataResponse<WalletResponse>> UpdateWalletAsync(Wallet wallet)
     {
         return await _tradeClient.Put<WalletResponse>("/wallet", wallet);
     }
-    public async Task<DataResponse<WalletResponse>> Create(Wallet wallet)
+    public async Task<DataResponse<WalletResponse>> CreateWalletAsync(Wallet wallet)
     {
         return await _tradeClient.Post<WalletResponse>("/wallet", wallet);
     }

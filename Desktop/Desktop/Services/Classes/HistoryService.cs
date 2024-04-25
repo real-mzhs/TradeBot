@@ -16,7 +16,7 @@ public class HistoryService : IHistoryService
         _tradeClient = clientAPI;
     }
 
-    public async Task<DataResponse<HistoryResponse>> GetTradesHistory (User user)
+    public async Task<DataResponse<HistoryResponse>> GetTradesHistoryAsync (User user)
     {
         var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.QueryString);
         var parameters = new Parameter[] { parameter };
@@ -24,7 +24,7 @@ public class HistoryService : IHistoryService
         return await _tradeClient.Get<HistoryResponse>("/history", parameters);
         
     } 
-    public async Task<DataResponse<FinancialResponse>> GetFinancialHistory (User user)
+    public async Task<DataResponse<FinancialResponse>> GetFinancialHistoryAsync (User user)
     {
         var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.QueryString);
         var parameters = new Parameter[] { parameter };

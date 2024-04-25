@@ -14,7 +14,7 @@ public class RegistrationService : IRegistrationService
         _tradeClient = clientAPI;
     }
 
-    public async Task<DataResponse<RegistrationResponse>> Registration(User user)
+    public async Task<DataResponse<RegistrationResponse>> RegistrationAsync(User user)
     {
         return await _tradeClient.Post<RegistrationResponse>("/user/register", user); 
     }
