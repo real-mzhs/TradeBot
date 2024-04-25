@@ -32,7 +32,7 @@ public class TradeClient : ITradeClient
         return await Execute<T>(request);
     }
 
-    public async Task<DataResponse<T>> Post<T>(string resource, object body = null, Parameter[]? parameters = null) where T : new()
+    public async Task<DataResponse<T>> Post<T>(string resource, object? body = null, Parameter[]? parameters = null) where T : new()
     {
         var request = new RestRequest(resource, Method.Post);
         if (body != null)
@@ -49,7 +49,7 @@ public class TradeClient : ITradeClient
         return await Execute<T>(request);
     }
 
-    public async Task<DataResponse<T>> Put<T>(string resource, object body = null, Parameter[]? parameters = null) where T : new()
+    public async Task<DataResponse<T>> Put<T>(string resource, object? body = null, Parameter[]? parameters = null) where T : new()
     {
         var request = new RestRequest(resource, Method.Put);
         if (body != null)
