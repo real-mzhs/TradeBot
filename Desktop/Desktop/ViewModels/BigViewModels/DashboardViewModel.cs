@@ -70,6 +70,19 @@ public class DashboardViewModel : ViewModelBase
         //    MessageBox.Show($"Status code - {_positionResponse.StatusCode}: {ex.Message}");
         //}
 
+        //foreach (var position in PositionList)
+        //{
+        //    PieChart.Add
+        //        (
+        //         new PieSeries<int>
+        //         {
+        //             Values = new int[] { position.Quantity },
+        //             MaxRadialColumnWidth = 60,
+        //             DataLabelsSize = 20,
+        //             ToolTipLabelFormatter = point => $"{position.Coin.Name}\n {position.Quantity}"
+        //         });
+        //}
+
         PieChart
        = new()
        {
@@ -77,46 +90,33 @@ public class DashboardViewModel : ViewModelBase
            new PieSeries<int>
             {
                 Values = new int[] { 2 },
-                MaxRadialColumnWidth = 60,
+                MaxRadialColumnWidth = 70,
                 Fill = new SolidColorPaint(SKColor.Parse("#FF5733")),
                 DataLabelsSize = 20,
                 ToolTipLabelFormatter = point => $"Описание"
             },
-                new PieSeries<int> { Values = new int[] { 1 }, MaxRadialColumnWidth = 60 },
-                new PieSeries<int> { Values = new int[] { 2 }, MaxRadialColumnWidth = 60 },
-                new PieSeries<int> { Values = new int[] { 3 }, MaxRadialColumnWidth = 60 },
-                new PieSeries<int> { Values = new int[] { 4 }, MaxRadialColumnWidth = 60 },
-                new PieSeries<int> { Values = new int[] { 5 }, MaxRadialColumnWidth = 60 }
+                new PieSeries<int> { Values = new int[] { 1 }, MaxRadialColumnWidth = 70 },
+                new PieSeries<int> { Values = new int[] { 2 }, MaxRadialColumnWidth = 70 },
+                new PieSeries<int> { Values = new int[] { 3 }, MaxRadialColumnWidth = 70 },
+                new PieSeries<int> { Values = new int[] { 4 }, MaxRadialColumnWidth = 70 },
+                new PieSeries<int> { Values = new int[] { 5 }, MaxRadialColumnWidth = 70 }
        };
 
 
-        foreach (var position in PositionList)
-        {
-            PieChart.Add
-                (
-                 new PieSeries<int>
-                 {
-                     Values = position.,
-                     MaxRadialColumnWidth = 60,
-                     Fill = new SolidColorPaint(SKColor.Parse("#FF5733")),
-                     DataLabelsSize = 20,
-                     ToolTipLabelFormatter = point => $"Описание"
-                 });
-        }
 
 
 
-            //try
-            //{
-            //    _financialResponse = _historyService.GetFinancialHistory(user).GetAwaiter().GetResult();
-            //    FinancialData = _financialResponse.Data.FinancialData;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Status code - {_financialResponse.StatusCode}: {ex.Message}");
-            //}
+        //try
+        //{
+        //    _financialResponse = _historyService.GetFinancialHistory(user).GetAwaiter().GetResult();
+        //    FinancialData = _financialResponse.Data.FinancialData;
+        //}
+        //catch (Exception ex)
+        //{
+        //    MessageBox.Show($"Status code - {_financialResponse.StatusCode}: {ex.Message}");
+        //}
 
-            Series = new ObservableCollection<ISeries>
+        Series = new ObservableCollection<ISeries>
         {
             new LineSeries<int>
             {
@@ -174,7 +174,7 @@ public class DashboardViewModel : ViewModelBase
         {
             new Coin
             {
-                Id = "ETH",
+                Id = "USDT",
                 Name = "ETHERIUM",
                 Amount = 50,
                 Margin = -2.5,

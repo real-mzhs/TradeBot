@@ -92,7 +92,7 @@
                         <Grid>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="1.5*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
@@ -119,7 +119,7 @@
 
 
 
-                            <Border Grid.Column="01" Style="{StaticResource InfoCoinsBorder}">
+                            <Border Padding="0" Grid.Column="01" Style="{StaticResource InfoCoinsBorder}">
 
                                 <Grid>
                                     <lvc:PieChart   Grid.Column="1" Series="{Binding PieChart}"/>
