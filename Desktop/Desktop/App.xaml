@@ -562,7 +562,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="ListBoxItem">
-                                        <Border CornerRadius="20" Padding="15" Margin="0 5" Background="#10ffffff">
+                                        <Border CornerRadius="10" Padding="5" Margin="0 5" Background="#10ffffff">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="2.3*"/>
@@ -571,14 +571,14 @@
 
 
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Border Width="50" Height="50" CornerRadius="15" Margin="0 0 10 0">
+                                                    <Border Width="50" Height="40" CornerRadius="15" Margin="0 0 10 0">
                                                         <Border.Background>
                                                             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                                                 <GradientStop Color="#3359F9" Offset="0"/>
                                                                 <GradientStop Color="#04427C" Offset="1"/>
                                                             </LinearGradientBrush>
                                                         </Border.Background>
-                                                        <Image Source="{Binding ImagePath}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="38" Height="38"/>
+                                                        <Image Source="{Binding ImagePath}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="35" Height="35"/>
                                                     </Border>
 
                                                     <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">

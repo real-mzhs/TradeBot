@@ -8,10 +8,10 @@
              xmlns:local="clr-namespace:Desktop.Views"
              mc:Ignorable="d" 
              d:DesignHeight="780" d:DesignWidth="1280">
-    <Border Padding="15" BorderBrush="Transparent" CornerRadius="20" >
-        <Border.Background >
+    <Border Padding="15" BorderBrush="Transparent" CornerRadius="20" Background="Black" >
+        <!--<Border.Background >
             <ImageBrush ImageSource="C:\Users\rusta\OneDrive\Рабочий стол\Study\TradeBot\Desktop\Desktop\Images\Frame 5(Registration2).png"/>
-        </Border.Background>
+        </Border.Background>-->
 
         <Grid>
             <Grid.ColumnDefinitions>

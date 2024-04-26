@@ -24,7 +24,7 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Border BorderThickness="2" BorderBrush="#2A2D34" Padding="15" Margin="20,10,0,0" Grid.Row="1" Grid.Column="1" CornerRadius="20">
+            <Border BorderThickness="2" BorderBrush="#2A2D34" Padding="15" Margin="20,10,0,0" Grid.Row="1" Grid.Column="1" CornerRadius="10">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                         <GradientStop Offset="0" Color="#501B1C1E"/>
@@ -42,15 +42,15 @@
             <Grid Grid.Column="0"  Grid.Row="1" >
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1.5*"/>
-                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
 
 
 
 
 
-                <Border BorderThickness="2" BorderBrush="#2A2D34" Padding="15" Margin="20,10,0,0" Grid.Row="0"  CornerRadius="20">
+                <Border BorderThickness="2" BorderBrush="#2A2D34" Padding="15" Margin="20,10,0,0" Grid.Row="0"  CornerRadius="10">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                             <GradientStop Offset="0" Color="#501B1C1E"/>
@@ -78,7 +78,7 @@
                 <Grid Grid.Row="1">
 
 
-                    <Border BorderThickness="2" BorderBrush="#2A2D34" Margin="20,10,0,0" Grid.Row="1"  CornerRadius="20">
+                    <Border BorderThickness="2" BorderBrush="#2A2D34" Margin="20,10,0,0" Grid.Row="1"  CornerRadius="10">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                 <GradientStop Offset="0" Color="#501B1C1E"/>
@@ -122,7 +122,7 @@
                             <Border Padding="0" Grid.Column="01" Style="{StaticResource InfoCoinsBorder}">
 
                                 <Grid>
-                                    <lvc:PieChart   Grid.Column="1" Series="{Binding PieChart}"/>
+                                    <lvc:PieChart Grid.Column="1" Series="{Binding PieChart}"/>
                                 </Grid>
 
                             </Border>

@@ -38,8 +38,7 @@ public class DashboardViewModel : ViewModelBase
     private DataResponse<FinancialResponse> _financialResponse;
     public FinancialData FinancialData { get; set; } = new();
 
-    private static readonly SKColor s_gray = new(30, 127, 176);
-    private static readonly SKColor s_gray2 = new(30, 127, 176);
+    private static readonly SKColor s_gray = new(181, 181, 181);
     public Axis[] XAxes { get; set; }
     public Axis[] YAxes { get; set; }
 
@@ -98,15 +97,15 @@ public class DashboardViewModel : ViewModelBase
            new PieSeries<int>
             {
                 Values = new int[] { 2 },
-                MaxRadialColumnWidth = 70,
-                Fill = new SolidColorPaint(SKColor.Parse("#FF5733")),                
+                //MaxRadialColumnWidth = 70,
+                Fill = new SolidColorPaint(SKColor.Parse("#F25CD9")),                
                 ToolTipLabelFormatter = point => $"Описание"
             },
-                new PieSeries<int> { Values = new int[] { 1 }, MaxRadialColumnWidth = 70 },
-                new PieSeries<int> { Values = new int[] { 2 }, MaxRadialColumnWidth = 70 },
-                new PieSeries<int> { Values = new int[] { 3 }, MaxRadialColumnWidth = 70 },
-                new PieSeries<int> { Values = new int[] { 4 }, MaxRadialColumnWidth = 70 },
-                new PieSeries<int> { Values = new int[] { 5 }, MaxRadialColumnWidth = 70 }
+                new PieSeries<int> { Values = new int[] { 1 }, Fill = new SolidColorPaint(SKColor.Parse("#4132A6")), /*MaxRadialColumnWidth = 70*/ },
+                new PieSeries<int> { Values = new int[] { 2 }, Fill = new SolidColorPaint(SKColor.Parse("#121559")), /*MaxRadialColumnWidth = 70*/ },
+                new PieSeries<int> { Values = new int[] { 3 }, Fill = new SolidColorPaint(SKColor.Parse("#0F1140")), /*MaxRadialColumnWidth = 70*/ },
+                new PieSeries<int> { Values = new int[] { 4 }, Fill = new SolidColorPaint(SKColor.Parse("#0A0E26")), /*MaxRadialColumnWidth = 70*/ },
+                new PieSeries<int> { Values = new int[] { 5 }, Fill = new SolidColorPaint(SKColor.Parse("#420085")), /*MaxRadialColumnWidth = 70*/ }
        };
 
 
@@ -141,7 +140,7 @@ public class DashboardViewModel : ViewModelBase
             new Axis
             {
                 Labels = FinancialData.Dates
-                    .Select(x => x.Date.ToString("dd.MM.yyyy"))
+                    .Select(x => x.Date.ToString("dd.MM"))
                     .ToArray(),
                 TextSize = 12,
                 Padding = new Padding(0),
@@ -159,7 +158,7 @@ public class DashboardViewModel : ViewModelBase
                 LabelsPaint = new SolidColorPaint(s_gray),
                 SeparatorsPaint = new SolidColorPaint
                 {
-                    Color = s_gray2,
+                    Color = s_gray,
                     StrokeThickness = 1,
 
                 }
