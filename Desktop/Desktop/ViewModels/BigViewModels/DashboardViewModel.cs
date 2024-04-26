@@ -12,6 +12,8 @@ using Desktop.Services.Interfaces;
 using System.Windows;
 using Desktop.Services.Network.Responses;
 using Desktop.Models.MainModels;
+using GalaSoft.MvvmLight.Messaging;
+using Desktop.Messages.DataMessages;
 
 namespace Desktop.ViewModels.BigViewModels;
 
@@ -20,6 +22,8 @@ public class DashboardViewModel : ViewModelBase
     private readonly IMarketService _marketService;
     private readonly IHistoryService _historyService;
     private readonly ITradeService _tradeService;
+    private readonly IMessenger _messenger;
+    private User User { get; set; }
 
     private ObservableCollection<Coin> _coinList;
     public ObservableCollection<Coin> CoinList
@@ -52,11 +56,15 @@ public class DashboardViewModel : ViewModelBase
     }
 
 
-    public DashboardViewModel(IMarketService marketService, IHistoryService historyService, ITradeService tradeService, User user)
+    public DashboardViewModel(IMarketService marketService, IHistoryService historyService, ITradeService tradeService, IMessenger messenger)
     {
         _marketService = marketService;
         _historyService = historyService;
         _tradeService = tradeService;
+        _messenger = messenger;
+
+        _messenger.Register<UserDataMessage>(this, message => User = message.Data);
+
 
 
         //try
@@ -91,8 +99,7 @@ public class DashboardViewModel : ViewModelBase
             {
                 Values = new int[] { 2 },
                 MaxRadialColumnWidth = 70,
-                Fill = new SolidColorPaint(SKColor.Parse("#FF5733")),
-                DataLabelsSize = 20,
+                Fill = new SolidColorPaint(SKColor.Parse("#FF5733")),                
                 ToolTipLabelFormatter = point => $"Описание"
             },
                 new PieSeries<int> { Values = new int[] { 1 }, MaxRadialColumnWidth = 70 },
@@ -124,6 +131,8 @@ public class DashboardViewModel : ViewModelBase
                 Fill = null,
                 GeometrySize = 0,
                 LineSmoothness = 1,
+                Stroke = new LinearGradientPaint(new[]{ new SKColor(37, 2, 94), new SKColor(246, 168, 247) }) { StrokeThickness = 3 },
+                GeometryStroke = new LinearGradientPaint(new[]{ new SKColor(37, 2, 94), new SKColor(246, 168, 247) }) { StrokeThickness = 3 },
             }
         };
 
@@ -134,8 +143,8 @@ public class DashboardViewModel : ViewModelBase
                 Labels = FinancialData.Dates
                     .Select(x => x.Date.ToString("dd.MM.yyyy"))
                     .ToArray(),
-                TextSize = 18,
-                Padding = new Padding(5, 0, 5, 5),
+                TextSize = 12,
+                Padding = new Padding(0),
                 LabelsPaint = new SolidColorPaint(s_gray)
             }
         ];
@@ -145,8 +154,8 @@ public class DashboardViewModel : ViewModelBase
             new Axis
             {
 
-                TextSize = 18,
-                Padding = new Padding(5, 15, 15, 0),
+                TextSize = 12,
+                Padding = new Padding(0, 10, 10, 10),
                 LabelsPaint = new SolidColorPaint(s_gray),
                 SeparatorsPaint = new SolidColorPaint
                 {

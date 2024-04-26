@@ -9,6 +9,7 @@ using Desktop.ViewModels.SmallViewModels;
 using Desktop.Views.BigViews;
 using Desktop.Services.Network.API;
 using Desktop.Models.MainModels;
+using Desktop.Services.Network.Responses;
 
 namespace Desktop
 {
@@ -22,9 +23,9 @@ namespace Desktop
 
             Container.RegisterSingleton<IMessenger, Messenger>();
             Container.RegisterSingleton<INavigationServices, NavigationService>();            
-            Container.RegisterSingleton<ITradeClient, TradeClient>();
-            Container.RegisterSingleton<User>();
+            Container.RegisterSingleton<TokenResponse>();
 
+            Container.Register<ITradeClient, TradeClient>();
             Container.Register<IAuthenticationService, AuthenticationService>();
             Container.Register<IRegistrationService, RegistrationService>();
             Container.Register<IWalletService, WalletService>();

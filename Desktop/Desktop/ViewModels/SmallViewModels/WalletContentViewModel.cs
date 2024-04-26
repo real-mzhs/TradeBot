@@ -17,12 +17,13 @@ public class WalletContentViewModel : ViewModelBase
     private readonly INavigationServices _navigationServices;
     private readonly IMessenger _messenger;
     private readonly IWalletService _walletService;
+    private User User { get; set; }
 
+    private Wallet _wallet;
     public DelegateCommand WidthdrawCommand { get; set; }
     public DelegateCommand DepositCommand { get; set; }
     public DataResponse<WalletResponse> Response { get; set; }
 
-    private Wallet _wallet;
     public ObservableCollection<Transaction> Transactions
     {
         get => _wallet.Transactions;
@@ -48,14 +49,18 @@ public class WalletContentViewModel : ViewModelBase
         }
     }
 
-    public WalletContentViewModel(INavigationServices navigationServices, IWalletService walletService, IMessenger messenger, User user)
+    public WalletContentViewModel(INavigationServices navigationServices, IWalletService walletService, IMessenger messenger)
     {
         _navigationServices = navigationServices;
         _messenger = messenger;
         _walletService = walletService;
+
+        _messenger.Register<UserDataMessage>(this, message => User = message.Data);
+
+
         //try
         //{
-        //    Response = _walletService.GetWalletDataAsync(user).GetAwaiter().GetResult();
+        //    Response = _walletService.GetWalletDataAsync(User).GetAwaiter().GetResult();
         //    Transactions = Response.Data.transactions;
         //    Balance = Response.Data.balance;
 

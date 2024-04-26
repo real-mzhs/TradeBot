@@ -14,7 +14,6 @@ public class NavigationService : INavigationServices
         _messenger = messenger;
     }
 
-
     public void NavigateTo<T>() where T : ViewModelBase
     {
         _messenger.Send(new NavigationMessage()

@@ -6,7 +6,6 @@ namespace Desktop.Models.MainModels;
 public class Position
 {
     public string UserID { get; set; }
-    public string CoinId { get; set; }
     public Coin Coin { get; set; }
     public int Quantity { get; set; }
 
