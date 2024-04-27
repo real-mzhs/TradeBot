@@ -14,6 +14,14 @@ class WalletWidthdrawViewModel : ViewModelBase
     private readonly INavigationServices _navigationServices;
     private readonly IMessenger _messenger;
     private string _cardNumber;
+
+
+    private int _sum;
+    public int Sum
+    {
+        get => _sum;
+        set => Set(ref _sum, value);
+    }
     public string CardNumber 
     { 
         get => _cardNumber; 
@@ -44,7 +52,10 @@ class WalletWidthdrawViewModel : ViewModelBase
         WidthdrawCommand = new DelegateCommand(
           () =>
           {
-              MessageBox.Show(CardNumber);
+              Wallet.Withdraw(Sum);
+              MessageBox.Show($"Balance - {Wallet.Balance}");
+              _messenger.Send(new WalletDataMessage() { Data = Wallet });
+              
           });
         BackCommand = new DelegateCommand(
          () =>

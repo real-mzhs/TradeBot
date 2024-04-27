@@ -57,15 +57,16 @@ public class WalletContentViewModel : ViewModelBase
 
         _messenger.Register<UserDataMessage>(this, message => User = message.Data);
 
-
+        _wallet = new();
         //try
         //{
+        //    _wallet = new();
         //    Response = _walletService.GetWalletDataAsync(User).GetAwaiter().GetResult();
         //    Transactions = Response.Data.transactions;
         //    Balance = Response.Data.balance;
 
         //}
-        //catch (Exception ex) 
+        //catch (Exception ex)
         //{
         //    MessageBox.Show($"Status code - {Response.StatusCode}: {ex.Message}");
         //}
@@ -74,14 +75,14 @@ public class WalletContentViewModel : ViewModelBase
         WidthdrawCommand = new DelegateCommand(
           () =>
           {
-              _messenger.Send(new WalletDataMessage(){ Data = _wallet });
               _navigationServices.WalletNavigateTo<WalletWidthdrawViewModel>();
+              _messenger.Send(new WalletDataMessage(){ Data = _wallet });
           });
         DepositCommand = new DelegateCommand(
           () =>
           {
-              _messenger.Send(new WalletDataMessage() { Data = _wallet });
               _navigationServices.WalletNavigateTo<WalletDepositViewModel>();
+              _messenger.Send(new WalletDataMessage() { Data = _wallet });
           });
         
     }

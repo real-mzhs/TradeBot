@@ -24,6 +24,13 @@ public class WalletDepositViewModel : ViewModelBase
         }
     }
 
+    private int _sum;
+    public int Sum
+    {
+        get => _sum;
+        set => Set(ref _sum, value);
+    }
+
     private string _cardNumber;
     public string CardNumber 
     { 
@@ -57,14 +64,14 @@ public class WalletDepositViewModel : ViewModelBase
 
         _messenger.Register<WalletDataMessage>(this, message => Wallet = message.Data);
 
-        DepositCommand = new DelegateCommand(
+        DepositCommand = new (
          () =>
          {
-             MessageBox.Show(CardNumber);
-             MessageBox.Show(CardData);
-             MessageBox.Show(CardSecretCode);
+             Wallet.Deposit(Sum);
+             MessageBox.Show($"Balance - {Wallet.Balance}");
+             _messenger.Send(new WalletDataMessage() { Data = Wallet });
          });
-        BackCommand = new DelegateCommand(
+        BackCommand = new (
          () =>
          {
              _navigationServices.WalletNavigateTo<WalletContentViewModel>();
