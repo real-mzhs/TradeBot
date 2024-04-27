@@ -9,6 +9,7 @@ using GalaSoft.MvvmLight.Messaging;
 using Prism.Commands;
 using System.Collections.ObjectModel;
 using System.Windows;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Desktop.ViewModels.SmallViewModels;
 
@@ -70,6 +71,15 @@ public class WalletContentViewModel : ViewModelBase
         //{
         //    MessageBox.Show($"Status code - {Response.StatusCode}: {ex.Message}");
         //}
+
+        Transactions = new ObservableCollection<Transaction>()
+        {
+            new Transaction(){ Amount = 123, Date = DateTime.Now },
+            new Transaction(){ Amount = 123, Date = DateTime.Now },
+            new Transaction(){ Amount = 123, Date = DateTime.Now },
+            new Transaction(){ Amount = 123, Date = DateTime.Now },
+            new Transaction(){ Amount = 123, Date = DateTime.Now },
+        };
 
 
         WidthdrawCommand = new DelegateCommand(

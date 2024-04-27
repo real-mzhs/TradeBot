@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Desktop.Views.SmallViews"
+             xmlns:local="clr-namespace:Desktop.Views.SmallViews" xmlns:smallviewmodels="clr-namespace:Desktop.ViewModels.SmallViewModels" d:DataContext="{d:DesignInstance Type=smallviewmodels:WalletContentViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="730" d:DesignWidth="1200">
-    <Grid>
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>    
             <RowDefinition/>    
@@ -30,7 +30,92 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
-            <!--Тут история транзакций-->
+            
+        </Grid>
+
+
+
+    </Grid>-->
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Style="{StaticResource cardBorder}">
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Color="#10ffffff" Offset="0" />
+                        <GradientStop Color="#10ffffff" Offset="0.5" />
+                        <GradientStop Color="#10ffffff" Offset="1" />
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <!--<Border.Background>
+                    <ImageBrush Opacity="0.6" ImageSource="C:\Users\mziya\OneDrive\Рабочий стол\TradeProject\TradeBot\Desktop\Desktop\Images\6d4390177f0fa2e298b6ee4e5eac728d(2).jpg" Stretch="UniformToFill" />
+                </Border.Background>-->
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="2" Direction="350" Color="#311E21"/>
+
+                </Border.Effect>
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+
+
+                    <StackPanel Margin="0 15 0 0" Orientation="Vertical" >
+
+                        <TextBlock Text="Current Balance" Style="{StaticResource balanceCardTextLabel}" VerticalAlignment="Top" Margin="15 8 0 0"/>
+                        <TextBlock Text="$9,150,00" Style="{StaticResource balanceCardTextLabelUSD}" FontSize="24" FontWeight="SemiBold" VerticalAlignment="Center" Margin="15 0 0 5" />
+                        <TextBlock Text="≈1.33BTC" Style="{StaticResource balanceCardTextLabel}"  Margin="15 0 0 0" />
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Margin="0 15 0 0" Orientation="Horizontal" >
+
+                        <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding DepositCommand}"  Content="Deposit"/>
+                        <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding WidthdrawCommand}"  Content="Widthdraw"/>
+
+                    </StackPanel>
+
+
+                </Grid>
+
+
+            </Border>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <DataGrid   
+              ItemsSource="{Binding Transactions}"
+              Grid.Row="1"
+              RowStyle="{DynamicResource DataGridRowStyleSuperAdmine}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyleSuperAdmine}" CellStyle="{DynamicResource DataGridCellStyleSuperAdmine}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyleSuperAdmine}">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" IsReadOnly="True" Width="*"/>
+
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+
         </Grid>
 
 

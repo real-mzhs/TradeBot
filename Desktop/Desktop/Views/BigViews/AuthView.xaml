@@ -10,193 +10,203 @@
     <Border BorderBrush="Transparent" CornerRadius="20">
 
         <Border.Background>
-            <ImageBrush ImageSource="C:\Users\rusta\OneDrive\Рабочий стол\Study\TradeBot\Desktop\Desktop\Images\Frame 5(7).png" />
+            <ImageBrush ImageSource="{StaticResource Background}" Stretch="UniformToFill" />
+            <!--<ImageBrush ImageSource="C:\Users\mziya\OneDrive\Рабочий стол\TradeProject\TradeBot\Desktop\Desktop\Images\Frame 5(7).png" Stretch="UniformToFill" />-->
         </Border.Background>
 
         <Grid>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="650"/>
-                <ColumnDefinition Width="550"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
 
 
             <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition Height="1.05*"/>
+                    <RowDefinition Height="0.1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*"/>
+                    <ColumnDefinition Width="1.05*"/>
+                    <ColumnDefinition Width="0.1*"/>
+                </Grid.ColumnDefinitions>
 
-                <Border Height="650" Width="508" HorizontalAlignment="Right" Margin="0 0 102 0" CornerRadius="25" Panel.ZIndex="1">
+                <Border Grid.Row="1" Grid.Column="1" CornerRadius="25" Panel.ZIndex="1">
                     <Border.Background>
-                        <ImageBrush ImageSource="C:\Users\rusta\OneDrive\Рабочий стол\Study\TradeBot\Desktop\Desktop\Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg" Stretch="UniformToFill" />
+                        <ImageBrush ImageSource="{StaticResource AuthImage}" Stretch="UniformToFill" />
+                        <!--<ImageBrush ImageSource="C:\Users\mziya\OneDrive\Рабочий стол\TradeProject\TradeBot\Desktop\Desktop\Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg" Stretch="UniformToFill" />-->
+
                     </Border.Background>
-                    <Border.Effect>
-                        <BlurEffect Radius="0" KernelType="Gaussian" />
-                    </Border.Effect>
                 </Border>
 
-                <Border Width="604" HorizontalAlignment="Left" Margin="-55,37,0,37" CornerRadius="25" Panel.ZIndex="0">
+                <Border Grid.Column="1"  Grid.Row="1" CornerRadius="25" Panel.ZIndex="0">
                     <Border.Background>
-                        <ImageBrush ImageSource="C:\Users\rusta\OneDrive\Рабочий стол\Study\TradeBot\Desktop\Desktop\Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg" Stretch="None" />
+                        <ImageBrush ImageSource="{StaticResource Background}" Stretch="UniformToFill" />
+                        <!--<ImageBrush ImageSource="C:\Users\mziya\OneDrive\Рабочий стол\TradeProject\TradeBot\Desktop\Desktop\Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg" Stretch="UniformToFill" />-->
                     </Border.Background>
                     <Border.Effect>
-                        <BlurEffect Radius="100" KernelType="Gaussian" />
+                        <BlurEffect Radius="70" KernelType="Gaussian" />
                     </Border.Effect>
                 </Border>
 
             </Grid>
 
 
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.37*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.37*"/>
+                </Grid.RowDefinitions>
 
-            <Border
-      CornerRadius="20"
-      Grid.Row="1" 
-      Grid.Column="1">
+                <Border Grid.Row="1">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <StackPanel 
-              Margin="60"
-              HorizontalAlignment="Left"
-              VerticalAlignment="Center">
+                        <StackPanel Margin="0 0 0 40" Orientation="Vertical">
 
-                    <StackPanel Margin="0 0 0 40" Orientation="Vertical">
-
-                        <TextBlock 
-         Foreground="#E9EEF2"
-         FontFamily="Inter"
-         FontWeight="DemiBold"
-         Text="Embark on the Trading Adventure" 
-         FontSize="30"
-         VerticalAlignment="Center"
-         HorizontalAlignment="Left"/>
-
-                        <TextBlock 
-          Foreground="#E9EEF2"
-          FontFamily="Inter"
-          FontWeight="DemiBold"
-          Text="Log In with TradeBot" 
-          FontSize="30"
-          HorizontalAlignment="Left"/>
-                    </StackPanel>
-
-                    <StackPanel Margin="0 0 0 20" HorizontalAlignment="Left" Orientation="Horizontal">
-
-                        <TextBlock 
-                    Foreground="#7C838F"
-                    FontFamily="Inter"
-                    VerticalAlignment="Center"
-                    Text="Don't have an account?" 
-                    FontSize="17"/>
-
-                        <Button FontSize="16" 
-                          HorizontalAlignment="Left"
+                            <TextBlock 
+                          Foreground="#E9EEF2"
+                          FontFamily="Inter"
+                          FontWeight="DemiBold"
+                          Text="Embark on the Trading Adventure" 
+                          FontSize="30"
                           VerticalAlignment="Center"
-                          Margin="15 0 0 0" 
-                          Style="{StaticResource RoundedButtonStyleLogIn}"
-                          Command="{Binding RegisrationCommand}" Content="Create"/>
+                          HorizontalAlignment="Left"/>
 
+                            <TextBlock 
+                           Foreground="#E9EEF2"
+                           FontFamily="Inter"
+                           FontWeight="DemiBold"
+                           Text="Log In with TradeBot" 
+                           FontSize="30"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="0 0 0 20" Orientation="Horizontal">
+
+                            <TextBlock 
+                             Foreground="#7C838F"
+                             FontFamily="Inter"
+                             VerticalAlignment="Center"
+                             Text="Don't have an account?" 
+                             FontSize="17"/>
+
+                            <Button   FontSize="16" 
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Margin="15 0 0 0" 
+                               Style="{StaticResource RoundedButtonStyleLogIn}"
+                               Command="{Binding RegisrationCommand}"
+                               Content="Create"/>
+
+
+                        </StackPanel>
+
+
+
+
+                        <Border Style="{StaticResource CustomBorderAuth}">
+                            <Grid>
+                                <TextBox BorderThickness="0" x:Name="UniqueEmailTextBox" Foreground="#E9EBEF" Width="350" FontWeight="SemiBold" FontSize="14" Margin="14 5 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Text="{Binding UserEmail, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Transparent" Grid.Row="1"/>
+                                <TextBlock IsHitTestVisible="False" FontSize="14" Text="E-mail address" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="14 0 0 0" Foreground="#89C0C0C4">
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Text, ElementName=UniqueEmailTextBox}" Value="">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Grid>
+                        </Border>
+
+
+
+                        <Border Style="{StaticResource CustomBorderAuth}">
+                            <Grid>
+                                <PasswordBox BorderThickness="0"  FontSize="14"  Margin="14 0 14 0 " VerticalAlignment="Center" Foreground="#E9EBEF" PasswordChanged="PasswordBox_PasswordChanged" x:Name="PasswordBox"/>
+                                <TextBlock FontSize="14"  VerticalAlignment="Center" x:Name="PlaceholderLabel" Text="Password" Foreground="#89C0C0C4" IsHitTestVisible="False" Margin="14 0 14 0 "/>
+                            </Grid>
+                        </Border>
+
+
+
+                        <Button HorizontalAlignment="Left" Opacity="0.9" BorderBrush="#78787C" BorderThickness="2" Width="370" Height="60" Margin="0 20 0 0" Command="{Binding LoginCommand}">
+                            <Button.Background>
+                                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                    <GradientStop Color="#4C5056" Offset="0"/>
+                                    <GradientStop Color="#44474E" Offset="0.5"/>
+                                    <GradientStop Color="#4C5056" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="13">
+                                        <Grid>
+                                            <Ellipse Width="43" Height="43" Fill="#141415" Stroke="Transparent" StrokeThickness="0" HorizontalAlignment="Right" Margin="-34 0 8 0"/>
+                                            <md:PackIcon Kind="ArrowRight" Height="21" Width="21" Foreground="#B3B5BB" HorizontalAlignment="Right" Margin="0 0 19 0" VerticalAlignment="Center"/>
+                                            <TextBlock FontSize="20" Text="Sign in" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <EventTrigger RoutedEvent="MouseEnter">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(GradientBrush.GradientStops)[0].Color"
+                                                Duration="0:0:0.3">
+                                                        <LinearColorKeyFrame KeyTime="0:0:0" Value="#FF3A3E44"/>
+                                                        <LinearColorKeyFrame KeyTime="0:0:0.3" Value="#62666C"/>
+                                                    </ColorAnimationUsingKeyFrames>
+                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(GradientBrush.GradientStops)[1].Color"
+                                                Duration="0:0:0.3">
+                                                        <LinearColorKeyFrame KeyTime="0:0:0" Value="#FF3A3E44"/>
+                                                        <LinearColorKeyFrame KeyTime="0:0:0.3" Value="#5F5F62"/>
+                                                    </ColorAnimationUsingKeyFrames>
+                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(GradientBrush.GradientStops)[2].Color"
+                                                Duration="0:0:0.3">
+                                                        <LinearColorKeyFrame KeyTime="0:0:0" Value="#FF3A3E44"/>
+                                                        <LinearColorKeyFrame KeyTime="0:0:0.3" Value="#65676D"/>
+                                                    </ColorAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="MouseLeave">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(GradientBrush.GradientStops)[0].Color"
+                                                Duration="0:0:0.3">
+                                                        <LinearColorKeyFrame KeyTime="0:0:0" Value="#65676D"/>
+                                                        <LinearColorKeyFrame KeyTime="0:0:0.3" Value="#FF3A3E44"/>
+                                                    </ColorAnimationUsingKeyFrames>
+                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(GradientBrush.GradientStops)[1].Color"
+                                                Duration="0:0:0.3">
+                                                        <LinearColorKeyFrame KeyTime="0:0:0" Value="#5F5F62"/>
+                                                        <LinearColorKeyFrame KeyTime="0:0:0.3" Value="#FF3A3E44"/>
+                                                    </ColorAnimationUsingKeyFrames>
+                                                    <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(GradientBrush.GradientStops)[2].Color"
+                                                Duration="0:0:0.3">
+                                                        <LinearColorKeyFrame KeyTime="0:0:0" Value="#62666C"/>
+                                                        <LinearColorKeyFrame KeyTime="0:0:0.3" Value="#FF3A3E44"/>
+                                                    </ColorAnimationUsingKeyFrames>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
 
 
                     </StackPanel>
 
-
-
-
-                    <Border Style="{StaticResource CustomBorder}">
-                        <Grid>
-                            <TextBox BorderThickness="0" x:Name="UniqueEmailTextBox" Foreground="#E9EBEF" Width="350" FontWeight="SemiBold" FontSize="14" Margin="14 5 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Transparent" Grid.Row="1"/>
-                            <TextBlock IsHitTestVisible="False" FontSize="14" Text="E-mail address" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="14 0 0 0" Foreground="#89C0C0C4">
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="Visibility" Value="Collapsed"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding Text, ElementName=UniqueEmailTextBox}" Value="">
-                                                <Setter Property="Visibility" Value="Visible"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                        </Grid>
-                    </Border>
-
-
-
-                    <Border Style="{StaticResource CustomBorder}">
-                        <Grid>
-                            <PasswordBox PasswordChar="{Binding Password}"  BorderThickness="0"  FontSize="14"  Margin="14 0 14 0 " VerticalAlignment="Center" Foreground="#E9EBEF" PasswordChanged="PasswordBox_PasswordChanged" x:Name="PasswordBox"/>
-                            <TextBlock FontSize="14"  VerticalAlignment="Center" x:Name="PlaceholderLabel" Text="Password" Foreground="#89C0C0C4" IsHitTestVisible="False" Margin="14 0 14 0 "/>
-                        </Grid>
-                    </Border>
-
-
-
-                    <Button HorizontalAlignment="Left" Opacity="0.9" BorderBrush="#78787C" BorderThickness="2" Width="370" Height="60" Margin="0 20 0 0" Command="{Binding LoginCommand}">
-                        <Button.Background>
-                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                <GradientStop Color="#4C5056" Offset="0"/>
-                                <GradientStop Color="#44474E" Offset="0.5"/>
-                                <GradientStop Color="#4C5056" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Button.Background>
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="13">
-                                    <Grid>
-                                        <Ellipse Width="43" Height="43" Fill="#141415" Stroke="Transparent" StrokeThickness="0" HorizontalAlignment="Right" Margin="-34 0 8 0"/>
-                                        <md:PackIcon Kind="ArrowRight" Height="21" Width="21" Foreground="#B3B5BB" HorizontalAlignment="Right" Margin="0 0 19 0" VerticalAlignment="Center"/>
-                                        <TextBlock FontSize="20" Text="Sign in" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Grid>
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <EventTrigger RoutedEvent="MouseEnter">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(GradientBrush.GradientStops)[0].Color"
-                                                   Duration="0:0:0.3">
-                                                    <LinearColorKeyFrame KeyTime="0:0:0" Value="#FF3A3E44"/>
-                                                    <LinearColorKeyFrame KeyTime="0:0:0.3" Value="#62666C"/>
-                                                </ColorAnimationUsingKeyFrames>
-                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(GradientBrush.GradientStops)[1].Color"
-                                                   Duration="0:0:0.3">
-                                                    <LinearColorKeyFrame KeyTime="0:0:0" Value="#FF3A3E44"/>
-                                                    <LinearColorKeyFrame KeyTime="0:0:0.3" Value="#5F5F62"/>
-                                                </ColorAnimationUsingKeyFrames>
-                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(GradientBrush.GradientStops)[2].Color"
-                                                   Duration="0:0:0.3">
-                                                    <LinearColorKeyFrame KeyTime="0:0:0" Value="#FF3A3E44"/>
-                                                    <LinearColorKeyFrame KeyTime="0:0:0.3" Value="#65676D"/>
-                                                </ColorAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                    <EventTrigger RoutedEvent="MouseLeave">
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(GradientBrush.GradientStops)[0].Color"
-                                                   Duration="0:0:0.3">
-                                                    <LinearColorKeyFrame KeyTime="0:0:0" Value="#65676D"/>
-                                                    <LinearColorKeyFrame KeyTime="0:0:0.3" Value="#FF3A3E44"/>
-                                                </ColorAnimationUsingKeyFrames>
-                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(GradientBrush.GradientStops)[1].Color"
-                                                   Duration="0:0:0.3">
-                                                    <LinearColorKeyFrame KeyTime="0:0:0" Value="#5F5F62"/>
-                                                    <LinearColorKeyFrame KeyTime="0:0:0.3" Value="#FF3A3E44"/>
-                                                </ColorAnimationUsingKeyFrames>
-                                                <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Button.Background).(GradientBrush.GradientStops)[2].Color"
-                                                   Duration="0:0:0.3">
-                                                    <LinearColorKeyFrame KeyTime="0:0:0" Value="#62666C"/>
-                                                    <LinearColorKeyFrame KeyTime="0:0:0.3" Value="#FF3A3E44"/>
-                                                </ColorAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-
-
-                </StackPanel>
-
-            </Border>
+                </Border>
+            </Grid>
 
         </Grid>
     </Border>

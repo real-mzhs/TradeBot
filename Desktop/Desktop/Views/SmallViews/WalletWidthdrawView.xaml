@@ -3,11 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Desktop.Views.SmallViews" xmlns:smallviewmodels="clr-namespace:Desktop.ViewModels.SmallViewModels" d:DataContext="{d:DesignInstance Type=smallviewmodels:WalletWidthdrawViewModel}"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:Desktop.Views.SmallViews" 
+             xmlns:smallviewmodels="clr-namespace:Desktop.ViewModels.SmallViewModels" 
+             d:DataContext="{d:DesignInstance Type=smallviewmodels:WalletWidthdrawViewModel}"
              mc:Ignorable="d" 
              d:Background="#0D0D0D"
              d:DesignHeight="730" d:DesignWidth="1200">
-    <Grid Margin="300 100 300 100">
+    <!--<Grid Margin="300 100 300 100">
 
 
 
@@ -43,6 +46,51 @@
                 <Button Style="{StaticResource WalletOperationsButtons}" Command="{Binding BackCommand}" Background="#3359F9">Back</Button>
 
             </StackPanel>
+
+        </StackPanel>
+
+
+
+    </Grid>-->
+
+    <Grid Margin="300 100 300 100">
+
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical">
+
+            <StackPanel Orientation="Vertical">
+
+                <Border Style="{StaticResource CustomBorderDeposit}">
+                    <Grid>
+                        <TextBox BorderThickness="0" x:Name="CardNumber" Foreground="#E9EBEF" Width="350" FontWeight="SemiBold" FontSize="14" Margin="14 5 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Transparent" Grid.Row="1"/>
+                        <TextBlock IsHitTestVisible="False" FontSize="14" Text="0000-0000-0000-0000" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="14 0 0 0" Foreground="#89C0C0C4">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=CardNumber}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+                </Border>
+
+
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Center"  HorizontalAlignment="Center" Orientation="Horizontal">
+
+                <Button Background="#20ffffff" Margin="0" Grid.Column="0" Width="80" Style="{StaticResource WalletOperationsButtons}" Command="{Binding BackCommand}">
+                    <Icon:PackIconMaterial Kind="ArrowLeft"/>
+                </Button>
+
+                <Button Background="#20ffffff" Grid.Column="1" Margin="0"  Width="290" Style="{StaticResource WalletOperationsButtons}" Command="{Binding WidthdrawCommand}">Widthdraw</Button>
+
+            </StackPanel>
+
 
         </StackPanel>
 

@@ -127,11 +127,12 @@ public class DashboardViewModel : ViewModelBase
             new LineSeries<int>
             {
                 Values = FinancialData.Amounts,
-                Fill = null,
+                Fill = new LinearGradientPaint(new[]{ new SKColor(37, 2, 94, 40), new SKColor(246, 168, 247, 40) }),                   
                 GeometrySize = 0,
                 LineSmoothness = 1,
                 Stroke = new LinearGradientPaint(new[]{ new SKColor(37, 2, 94), new SKColor(246, 168, 247) }) { StrokeThickness = 3 },
                 GeometryStroke = new LinearGradientPaint(new[]{ new SKColor(37, 2, 94), new SKColor(246, 168, 247) }) { StrokeThickness = 3 },
+
             }
         };
 

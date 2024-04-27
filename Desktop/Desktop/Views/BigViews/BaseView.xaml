@@ -5,30 +5,39 @@
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:md ="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Desktop.Views"
+             xmlns:local="clr-namespace:Desktop.Views.BigViews"
              mc:Ignorable="d" 
              d:DesignHeight="780" d:DesignWidth="1280">
-    <Border Padding="15" BorderBrush="Transparent" CornerRadius="20" Background="Black" >
-        <!--<Border.Background >
-            <ImageBrush ImageSource="C:\Users\rusta\OneDrive\Рабочий стол\Study\TradeBot\Desktop\Desktop\Images\Frame 5(Registration2).png"/>
-        </Border.Background>-->
+    <Border  BorderBrush="Transparent" CornerRadius="20" Background="#0D0D0D">
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="73"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Border CornerRadius="25" Background="#351B1C1E">
 
+
+
+            <Border CornerRadius="20 0 0 20" BorderThickness="0 0 2 0" BorderBrush="#2A2D34">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Offset="0" Color="#1B1C1E"/>
+                        <GradientStop Offset="0.7" Color="#1B1C1E"/>
+                    </LinearGradientBrush>
+                </Border.Background>
                 <Border.Effect>
-                    <DropShadowEffect ShadowDepth="5" BlurRadius="10" Color="#2A2D36" Opacity="1"/>
+                    <DropShadowEffect ShadowDepth="6" Direction="350" Color="#494A4E"/>
                 </Border.Effect>
+
+
 
                 <Grid>
 
 
                     <StackPanel VerticalAlignment="Center">
+
+
                         <Button Command="{Binding DashboardCommand}" Style="{StaticResource menuButton}" HorizontalAlignment="Center">
                             <Icon:PackIconMaterial Kind="ViewDashboard" Style="{StaticResource menuButtonIcon}"/>
                         </Button>
@@ -46,8 +55,8 @@
                         </Button>
 
                     </StackPanel>
-                    
-                    
+
+
                     <Button VerticalAlignment="Bottom" Margin="0 0 0 20" Command="{Binding ExitCommand}" Style="{StaticResource menuButton}" HorizontalAlignment="Center">
                         <Icon:PackIconMaterial Kind="ExitToApp" Style="{StaticResource menuButtonIcon}"/>
                     </Button>

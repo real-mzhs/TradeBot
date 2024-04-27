@@ -10,7 +10,8 @@
              d:DesignHeight="780" d:DesignWidth="1200">
 
 
-    <Border Padding="10" Background="Transparent" >
+    <Border Padding="10" BorderBrush="Transparent" CornerRadius="0 20 20 0" Background="#0D0D0D">
+
 
         <Grid>
 
@@ -27,16 +28,16 @@
             <Border BorderThickness="2" BorderBrush="#2A2D34" Padding="15" Margin="20,10,0,0" Grid.Row="1" Grid.Column="1" CornerRadius="10">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Offset="0" Color="#501B1C1E"/>
-                        <GradientStop Offset="0.7" Color="#501B1C1E"/>
+                        <GradientStop Offset="0" Color="#1B1C1E"/>
+                        <GradientStop Offset="0.7" Color="#1B1C1E"/>
                     </LinearGradientBrush>
                 </Border.Background>
                 <Border.Effect>
-                    <DropShadowEffect ShadowDepth="5" Direction="315" Color="#494A4E"/>
+                    <DropShadowEffect ShadowDepth="5" Direction="150" Color="#494A4E"/>
                 </Border.Effect>
 
-                <ListBox ItemsSource="{Binding CoinList}" Style="{StaticResource CustomListBoxStyle}"/> 
-                    
+                <ListBox ItemsSource="{Binding CoinList}" Style="{StaticResource CustomListBoxStyle}"/>
+
             </Border>
 
             <Grid Grid.Column="0"  Grid.Row="1" >
@@ -48,29 +49,25 @@
 
 
 
-
-
-                <Border BorderThickness="2" BorderBrush="#2A2D34" Padding="15" Margin="20,10,0,0" Grid.Row="0"  CornerRadius="10">
+                <Border BorderThickness="2" BorderBrush="#2A2D34" Padding="15" Margin="20,10,0,0" Grid.Row="0"  CornerRadius="15">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                            <GradientStop Offset="0" Color="#501B1C1E"/>
-                            <GradientStop Offset="0.7" Color="#501B1C1E"/>
+                            <GradientStop Offset="0" Color="#1B1C1E"/>
+                            <GradientStop Offset="0.7" Color="#1B1C1E"/>
                         </LinearGradientBrush>
                     </Border.Background>
                     <Border.Effect>
-                        <DropShadowEffect ShadowDepth="5" Direction="315" Color="#494A4E"/>
+                        <DropShadowEffect ShadowDepth="6" Direction="400" Color="#494A4E"/>
                     </Border.Effect>
-                    
-                    <Grid>
-                        <TextBlock Foreground="#fff" Margin="15 5 0 0" FontSize="20" FontWeight="DemiBold" Text="Live Chart"/>
 
+                    <Grid>
                         <lvc:CartesianChart
                             Series="{Binding Series}"        
                             XAxes="{Binding XAxes}"
                             YAxes="{Binding YAxes}">
                         </lvc:CartesianChart>
                     </Grid>
-                
+
 
                 </Border>
 
@@ -78,15 +75,15 @@
                 <Grid Grid.Row="1">
 
 
-                    <Border BorderThickness="2" BorderBrush="#2A2D34" Margin="20,10,0,0" Grid.Row="1"  CornerRadius="10">
+                    <Border BorderThickness="2" BorderBrush="#2A2D34" Margin="20,10,0,0" Grid.Row="1"  CornerRadius="15">
                         <Border.Background>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                <GradientStop Offset="0" Color="#501B1C1E"/>
-                                <GradientStop Offset="0.7" Color="#501B1C1E"/>
+                                <GradientStop Offset="0" Color="#1B1C1E"/>
+                                <GradientStop Offset="0.7" Color="#1B1C1E"/>
                             </LinearGradientBrush>
                         </Border.Background>
                         <Border.Effect>
-                            <DropShadowEffect ShadowDepth="5" Direction="315" Color="#494A4E"/>
+                            <DropShadowEffect ShadowDepth="6" Direction="400" Color="#494A4E"/>
                         </Border.Effect>
 
                         <Grid>
@@ -101,6 +98,7 @@
                             <Border Style="{StaticResource InfoCoinsBorder}">
 
                                 <ListBox 
+                                    d:ItemsSource="{d:SampleData ItemCount=3}"
                                     ItemsSource="{Binding CoinList}"
                                     Style="{StaticResource CustomListBoxStyle}">
                                     <ListBox.ItemTemplate>
@@ -119,7 +117,7 @@
 
 
 
-                            <Border Padding="0" Grid.Column="01" Style="{StaticResource InfoCoinsBorder}">
+                            <Border Padding="0" Grid.Column="1" Style="{StaticResource InfoCoinsBorder}">
 
                                 <Grid>
                                     <lvc:PieChart Grid.Column="1" Series="{Binding PieChart}"/>

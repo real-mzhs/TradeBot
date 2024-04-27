@@ -10,20 +10,42 @@
 
     <ItemGroup>
       <None Remove="Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg" />
+      <None Remove="Images\9b9e2b051d286f8f500a8020e8e9c270.png" />
+      <None Remove="Images\9b9e2b051d286f8f500a8020e8e9c271.png" />
       <None Remove="Images\9b9e2b051d286f8f500a8020e8e9c272.png" />
       <None Remove="Images\Frame 5%287%29.png" />
+      <None Remove="Images\Frame 5%28registration%29.png" />
+      <None Remove="Images\Frame 5%28Registration2%29.png" />
+      <None Remove="Images\Frame 52.png" />
+      <None Remove="Images\Frame 53.png" />
+      <None Remove="Images\newalp.png" />
+      <None Remove="Images\png-transparent-ethereum-eth-hd-logo-thumbnail.png" />
+      <None Remove="Images\pngwing.com %281%29.png" />
+      <None Remove="Images\WelcomeBlur.png" />
+      <None Remove="Images\WelcomePg.png" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg">
+      <Resource Include="Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
+      </Resource>
+      <Resource Include="Images\9b9e2b051d286f8f500a8020e8e9c270.png" />
+      <Resource Include="Images\9b9e2b051d286f8f500a8020e8e9c271.png" />
       <Resource Include="Images\9b9e2b051d286f8f500a8020e8e9c272.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
-      <Content Include="Images\Frame 5(7).png">
+      <Resource Include="Images\Frame 5(7).png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
+      </Resource>
+      <Resource Include="Images\Frame 5(registration).png" />
+      <Resource Include="Images\Frame 5(Registration2).png" />
+      <Resource Include="Images\Frame 52.png" />
+      <Resource Include="Images\Frame 53.png" />
+      <Resource Include="Images\newalp.png" />
+      <Resource Include="Images\png-transparent-ethereum-eth-hd-logo-thumbnail.png" />
+      <Resource Include="Images\pngwing.com (1).png" />
+      <Resource Include="Images\WelcomeBlur.png" />
+      <Resource Include="Images\WelcomePg.png" />
     </ItemGroup>
 
     <ItemGroup>
