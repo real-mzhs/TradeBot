@@ -1,11 +1,14 @@
-﻿using Desktop.Models.MainModels;
+﻿using Desktop.Models;
 using Desktop.Services.Network.Responses;
 
 namespace Desktop.Services.Interfaces;
 
 public interface ITradeService
 {
-    public Task<DataResponse<PositionResponse>> CreatePosition(Position openPosition);
-    public Task<DataResponse<PositionResponse>> GetOpenPositions();
+    public Task<DataResponse<PositionResponse>> UpdatePositionAsync(Position Position);
+
+    public Task<DataResponse<PositionResponse>> CreatePositionAsync(Position Position);
+    public Task<DataResponse<PositionResponse>> GetPositionsAsync(User user);
+
 
 }

@@ -8,16 +8,12 @@ namespace Desktop.ViewModels.BigViewModels;
 
 public class BaseViewModel : ViewModelBase
 {
-    private readonly INavigationServices _navigationServices;
-    private readonly IWalletService _walletService;
-
+    private readonly INavigationServices _navigationServices;  
     public DelegateCommand DashboardCommand { get; set; }
     public DelegateCommand HistoryCommand { get; set; }
     public DelegateCommand TradeCommand { get; set; }
     public DelegateCommand WalletCommand { get; set; }
     public DelegateCommand ExitCommand { get; set; }
-
-
 
     private ViewModelBase _currentView;
 
@@ -30,17 +26,12 @@ public class BaseViewModel : ViewModelBase
         }
     }
 
-
-    public BaseViewModel(INavigationServices navigationServices, IMessenger _messenger, IWalletService walletService)
+    public BaseViewModel(INavigationServices navigationServices, IMessenger _messenger)
     {
-
-        _navigationServices = navigationServices;
-        _walletService = walletService;
+        _navigationServices = navigationServices;     
 
         CurrentView = App.Container.GetInstance<DashboardViewModel>();
         _messenger.Register<MenuNavigationMessage>(this, message => CurrentView = message.ViewModelType);
-
-
 
         DashboardCommand = new DelegateCommand(
             () =>

@@ -1,4 +1,4 @@
-﻿using Desktop.Models.MainModels;
+﻿using Desktop.Models;
 using Desktop.Services.Interfaces;
 using Desktop.Services.Network.API;
 using Desktop.Services.Network.Responses;
@@ -8,14 +8,14 @@ namespace Desktop.Services.Classes;
 
 public class AuthenticationService : IAuthenticationService
 {
-    ITradeClient _tradeClient {  get; set; }
-    public AuthenticationService(ITradeClient tradeClient)
+    private readonly ITradeClient _tradeClient;
+    public AuthenticationService()
     {
-        _tradeClient = tradeClient;
+        _tradeClient = new TradeClient("https://api.binance.com");
     }
-    public async Task<DataResponse<AuthResponse>> Authentication (User user)
+    public async Task<DataResponse<AuthResponse>> AuthenticationAsync (User user)
     {
-        var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.UrlSegment);
+        var parameter = Parameter.CreateParameter("User", user, ParameterType.RequestBody);
         var parameters = new Parameter[] { parameter };
 
         return await _tradeClient.Get<AuthResponse>("/auth/login", parameters); 

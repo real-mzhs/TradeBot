@@ -1,4 +1,4 @@
-﻿using Desktop.Models.PresentationModels;
+﻿using Desktop.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

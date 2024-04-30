@@ -1,24 +1,48 @@
 ﻿using Desktop.Enums;
-using Desktop.Models.MainModels;
+using Desktop.Messages.DataMessages;
+using Desktop.Models;
+using Desktop.Services.Interfaces;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
+using LiveChartsCore.Measure;
+using System.Collections.ObjectModel;
+using System.Net.NetworkInformation;
 
 namespace Desktop.ViewModels.BigViewModels;
 
 public class HistoryViewModel : ViewModelBase
 {
-public TradesHistory TradesHistory { get; set; }
-    public string Text { get; set; }   
-    public HistoryViewModel()
+    private readonly IHistoryService _historyService;
+    private readonly IMessenger _messenger;
+    private User User { get; set; }
+    public ObservableCollection<TradesHistory> TradesHistory { get; set; }
+    public string Text { get; set; }
+    public HistoryViewModel(IHistoryService historyService, IMessenger messenger )
     {
-        Text = "kakoyto text";
-        TradesHistory = new TradesHistory();
-        TradesHistory.Coin = new() { Name = "BTC" };
-        TradesHistory.Amount = 0;
-        TradesHistory.EntryPrice = 0;
-        TradesHistory.EntryPrice = 0;
-        TradesHistory.Margin = 0;
-        TradesHistory.Quantity = 0;
-        TradesHistory.Type = PositionType.Buy;
+        _historyService = historyService;
+        _messenger = messenger;
+
+        _messenger.Register<UserDataMessage>(this, message => User = message.Data);
+
+        //var HistoryResponse = _historyService.GetTradesHistory(user).GetAwaiter().GetResult();
+
+        //TradesHistory = (ObservableCollection<TradesHistory>)HistoryResponse.Data.History;
+
+
+        TradesHistory = new ObservableCollection<TradesHistory>()
+        {
+            new TradesHistory()
+            {
+                Id = "123",
+                Amount = 123,
+                EntryPrice = 123,
+                ExitPrice = 321,
+                Margin = 222,
+                Quantity = 5,
+                Type = PositionType.Buy
+            }
+
+        };
 
     }
 }

@@ -1,4 +1,4 @@
-﻿using Desktop.Models.MainModels;
+﻿using Desktop.Models;
 using Desktop.Services.Classes;
 using Desktop.Services.Interfaces;
 using GalaSoft.MvvmLight;
@@ -46,8 +46,7 @@ public class RegistrationViewModel : ViewModelBase
                 try
                 {
                     CheckDataService.CheckUserData(CurrentUser.Email, CurrentUser.Password, ConfirmPassword);
-
-                    var response = _registrationService.Registration(CurrentUser);
+                    var response = _registrationService.RegistrationAsync(CurrentUser);
                 }
                 catch (Exception e)
                 {
@@ -56,7 +55,6 @@ public class RegistrationViewModel : ViewModelBase
 
                 MessageBox.Show("Registration completed successfully.");
                 _navigationService.NavigateTo<AuthViewModel>();
-
             });
 
         AuthCommand = new DelegateCommand(

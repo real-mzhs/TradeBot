@@ -6,7 +6,7 @@
              xmlns:bigviewmodels="clr-namespace:Desktop.ViewModels.BigViewModels" d:DataContext="{d:DesignInstance Type=bigviewmodels:HistoryViewModel}"
              mc:Ignorable="d" 
               d:DesignHeight="780" d:DesignWidth="1200">
-    <Border Padding="10" BorderBrush="Transparent" CornerRadius="20" Background="#0D0D0D">
+    <Border Padding="10" BorderBrush="Transparent" CornerRadius="0 20 20 0" Background="Transparent">
         <Grid>
 
             <Grid.RowDefinitions>
@@ -15,27 +15,20 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="History" Style="{StaticResource HeaderTextStyle}"/>
-            
+
             <DataGrid   
-             ItemsSource="{Binding TradesHistoryCollection}"
+             ItemsSource="{Binding TradesHistory}"
              Grid.Row="1"
              RowStyle="{DynamicResource DataGridRowStyleSuperAdmine}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyleSuperAdmine}" CellStyle="{DynamicResource DataGridCellStyleSuperAdmine}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyleSuperAdmine}">
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Name" IsReadOnly="True" Width="*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                    <TextBlock Text="{Binding }" VerticalAlignment="Center" Margin="0 0 10 0"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    
-                    <DataGridTextColumn Header="Coin" Binding="{Binding TradeHistory.Coin.Name}" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Amount" Binding="{Binding TradeHistory.Amount}" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Entry Price" Binding="{Binding TradeHistory.EntryPrice }" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Exit Price" Binding="{Binding TradeHistory.ExitPrice }" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Margin" Binding="{Binding TradeHistory.Margin}" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Quantity" Binding="{Binding TradeHistory.Quantity}" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Position Type" Binding="{Binding TradeHistory.Type}" IsReadOnly="True" Width="*"/>
+
+                    <DataGridTextColumn Header="Coin" Binding="{Binding Id}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Entry Price" Binding="{Binding EntryPrice }" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Exit Price" Binding="{Binding ExitPrice }" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Margin" Binding="{Binding Margin}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" IsReadOnly="True" Width="*"/>
+                    <DataGridTextColumn Header="Position Type" Binding="{Binding Type}" IsReadOnly="True" Width="*"/>
 
 
                 </DataGrid.Columns>

@@ -8,7 +8,8 @@ using Desktop.ViewModels.BigViewModels;
 using Desktop.ViewModels.SmallViewModels;
 using Desktop.Views.BigViews;
 using Desktop.Services.Network.API;
-using Desktop.Models.MainModels;
+using Desktop.Models;
+using Desktop.Services.Network.Responses;
 
 namespace Desktop
 {
@@ -21,13 +22,15 @@ namespace Desktop
         {
 
             Container.RegisterSingleton<IMessenger, Messenger>();
-            Container.RegisterSingleton<INavigationServices, NavigationService>();
-            Container.RegisterSingleton<Wallet>();              
-
+            Container.RegisterSingleton<INavigationServices, NavigationService>();            
+            Container.RegisterSingleton<TokenResponse>();
+            
             Container.Register<IAuthenticationService, AuthenticationService>();
             Container.Register<IRegistrationService, RegistrationService>();
-            Container.Register<ITradeClient, TradeClient>();
             Container.Register<IWalletService, WalletService>();
+            Container.Register<IHistoryService, HistoryService>();
+            Container.Register<ITradeService, TradeService>();
+            Container.Register<IMarketService, MarketService>();
 
             Container.Register<MainViewModel>();
             Container.Register<DashboardViewModel>();
@@ -43,7 +46,7 @@ namespace Desktop
             Container.Register<WalletContentViewModel>();
 
 
-            Container.Verify();
+            //Container.Verify();
         }
 
         protected override void OnStartup(StartupEventArgs e)

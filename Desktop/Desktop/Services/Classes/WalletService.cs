@@ -1,8 +1,8 @@
 ﻿using Desktop.Services.Interfaces;
 using Desktop.Services.Network.Responses;
-using Desktop.Models.MainModels;
 using RestSharp;
 using Desktop.Services.Network.API;
+using Desktop.Models;
 
 namespace Desktop.Services.Classes;
 
@@ -10,11 +10,11 @@ public class WalletService : IWalletService
 {
     private ITradeClient _tradeClient { get; set; }
     
-    public WalletService(ITradeClient tradeClient)
+    public WalletService()
     {
-         _tradeClient = tradeClient;
+         _tradeClient = new TradeClient("https://api.binance.com");
     }
-    public async Task<DataResponse<WalletResponse>> GetWalletData(User user)
+    public async Task<DataResponse<WalletResponse>> GetWalletDataAsync(User user)
     {
         var parameter = Parameter.CreateParameter("UserId", user.Id.ToString(), ParameterType.UrlSegment);
         var parameters = new Parameter[] { parameter };
@@ -22,8 +22,12 @@ public class WalletService : IWalletService
         return await _tradeClient.Get<WalletResponse>("/wallet", parameters);
     }
 
-    public async Task<DataResponse<WalletResponse>> update(Wallet wallet)
+    public async Task<DataResponse<WalletResponse>> UpdateWalletAsync(Wallet wallet)
     {
         return await _tradeClient.Put<WalletResponse>("/wallet", wallet);
+    }
+    public async Task<DataResponse<WalletResponse>> CreateWalletAsync(Wallet wallet)
+    {
+        return await _tradeClient.Post<WalletResponse>("/wallet", wallet);
     }
 }

@@ -2,8 +2,8 @@
 using GalaSoft.MvvmLight;
 using Prism.Commands;
 using System.Windows;
-using Desktop.Models.MainModels;
 using Desktop.Services.Classes;
+using Desktop.Models;
 
 namespace Desktop.ViewModels.BigViewModels;
 public class AuthViewModel : ViewModelBase
@@ -37,8 +37,7 @@ public class AuthViewModel : ViewModelBase
                 try
                 {
                     CheckDataService.CheckUserData(CurrentUser.Email, CurrentUser.Password);
-
-                    var response = _AuthService.Authentication(CurrentUser);
+                    var response = _AuthService.AuthenticationAsync(CurrentUser).GetAwaiter().GetResult();
                 }
                 catch (Exception e)
                 {

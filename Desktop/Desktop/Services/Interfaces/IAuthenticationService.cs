@@ -1,10 +1,10 @@
-﻿using Desktop.Models.MainModels;
+﻿using Desktop.Models;
 using Desktop.Services.Network.Responses;
 
 namespace Desktop.Services.Interfaces;
 
 public interface IAuthenticationService
 {
-    public Task<DataResponse<AuthResponse>> Authentication(User user);
+    public Task<DataResponse<AuthResponse>> AuthenticationAsync(User user);
 
 }

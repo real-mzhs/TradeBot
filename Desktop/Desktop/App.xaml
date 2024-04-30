@@ -4,6 +4,7 @@
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:BigView="clr-namespace:Desktop.Views.BigViews"
              xmlns:SmallView="clr-namespace:Desktop.Views.SmallViews"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              xmlns:md ="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf" 
              xmlns:BigViewModel="clr-namespace:Desktop.ViewModels.BigViewModels"
@@ -14,42 +15,96 @@
 
         <ResourceDictionary>
 
-            <SolidColorBrush x:Key="BlackColor" Color="#083353"/>
+            <DataTemplate DataType="{x:Type BigViewModel:MainViewModel}">
+                <BigView:MainView/>
+            </DataTemplate>
 
+            <DataTemplate DataType="{x:Type BigViewModel:DashboardViewModel}">
+                <BigView:DashboardView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type BigViewModel:HistoryViewModel}">
+                <BigView:HistoryView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type BigViewModel:TradeViewModel}">
+                <BigView:TradeView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type BigViewModel:WalletViewModel}">
+                <BigView:WalletView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type BigViewModel:RegistrationViewModel}">
+                <BigView:RegistrationView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type BigViewModel:AuthViewModel}">
+                <BigView:AuthView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type BigViewModel:BaseViewModel}">
+                <BigView:BaseView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type BigViewModel:RecoveryViewModel}">
+                <BigView:RecoveryView/>
+            </DataTemplate>
+
+
+            <DataTemplate DataType="{x:Type SmallViewModel:WalletContentViewModel}">
+                <SmallView:WalletContentView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type SmallViewModel:WalletDepositViewModel}">
+                <SmallView:WalletDepositView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type SmallViewModel:WalletWidthdrawViewModel}">
+                <SmallView:WalletWidthdrawView/>
+            </DataTemplate>
+
+
+            <BitmapImage x:Key="Welcomepg" UriSource="/Images/WelcomePg.png" />
+            <BitmapImage x:Key="Background" UriSource="/Images/Frame 5(7).png" />
+            <BitmapImage x:Key="RegBackground" UriSource="/Images/Frame 53.png" />
+            <BitmapImage x:Key="WelcomeBlur" UriSource="/Images/WelcomeBlur.png" />
+            <BitmapImage x:Key="AuthImage" UriSource="/Images/8b126cf30c417b9c55b1b9d1bc5f68a3.jpg" />
+            <BitmapImage x:Key="RegitrImage" UriSource="/Images/9b9e2b051d286f8f500a8020e8e9c270.png" />
+
+            <SolidColorBrush x:Key="BlackColor" Color="#083353"/>
             <SolidColorBrush x:Key="GreyColor" Color="#B7B7B7"/>
+
+
+
             <Style x:Key="menuButton" TargetType="Button">
-                <Setter Property="Background" Value="#262930" />
+                <Setter Property="Background" Value="Transparent" />
                 <Setter Property="Foreground" Value="#7E7E7E" />
-                <Setter Property="Height" Value="45" />
-                <Setter Property="Width" Value="45" />
+                <Setter Property="Height" Value="52" />
+                <Setter Property="Width" Value="52" />
                 <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-                <Setter Property="Margin" Value="15 0 15 5" />
+                <Setter Property="Margin" Value="0 0 0 10" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="10" BorderBrush="Transparent" BorderThickness="2">
+                            <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="10" BorderBrush="Transparent">
                                 <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <EventTrigger RoutedEvent="MouseEnter">
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
-                                                To="#9FE2EA" Duration="0:0:0.3"/>
 
                                             <ColorAnimation Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                To="#A1E1EA" Duration="0:0:0.3"/>
+                                     To="#A1E1EA" Duration="0:0:0.3"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
                                 <EventTrigger RoutedEvent="MouseLeave">
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
-                                                To="Transparent" Duration="0:0:0.3"/>
-
                                             <ColorAnimation Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                To="#7E7E7E" Duration="0:0:0.3"/>
+                                     To="#7E7E7E" Duration="0:0:0.3"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
@@ -61,8 +116,124 @@
             </Style>
 
 
+
+
+
+
+
+
+
+
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="Gray"/>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=Btn}"
+         Value="true">
+                        <Setter Property="Foreground" Value="White"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource
+                        Mode=FindAncestor,
+                        AncestorType={x:Type Button}},
+                        Path=IsFocused}" Value="true">
+                        <Setter Property="Foreground" Value="White"/>
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource
+                        Mode=FindAncestor,
+                        AncestorType={x:Type Button}},
+                        Path=IsPressed}" Value="true">
+                        <Setter Property="Foreground" Value="Gray"/>
+                    </DataTrigger>
+                </Style.Triggers>
+
+            </Style>
+
+
+
+
+
+
+
+
+            <ControlTemplate x:Key="SideMenuButton" TargetType="Button">
+                <Grid Name="Btn">
+                    <Border>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <Image Margin="0 5 0 0" Height="40" Width="40" Source="{DynamicResource ResourceKey=Img}"/>
+                            <Label Content="{TemplateBinding Content}" Background="Transparent" FontSize="14" Margin="5 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Setter Property="Foreground" Value="Gray"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=Btn}"
+                                             Value="true">
+                                                <Setter Property="Foreground" Value="White"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource
+                                            Mode=FindAncestor,
+                                            AncestorType={x:Type Button}},
+                                            Path=IsFocused}" Value="true">
+                                                <Setter Property="Foreground" Value="White"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource
+                                            Mode=FindAncestor,
+                                            AncestorType={x:Type Button}},
+                                            Path=IsPressed}" Value="true">
+                                                <Setter Property="Foreground" Value="Gray"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </StackPanel>
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource
+                                            Mode=FindAncestor,
+                                            AncestorType={x:Type Button}},
+                                            Path=IsPressed}" Value="true">
+                                        <Setter Property="Margin" Value="0 2 0 0"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                    </Border>
+                    <Border Name="MouseOverBorder" Background="Gray">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Opacity" Value="0"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=IsMouseOver, ElementName=Btn}"
+                                             Value="true">
+                                        <Setter Property="Opacity" Value="0.1"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                    </Border>
+                    <Border Name="SelectedBorder" Background="Gray">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Opacity" Value="0"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource
+                                            Mode=FindAncestor,
+                                            AncestorType={x:Type Button}},
+                                            Path=IsFocused}" Value="true">
+                                        <Setter Property="Opacity" Value="0.1"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                    </Border>
+                </Grid>
+            </ControlTemplate>
+
+
+
+
             <Style x:Key="WalletOperationsButtons" TargetType="Button">
-                <Setter Property="Background" Value="#262930" />
+                <Setter Property="Background" Value="#30ffffff" />
                 <Setter Property="Foreground" Value="#fff" />
                 <Setter Property="FontSize" Value="17" />
                 <Setter Property="FontWeight" Value="DemiBold" />
@@ -73,7 +244,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="13" BorderBrush="Transparent" BorderThickness="2">
+                            <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="20" BorderBrush="Transparent" BorderThickness="2">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </ControlTemplate>
@@ -96,8 +267,8 @@
 
             <Style x:Key="menuButtonIcon" TargetType="Icon:PackIconMaterial">
                 <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" />
-                <Setter Property="Width" Value="18"/>
-                <Setter Property="Height" Value="18"/>
+                <Setter Property="Width" Value="22"/>
+                <Setter Property="Height" Value="22"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
             </Style>
 
@@ -113,11 +284,11 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
                             <Border x:Name="border"
-                        BorderThickness="1"
-                        Background="#161719" 
-                        CornerRadius="10">
+             BorderThickness="2"
+             Background="#161719" 
+             CornerRadius="6">
                                 <Border.BorderBrush>
-                                    <SolidColorBrush Color="#BCBFC6"/>
+                                    <SolidColorBrush Color="#212425"/>
                                 </Border.BorderBrush>
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
@@ -127,9 +298,9 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
-                                                    To="White" Duration="0:0:0.3"/>
+                                         To="#BCBFC6" Duration="0:0:0.3"/>
                                                 <ColorAnimation Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                    To="White" Duration="0:0:0.3"/>
+                                         To="#BCBFC6" Duration="0:0:0.3"/>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
@@ -137,9 +308,9 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <ColorAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
-                                                    To="#BCBFC6" Duration="0:0:0.3"/>
+                                         To="#212425" Duration="0:0:0.3"/>
                                                 <ColorAnimation Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)"
-                                                    To="#BCBFC6" Duration="0:0:0.3"/>
+                                         To="#BCBFC6" Duration="0:0:0.3"/>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.ExitActions>
@@ -156,7 +327,7 @@
 
 
 
-            <Style x:Key="CustomBorder" TargetType="Border">
+            <Style x:Key="CustomBorderAuth" TargetType="Border">
                 <Setter Property="HorizontalAlignment" Value="Left" />
                 <Setter Property="Margin" Value="0 0 0 10" />
                 <Setter Property="Height" Value="53" />
@@ -179,20 +350,20 @@
                             <BeginStoryboard>
                                 <Storyboard>
                                     <PointAnimation
-                            Storyboard.TargetProperty="(Border.Background).(LinearGradientBrush.StartPoint)"
-                            To="0.1,0.5" Duration="0:0:0.3"/>
+                 Storyboard.TargetProperty="(Border.Background).(LinearGradientBrush.StartPoint)"
+                 To="0.1,0.5" Duration="0:0:0.3"/>
                                     <PointAnimation
-                            Storyboard.TargetProperty="(Border.Background).(LinearGradientBrush.EndPoint)"
-                            To="0.9,0.5" Duration="0:0:0.3"/>
+                 Storyboard.TargetProperty="(Border.Background).(LinearGradientBrush.EndPoint)"
+                 To="0.9,0.5" Duration="0:0:0.3"/>
                                     <ColorAnimation
-                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].Color"
-                            To="#FF231628" Duration="0:0:0.3"/>
+                 Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].Color"
+                 To="#FF231628" Duration="0:0:0.3"/>
                                     <ColorAnimation
-                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].Color"
-                            To="#FF111213" Duration="0:0:0.3"/>
+                 Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].Color"
+                 To="#FF111213" Duration="0:0:0.3"/>
                                     <ColorAnimation
-                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].Color"
-                            To="#FF2A2826" Duration="0:0:0.3"/>
+                 Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].Color"
+                 To="#FF2A2826" Duration="0:0:0.3"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </Trigger.EnterActions>
@@ -200,20 +371,20 @@
                             <BeginStoryboard>
                                 <Storyboard>
                                     <PointAnimation
-                            Storyboard.TargetProperty="(Border.Background).(LinearGradientBrush.StartPoint)"
-                            To="0,0.5" Duration="0:0:0.3"/>
+                 Storyboard.TargetProperty="(Border.Background).(LinearGradientBrush.StartPoint)"
+                 To="0,0.5" Duration="0:0:0.3"/>
                                     <PointAnimation
-                            Storyboard.TargetProperty="(Border.Background).(LinearGradientBrush.EndPoint)"
-                            To="1,0.5" Duration="0:0:0.3"/>
+                 Storyboard.TargetProperty="(Border.Background).(LinearGradientBrush.EndPoint)"
+                 To="1,0.5" Duration="0:0:0.3"/>
                                     <ColorAnimation
-                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].Color"
-                            To="#40231628" Duration="0:0:0.3"/>
+                 Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].Color"
+                 To="#40231628" Duration="0:0:0.3"/>
                                     <ColorAnimation
-                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].Color"
-                            To="#10111213" Duration="0:0:0.3"/>
+                 Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].Color"
+                 To="#10111213" Duration="0:0:0.3"/>
                                     <ColorAnimation
-                            Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].Color"
-                            To="#802A2826" Duration="0:0:0.3"/>
+                 Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].Color"
+                 To="#802A2826" Duration="0:0:0.3"/>
                                 </Storyboard>
                             </BeginStoryboard>
                         </Trigger.ExitActions>
@@ -221,6 +392,80 @@
                 </Style.Triggers>
             </Style>
 
+
+            <Style x:Key="CustomBorderRegistration" TargetType="Border">
+                <Setter Property="Margin" Value="0 0 0 10" />
+                <Setter Property="Height" Value="53" />
+                <Setter Property="Width" Value="370" />
+                <Setter Property="CornerRadius" Value="13" />
+                <Setter Property="BorderBrush" Value="#5F6266" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                            <GradientStop Color="#4028376B" Offset="0"/>
+                            <GradientStop Color="#10111213" Offset="0.5"/>
+                            <GradientStop Color="#802A2826" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <PointAnimation
+                 Storyboard.TargetProperty="(Border.Background).(LinearGradientBrush.StartPoint)"
+                 To="0.1,0.5" Duration="0:0:0.3"/>
+                                    <PointAnimation
+                 Storyboard.TargetProperty="(Border.Background).(LinearGradientBrush.EndPoint)"
+                 To="0.9,0.5" Duration="0:0:0.3"/>
+                                    <ColorAnimation
+                 Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].Color"
+                 To="#4028376B" Duration="0:0:0.3"/>
+                                    <ColorAnimation
+                 Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].Color"
+                 To="#FF111213" Duration="0:0:0.3"/>
+                                    <ColorAnimation
+                 Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].Color"
+                 To="#FF2A2826" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <PointAnimation
+                 Storyboard.TargetProperty="(Border.Background).(LinearGradientBrush.StartPoint)"
+                 To="0,0.5" Duration="0:0:0.3"/>
+                                    <PointAnimation
+                 Storyboard.TargetProperty="(Border.Background).(LinearGradientBrush.EndPoint)"
+                 To="1,0.5" Duration="0:0:0.3"/>
+                                    <ColorAnimation
+                 Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[0].Color"
+                 To="#4028376B" Duration="0:0:0.3"/>
+                                    <ColorAnimation
+                 Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[1].Color"
+                 To="#10111213" Duration="0:0:0.3"/>
+                                    <ColorAnimation
+                 Storyboard.TargetProperty="(Border.Background).(GradientBrush.GradientStops)[2].Color"
+                 To="#802A2826" Duration="0:0:0.3"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+
+            <Style x:Key="CustomBorderDeposit" TargetType="Border">
+                <Setter Property="Margin" Value="0 0 0 10" />
+                <Setter Property="Height" Value="53" />
+                <Setter Property="CornerRadius" Value="13" />
+                <Setter Property="CornerRadius" Value="13" />
+                <Setter Property="BorderBrush" Value="#90FFFFFF" />
+                <Setter Property="BorderThickness" Value="2" />
+            </Style>
 
 
             <Style TargetType="PasswordBox" x:Key="PasswordBoxWithoutBottomLine">
@@ -307,6 +552,20 @@
                 </Style.Triggers>
             </Style>
 
+            <Style x:Key="ColumnHeaderGripperStyle" TargetType="{x:Type Thumb}">
+                <Setter Property="Width" Value="8"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Cursor" Value="SizeWE"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Thumb}">
+                            <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+
 
             <Style x:Key="DataGridColumnHeaderStyleSuperAdmine" TargetType="{x:Type DataGridColumnHeader}">
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -328,6 +587,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+
 
 
             <Style x:Key="DataGridCellStyleSuperAdmine" TargetType="{x:Type DataGridCell}">
@@ -420,6 +680,8 @@
             </Style>
 
 
+
+
             <Style x:Key="gridEditButtonSuperAdmine" TargetType="Button">
                 <Setter Property="Background" Value="Transparent" />
                 <Setter Property="Content" Value="More" />
@@ -452,62 +714,236 @@
                 </Style.Triggers>
             </Style>
 
+            <Style x:Key="InfoCoinsBorder" TargetType="Border">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="Padding" Value="20 20 20 20" />
+            </Style>
+
+
+            <Style x:Key="titleText" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource BlackColor}" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </Style>
+
+
+            <Style x:Key="secondaryText" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource GreyColor}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Margin" Value="0 5 0 5" />
+            </Style>
 
 
 
+            <Style TargetType="ListBox" x:Key="CustomListBoxStyle">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+
+                <Setter Property="ItemContainerStyle">
+                    <Setter.Value>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border CornerRadius="15" Margin="0 6" Background="Transparent">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="2.1*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Border Width="40" Height="40" CornerRadius="15" Margin="0 0 10 0">
+                                                        <Border.Background>
+                                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                <GradientStop Color="#625AFF" Offset="0"/>
+                                                                <GradientStop Color="#625AFF" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Border.Background>
+                                                        <Image Source="{Binding ImagePath}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="38" Height="38"/>
+                                                    </Border>
+
+                                                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="15" Foreground="#fff"/>
+                                                            <TextBlock Text="{Binding Id}" FontWeight="SemiBold" FontSize="15" Foreground="#6B6B6B" Margin="5 0 0 0"/>
+                                                        </StackPanel>
+
+                                                        <TextBlock Text="{Binding Margin, StringFormat={}{0:#0.##'%'}}" FontWeight="SemiBold" FontSize="13" Foreground="#FA744E"/>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Margin="0 0 3 0">
+                                                    <StackPanel>
+                                                        <TextBlock Text="{Binding Quantity}" FontWeight="Regular" Foreground="#fff" FontSize="15"/>
+                                                        <TextBlock Text="{Binding Amount, StringFormat={}{0:C}}" FontWeight="SemiBold" FontSize="13" HorizontalAlignment="Right" Foreground="#6B6B6B"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style TargetType="ListBox" x:Key="CustomListBoxStyleAside">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+
+                <Setter Property="ItemContainerStyle">
+                    <Setter.Value>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border CornerRadius="20" Padding="15" Margin="0 5" Background="#10ffffff">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="2.1*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Border Width="50" Height="50" CornerRadius="15" Margin="0 0 10 0">
+                                                        <Border.Background>
+                                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                <GradientStop Color="#3359F9" Offset="0"/>
+                                                                <GradientStop Color="#04427C" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Border.Background>
+                                                        <Image Source="{Binding ImagePath}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="38" Height="38"/>
+                                                    </Border>
+
+                                                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                        <StackPanel Orientation="Vertical">
+                                                            <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="15" Foreground="#fff"/>
+                                                            <TextBlock Text="{Binding Id}" FontWeight="SemiBold" FontSize="15" Foreground="#6B6B6B" Margin="0 0 0 0"/>
+                                                        </StackPanel>
+
+                                                        <TextBlock Text="{Binding PriceChangePercentage, StringFormat={}{0:#0.##'%'}}" FontWeight="SemiBold" FontSize="13" Foreground="#FA744E"/>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Margin="0 0 3 0">
+                                                    <StackPanel>
+                                                        <TextBlock Text="0.0669 ETH" FontWeight="Regular" Foreground="#fff" FontSize="15"/>
+                                                        <!--Здесь будет quantity coin-->
+                                                        <TextBlock Text="{Binding Currency, StringFormat={}{0:C}}" FontWeight="SemiBold" FontSize="13" HorizontalAlignment="Right" Foreground="#6B6B6B"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
 
 
+            <Style x:Key="cardBorder" TargetType="Border">
+                <Setter Property="Height" Value="215" />
+                <Setter Property="CornerRadius" Value="25" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="Margin" Value="10 0" />
+            </Style>
 
 
-            <DataTemplate DataType="{x:Type BigViewModel:MainViewModel}">
-                <BigView:MainView/>
-            </DataTemplate>
 
-            <DataTemplate DataType="{x:Type BigViewModel:DashboardViewModel}">
-                <BigView:DashboardView/>
-            </DataTemplate>
+            <Style x:Key="balanceCardTextLabelUSD" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#fcfcfc" />
+                <Setter Property="Text" Value="{Binding YourProperty, StringFormat='${0:C}'}"/>
+            </Style>
 
-            <DataTemplate DataType="{x:Type BigViewModel:HistoryViewModel}">
-                <BigView:HistoryView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type BigViewModel:TradeViewModel}">
-                <BigView:TradeView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type BigViewModel:WalletViewModel}">
-                <BigView:WalletView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type BigViewModel:RegistrationViewModel}">
-                <BigView:RegistrationView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type BigViewModel:AuthViewModel}">
-                <BigView:AuthView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type BigViewModel:BaseViewModel}">
-                <BigView:BaseView/>
-            </DataTemplate>
-
-            <DataTemplate DataType="{x:Type BigViewModel:RecoveryViewModel}">
-                <BigView:RecoveryView/>
-            </DataTemplate>
+            <Style x:Key="balanceCardTextLabel" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#80fcfcfc" />
+                <Setter Property="FontWeight" Value="Medium" />
+                <Setter Property="FontSize" Value="13" />
+            </Style>
 
 
-            <DataTemplate DataType="{x:Type SmallViewModel:WalletContentViewModel}">
-                <SmallView:WalletContentView/>
-            </DataTemplate>
 
-            <DataTemplate DataType="{x:Type SmallViewModel:WalletDepositViewModel}">
-                <SmallView:WalletDepositView/>
-            </DataTemplate>
+            <Style x:Key="TradoCoinsInfoBorder" TargetType="Border">
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="Padding" Value="20 20 20 20" />
+            </Style>
 
-            <DataTemplate DataType="{x:Type SmallViewModel:WalletWidthdrawViewModel}">
-                <SmallView:WalletWidthdrawView/>
-            </DataTemplate>
+
+
+            <Style TargetType="ListBox" x:Key="CustomCoinsListBox">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Disabled"/>
+
+                <Setter Property="ItemContainerStyle">
+                    <Setter.Value>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <Border CornerRadius="15" Margin="0 5" Background="Transparent">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="2.1*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                    <Border Width="35" Height="35" CornerRadius="15" Padding="5" Margin="0 0 10 0">
+                                                        <Border.Background>
+                                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                                <GradientStop Color="#fff" Offset="0"/>
+                                                                <GradientStop Color="#fff" Offset="1"/>
+                                                            </LinearGradientBrush>
+                                                        </Border.Background>
+                                                        <Image Source="{Binding ImagePath}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="38" Height="38"/>
+                                                    </Border>
+
+                                                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                            <TextBlock Text="{Binding Name}" FontWeight="SemiBold" Foreground="#fff"/>
+                                                            <TextBlock Text="{Binding Id}" FontWeight="SemiBold"  Foreground="#6B6B6B" Margin="5 0 0 0"/>
+                                                        </StackPanel>
+
+                                                        <TextBlock Text="{Binding PriceChangePercentage, StringFormat={}{0:#0.##'%'}}" FontWeight="SemiBold" FontSize="13" Foreground="#FA744E"/>
+
+                                                    </StackPanel>
+                                                </StackPanel>
+
+
+                                                <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Margin="0 0 3 0">
+                                                    <StackPanel>
+                                                        <TextBlock Text="0.0669 ETH" FontWeight="Regular" Foreground="#fff"/>
+                                                        <!--Здесь будет quantity coin-->
+                                                        <TextBlock Text="{Binding Currency, StringFormat={}{0:C}}" FontWeight="SemiBold" HorizontalAlignment="Right" Foreground="#6B6B6B"/>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
 
 
 

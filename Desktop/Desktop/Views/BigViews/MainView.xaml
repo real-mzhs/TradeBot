@@ -4,8 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        xmlns:md ="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:Desktop.Views"
+        xmlns:md ="http://materialdesigninxaml.net/winfx/xaml/themes"        
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -18,18 +17,18 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.04*"/>
+                <RowDefinition Height="0.05*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
             <ContentControl Grid.RowSpan="2" Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>
-            
-            <Grid Grid.Row="0" Margin="0 0 10 0">
-                <StackPanel
+
+            <Grid Grid.Row="0">
+                <StackPanel Margin="0,5,10,0"                   
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Orientation="Horizontal">
-                    <Button
+                    <Button                    
                     Height="25"
                     Click="Minimize_Click"
                     Name="Minimize"
@@ -41,7 +40,7 @@
                         Kind="Minimize"/>
                     </Button>
 
-                    <Button
+                    <Button                    
                     Height="25"
                     Click="Close_Click"
                     Name="Close"

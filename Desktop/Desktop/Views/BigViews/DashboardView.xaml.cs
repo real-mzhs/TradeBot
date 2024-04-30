@@ -21,6 +21,7 @@ namespace Desktop.Views.BigViews
             InitializeComponent();
 
         }
+
     }
 }
 

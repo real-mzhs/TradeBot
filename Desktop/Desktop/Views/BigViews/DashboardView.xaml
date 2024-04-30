@@ -2,15 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"             
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:local="clr-namespace:Desktop.Views.BigViews" xmlns:bigviewmodels="clr-namespace:Desktop.ViewModels.BigViewModels" d:DataContext="{d:DesignInstance Type=bigviewmodels:DashboardViewModel}"
+             xmlns:local="clr-namespace:Desktop.Views.BigViews" 
              mc:Ignorable="d" 
              d:DesignHeight="780" d:DesignWidth="1200">
 
 
-    <Border Padding="10" BorderBrush="Transparent" CornerRadius="20" Background="#0D0D0D">
+    <Border Padding="10" BorderBrush="Transparent" CornerRadius="0 20 20 0" Background="#0D0D0D">
+
+
         <Grid>
 
             <Grid.RowDefinitions>
@@ -23,51 +25,107 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Border Margin="20,10,0,0" Grid.Column="1" Grid.Row="1"  CornerRadius="20"  Background="#1B1C1E" >
-                <Grid>
-                    <TextBlock Foreground="#fff" FontSize="25" FontWeight="DemiBold" Text="Live Chart"/>
+            <Border BorderThickness="2" BorderBrush="#2A2D34" Padding="15" Margin="20,10,0,0" Grid.Row="1" Grid.Column="1" CornerRadius="10">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                        <GradientStop Offset="0" Color="#1B1C1E"/>
+                        <GradientStop Offset="0.7" Color="#1B1C1E"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="5" Direction="150" Color="#494A4E"/>
+                </Border.Effect>
 
+                <ListBox ItemsSource="{Binding CoinList}" Style="{StaticResource CustomListBoxStyle}"/>
 
-                </Grid>
             </Border>
-
 
             <Grid Grid.Column="0"  Grid.Row="1" >
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1.5*"/>
-                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
 
 
 
+                <Border BorderThickness="2" BorderBrush="#2A2D34" Padding="15" Margin="20,10,0,0" Grid.Row="0"  CornerRadius="15">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Offset="0" Color="#1B1C1E"/>
+                            <GradientStop Offset="0.7" Color="#1B1C1E"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="6" Direction="400" Color="#494A4E"/>
+                    </Border.Effect>
 
-                <Border Margin="20,10,0,0" Grid.Row="0"  CornerRadius="20" Background="#1B1C1E" >
                     <Grid>
-                        <TextBlock Foreground="#fff" Margin="15 5 0 0" FontSize="20" FontWeight="DemiBold" Text="Live Chart"/>
-
-                        <lvc:CartesianChart Margin="20 30 0 0"
+                        <lvc:CartesianChart
                             Series="{Binding Series}"        
                             XAxes="{Binding XAxes}"
                             YAxes="{Binding YAxes}">
                         </lvc:CartesianChart>
                     </Grid>
+
+
                 </Border>
 
 
                 <Grid Grid.Row="1">
 
 
-                    <Border Margin="20,10,0,0" Grid.Row="1"  CornerRadius="20" Background="#1B1C1E" >
+                    <Border BorderThickness="2" BorderBrush="#2A2D34" Margin="20,10,0,0" Grid.Row="1"  CornerRadius="15">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Offset="0" Color="#1B1C1E"/>
+                                <GradientStop Offset="0.7" Color="#1B1C1E"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Effect>
+                            <DropShadowEffect ShadowDepth="6" Direction="400" Color="#494A4E"/>
+                        </Border.Effect>
+
                         <Grid>
 
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
 
-                            <lvc:PieChart Grid.Column="1" Series="{Binding PieChart}"/>
+
+                            <Border Style="{StaticResource InfoCoinsBorder}">
+
+                                <ListBox 
+                                    d:ItemsSource="{d:SampleData ItemCount=3}"
+                                    ItemsSource="{Binding CoinList}"
+                                    Style="{StaticResource CustomListBoxStyle}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Vertical">
+                                                <Image Source="{Binding ImagePath}" Width="50" Height="50"/>
+                                                <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                                                <TextBlock Text="{Binding Amount}" VerticalAlignment="Center"/>
+                                                <TextBlock Text="{Binding Margin}" VerticalAlignment="Center"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </Border>
+
+
+
+
+                            <Border Padding="0" Grid.Column="1" Style="{StaticResource InfoCoinsBorder}">
+
+                                <Grid>
+                                    <lvc:PieChart Grid.Column="1" Series="{Binding PieChart}"/>
+                                </Grid>
+
+                            </Border>
+
+
 
                         </Grid>
                     </Border>
