@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class GetCryptoPrice(BaseModel):
+class CryptoDataRequest(BaseModel):
     cryptoId: str
     days: str
     interval: str
