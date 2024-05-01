@@ -1,12 +1,11 @@
 from http.client import HTTPResponse
-
 from fastapi import FastAPI
 from starlette import status
 from binance.client import AsyncClient
 from binance import ThreadedWebsocketManager
 import logging
-from models.trade_signal_request import TradeSignalRequest
-from train_model import setup_modal
+from app.models.trade_signal_request import TradeSignalRequest
+from app.train_model import setup_modal
 from utils.message_processing import process_message
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

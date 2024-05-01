@@ -1,7 +1,7 @@
 from typing import List
 from pydantic import BaseModel
-from models.rate_limit import RateLimit
-from models.ticker_result import TickerResult
+from app.models.rate_limit import RateLimit
+from app.models.ticker_result import TickerResult
 
 
 class TickerResponse(BaseModel):

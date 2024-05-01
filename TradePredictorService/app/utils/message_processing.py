@@ -3,9 +3,9 @@ import math
 import torch
 from binance import AsyncClient
 from binance.exceptions import BinanceOrderException, BinanceAPIException
-from config import Config
-from models.ticker_response import TickerResponse
-from models.ticker_result import TickerResult
+from app.config import Config
+from app.models.ticker_response import TickerResponse
+from app.models.ticker_result import TickerResult
 
 
 # Function to preprocess data

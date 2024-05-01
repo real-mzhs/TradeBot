@@ -3,6 +3,9 @@
 ### Step 1: Pulling the Service from Docker Hub
 First, pull the Docker image for the service from Docker Hub using the following command:
 ```
+docker pull mzdevi/tradebot-tradepredictorservice:latest
+```
+```
 docker pull mzdevi/tradebot-userservice:latest
 ```
 
@@ -16,6 +19,9 @@ docker pull postgres:latest
 Now that you have both images downloaded, you can run containers for the service and PostgreSQL.
 ```
 docker run --name postgres-usersevice -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=secret_password -p 5432:5432 -d postgres
+```
+```
+docker run -d --name tradebot-tradepredictorservice -p 8080:8080 mzdevi/tradebot-tradepredictorservice:latest
 ```
 ```
 docker run -d --name tradebot-userservice -p 8080:8080 mzdevi/tradebot-userservice:latest

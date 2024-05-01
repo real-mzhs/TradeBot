@@ -1,3 +1,4 @@
+python-binance~=1.0.19
 requests~=2.31.0
 pandas~=2.2.2
 numpy~=1.26.4
@@ -8,3 +9,4 @@ transformers~=4.40.1
 ta~=0.11.0
 pydantic~=2.7.1
 starlette~=0.37.2
+uvicorn~=0.29.0

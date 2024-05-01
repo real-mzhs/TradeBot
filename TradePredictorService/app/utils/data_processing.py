@@ -7,7 +7,7 @@ import torch
 from functools import partial
 from ta import add_all_ta_features
 from transformers import AutoTokenizer, AutoModel
-from models.crypto_data_request import CryptoDataRequest
+from app.models.crypto_data_request import CryptoDataRequest
 
 
 # Function to fetch crypto prices with indicators

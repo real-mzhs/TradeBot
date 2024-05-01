@@ -2,7 +2,7 @@ import logging
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from config import Config
+from app.config import Config
 
 
 # Function to train the model

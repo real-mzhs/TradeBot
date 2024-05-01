@@ -1,12 +1,11 @@
-from typing import List
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-from config import Config
-from models.crypto_data_request import CryptoDataRequest
-from models.crypto_hybrid_model import CryptoHybridModel
-from utils.data_processing import fetch_crypto_prices_with_indicators, get_combined_embeddings
-from utils.ml_utils import train_model, evaluate_model
+from app.config import Config
+from app.models.crypto_data_request import CryptoDataRequest
+from app.models.crypto_hybrid_model import CryptoHybridModel
+from app.utils.data_processing import fetch_crypto_prices_with_indicators, get_combined_embeddings
+from app.utils.ml_utils import train_model, evaluate_model
 
 
 def setup_modal():
