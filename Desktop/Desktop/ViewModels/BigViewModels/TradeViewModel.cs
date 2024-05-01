@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using System.Globalization;
 using System.ComponentModel.DataAnnotations.Schema;
 using LiveChartsCore.Drawing;
+using Prism.Commands;
 
 namespace Desktop.ViewModels.BigViewModels;
 
@@ -28,10 +29,11 @@ public class TradeViewModel : ViewModelBase
     public string limit { get; set; } = "24";
     public Axis[] XAxes { get; set; }
 
+    public DelegateCommand BuyCommand {  get; set; }
     public ISeries[] Series { get; set; }
     public ISeries[] PieSeries { get; set; }
 
-    public ObservableCollection<FinancialPoint> _financialPoints;
+    private ObservableCollection<FinancialPoint> _financialPoints;
     public ObservableCollection<FinancialPoint> FinancialPoints
     {
         get => _financialPoints;
@@ -93,6 +95,8 @@ public class TradeViewModel : ViewModelBase
                 Quantity = 5
             }
         };
+
+
 
         ChartInitializeAsync();
 

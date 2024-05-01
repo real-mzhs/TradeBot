@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace Desktop.Services.Classes;
 
@@ -18,7 +19,7 @@ public class MarketService : IMarketService
         _binanceClient = new TradeClient("https://api.binance.com");        
     }
 
-    private async Task<DataResponse<MarketResponse>> GetCoinHistoryAsync(string symbol, string interval, string limit, string source)
+    private async Task<DataResponse<MarketResponse>> GetCoinHistoryAsync(string source, string symbol, string interval, string limit)
     {
         var parameter1 = Parameter.CreateParameter("symbol", symbol, ParameterType.QueryString);
         var parameter2 = Parameter.CreateParameter("interval", interval, ParameterType.QueryString);
@@ -28,12 +29,23 @@ public class MarketService : IMarketService
         return await _binanceClient.Get<MarketResponse>(source, parameters);
 
     }
+    private async Task<DataResponse<MarketResponse>> PostOrderAsync(string source, string symbol, Enum side, Enum type, decimal price, decimal quantity)
+    {
+        var parameter1 = Parameter.CreateParameter("symbol", symbol, ParameterType.RequestBody);
+        var parameter2 = Parameter.CreateParameter("side", side, ParameterType.RequestBody);
+        var parameter3 = Parameter.CreateParameter("type", type, ParameterType.RequestBody);
+        var parameter4 = Parameter.CreateParameter("quantity", quantity, ParameterType.RequestBody);
+        var parameter5 = Parameter.CreateParameter("price", price, ParameterType.RequestBody);
+        var parameters = new Parameter[] { parameter1, parameter2, parameter3, parameter4, parameter5 };
+
+        return await _binanceClient.Post<MarketResponse>(source, parameters);
+    }
 
     public async Task<ObservableCollection<KlineData>> GetKlineDatasAsync(string symbol, string interval, string limit)
     {
         var klineCollection = new ObservableCollection<KlineData>();
 
-        var response = await GetCoinHistoryAsync(symbol, interval, limit, "/api/v3/klines");
+        var response = await GetCoinHistoryAsync("/api/v3/klines", symbol, interval, limit);
 
         try
         {
@@ -69,7 +81,7 @@ public class MarketService : IMarketService
     {
         var PriceChangeDataCollection = new ObservableCollection<PriceChangeData>();
 
-        var response = await GetCoinHistoryAsync(symbol, interval, limit, "/api/v3/ticker/24hr");
+        var response = await GetCoinHistoryAsync("/api/v3/klines", symbol, interval, limit);
 
         try
         {
