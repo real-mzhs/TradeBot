@@ -31,7 +31,6 @@
                 </Border.Effect>
 
 
-
                 <Grid>
 
 
@@ -41,6 +40,8 @@
                         <Button Command="{Binding DashboardCommand}" Style="{StaticResource menuButton}" HorizontalAlignment="Center">
                             <Icon:PackIconMaterial Kind="ViewDashboard" Style="{StaticResource menuButtonIcon}"/>
                         </Button>
+                        
+                        
 
                         <Button Command="{Binding TradeCommand}" Style="{StaticResource menuButton}" HorizontalAlignment="Center">
                             <Icon:PackIconMaterial Kind="ChartBar" Style="{StaticResource menuButtonIcon}"/>

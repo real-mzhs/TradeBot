@@ -10,7 +10,7 @@
     <Border BorderBrush="Transparent" CornerRadius="20">
 
         <Border.Background>
-            <ImageBrush ImageSource="{StaticResource Background}" Stretch="UniformToFill" />
+            <ImageBrush ImageSource="{StaticResource BgAuth}" Stretch="UniformToFill" />
             <!--<ImageBrush ImageSource="C:\Users\mziya\OneDrive\Рабочий стол\TradeProject\TradeBot\Desktop\Desktop\Images\Frame 5(7).png" Stretch="UniformToFill" />-->
         </Border.Background>
 
@@ -45,7 +45,7 @@
 
                 <Border Grid.Column="1"  Grid.Row="1" CornerRadius="25" Panel.ZIndex="0">
                     <Border.Background>
-                        <ImageBrush ImageSource="{StaticResource Background}" Stretch="UniformToFill" />
+                        <ImageBrush ImageSource="{StaticResource AuthImage}" Stretch="UniformToFill" />
                         <!--<ImageBrush ImageSource="C:\Users\mziya\OneDrive\Рабочий стол\TradeProject\TradeBot\Desktop\Desktop\Images\8b126cf30c417b9c55b1b9d1bc5f68a3.jpg" Stretch="UniformToFill" />-->
                     </Border.Background>
                     <Border.Effect>
@@ -148,11 +148,7 @@
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="13">
-                                        <Grid>
-                                            <Ellipse Width="43" Height="43" Fill="#141415" Stroke="Transparent" StrokeThickness="0" HorizontalAlignment="Right" Margin="-34 0 8 0"/>
-                                            <md:PackIcon Kind="ArrowRight" Height="21" Width="21" Foreground="#B3B5BB" HorizontalAlignment="Right" Margin="0 0 19 0" VerticalAlignment="Center"/>
                                             <TextBlock FontSize="20" Text="Sign in" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Grid>
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <EventTrigger RoutedEvent="MouseEnter">

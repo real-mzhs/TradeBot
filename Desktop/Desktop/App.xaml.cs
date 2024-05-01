@@ -45,6 +45,11 @@ namespace Desktop
             Container.Register<WalletDepositViewModel>();
             Container.Register<WalletWidthdrawViewModel>();
             Container.Register<WalletContentViewModel>();
+            Container.Register<TradeActionViewModel>();
+            Container.Register<AIPanelViewModel>();
+            Container.Register<SimplePanelViewModel>();
+
+
 
 
             //Container.Verify();

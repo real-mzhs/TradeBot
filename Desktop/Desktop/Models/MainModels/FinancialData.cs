@@ -1,15 +1,49 @@
-﻿namespace Desktop.Models.PresentationModels;
+﻿using System.ComponentModel;
 
-public class FinancialData
+namespace Desktop.Models.PresentationModels;
+
+public class FinancialData : INotifyPropertyChanged
 {
+    public event PropertyChangedEventHandler PropertyChanged;
+
     public DateTime[] Dates { get; set; }
     public int[] Amounts { get; set; }
-    public FinancialData(/*DateTime[] dates, int[] amounts*/)
+
+    private double _currentPrice;
+    public double CurrentPrice
     {
-        //Dates = dates;
-        //Amounts = amounts;
-        Dates =
-        [
+        get => _currentPrice;
+        set
+        {
+            if (_currentPrice != value)
+            {
+                _currentPrice = value;
+                OnPropertyChanged(nameof(CurrentPrice));
+            }
+        }
+    }
+
+    private double _lastPrice;
+    public double LastPrice
+    {
+        get => _lastPrice;
+        set
+        {
+            if (_lastPrice != value)
+            {
+                _lastPrice = value;
+                OnPropertyChanged(nameof(LastPrice));
+
+                // Обновление цвета заливки в ViewModel (через событие)
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentPrice))); // Имитируем изменение CurrentPrice
+            }
+        }
+    }
+
+    public FinancialData()
+    {
+        Dates = new DateTime[]
+        {
             new DateTime(2021, 1, 1),
             new DateTime(2021, 1, 2),
             new DateTime(2021, 1, 3),
@@ -39,9 +73,21 @@ public class FinancialData
             new DateTime(2021, 1, 27),
             new DateTime(2021, 1, 28),
             new DateTime(2021, 1, 29),
-            new DateTime(2021, 1, 30),];
+            new DateTime(2021, 1, 30),
+        };
 
-        Amounts = [1, 2, 3, 2, 4, 6, 20, 15, 17, 18, 25, 25, 26, 29, 35, 20, 27, 29, 40, 45, 45, 35, 30, 35, 40, 45, 48, 49, 50, 55];
+        Amounts = new int[]
+        {
+            1, 2, 3, 2, 4, 6, 20, 15, 17, 18, 25, 25, 26, 29, 35, 20, 27, 29, 40, 45, 45, 35, 30, 35, 40, 45, 48, 49, 50, 55
+        };
+
+        // Инициализация начальной цены (по желанию)
+        _currentPrice = Amounts[^1]; // Последний элемент массива Amounts
+        _lastPrice = Amounts[^1] - 1; // Последний элемент массива Amounts минус 1
     }
 
+    private void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 }

@@ -24,5 +24,16 @@ namespace Desktop.Views.BigViews
         {
             InitializeComponent();
         }
+
+        private void Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null)
+            {
+                button.Foreground = Brushes.White;
+                button.IsEnabled = false; // чтобы кнопка неактивной оставалась
+            }
+        }
+
     }
 }

@@ -32,37 +32,6 @@ public class BaseViewModel : ViewModelBase
 
         CurrentView = App.Container.GetInstance<DashboardViewModel>();
         _messenger.Register<MenuNavigationMessage>(this, message => CurrentView = message.ViewModelType);
-
-        DashboardCommand = new DelegateCommand(
-            () =>
-            {
-                _navigationServices.MenuNavigateTo<DashboardViewModel>();
-            });
-        WalletCommand = new DelegateCommand(
-            () =>
-            {
-                _navigationServices.MenuNavigateTo<WalletViewModel>();
-
-
-            });
-        TradeCommand = new DelegateCommand(
-            () =>
-            {
-                _navigationServices.MenuNavigateTo<TradeViewModel>();
-
-            });
-        HistoryCommand = new DelegateCommand(
-            () =>
-            {
-                _navigationServices.MenuNavigateTo<HistoryViewModel>();
-
-            });
-
-        ExitCommand = new DelegateCommand(
-            () =>
-            {
-                _navigationServices.NavigateTo<AuthViewModel>();
-            });
         
     }
 }

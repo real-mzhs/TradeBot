@@ -6,6 +6,8 @@ using LiveChartsCore.SkiaSharpView;
 using SkiaSharp;
 using System.Collections.ObjectModel;
 using LiveChartsCore;
+using Prism.Commands;
+using LiveChartsCore.SkiaSharpView.Drawing.Segments;
 
 namespace Desktop.ViewModels.BigViewModels;
 
@@ -20,10 +22,14 @@ public class TradeViewModel : ViewModelBase
     }
 
 
+    public DelegateCommand ActionCommand { get; set; }
+    
     public Axis[] XAxes { get; set; }
 
     public ISeries[] Series { get; set; }
     public ISeries[] PieSeries { get; set; }
+
+
 
     public TradeViewModel()
     {
@@ -152,6 +158,14 @@ public class TradeViewModel : ViewModelBase
                 UnitWidth = TimeSpan.FromDays(0.5).Ticks
             }
         };
+
+
+
+          ActionCommand = new DelegateCommand(
+          () =>
+          {
+              
+          });
 
     }
 

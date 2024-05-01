@@ -53,9 +53,9 @@
 
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#10ffffff" Offset="0" />
-                        <GradientStop Color="#10ffffff" Offset="0.5" />
-                        <GradientStop Color="#10ffffff" Offset="1" />
+                        <GradientStop Color="#1B1C1E" Offset="0" />
+                        <GradientStop Color="#1B1C1E" Offset="0.5" />
+                        <GradientStop Color="#1B1C1E" Offset="1" />
                     </LinearGradientBrush>
                 </Border.Background>
 
@@ -100,17 +100,24 @@
         </Grid>
 
         <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+
             <DataGrid   
               ItemsSource="{Binding Transactions}"
-              Grid.Row="1"
-              RowStyle="{DynamicResource DataGridRowStyleSuperAdmine}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyleSuperAdmine}" CellStyle="{DynamicResource DataGridCellStyleSuperAdmine}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyleSuperAdmine}">
+              Grid.Column="0"
+              RowStyle="{DynamicResource DataGridRowStyleSuperAdmine}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyleSuperAdmine}" CellStyle="{DynamicResource DataGridCellStyleSuperAdmine}" x:Name="membersDataGrid" Style="{DynamicResource DataGridStyleSuperAdmine}" Margin="10,10,1,0">
+    
+                
 
                 <DataGrid.Columns>
-
                     <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True" Width="*"/>
-                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" IsReadOnly="True" Width="*"/>
-
-
+                    <DataGridTextColumn Header="Amount" Binding="{Binding Amount, StringFormat='{}{0:C}'}" IsReadOnly="True" Width="*"/>
                 </DataGrid.Columns>
 
             </DataGrid>

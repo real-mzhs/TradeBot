@@ -127,14 +127,15 @@ public class DashboardViewModel : ViewModelBase
             new LineSeries<int>
             {
                 Values = FinancialData.Amounts,
-                Fill = new LinearGradientPaint(new[]{ new SKColor(37, 2, 94, 40), new SKColor(246, 168, 247, 40) }),                   
+                Fill = new LinearGradientPaint(new[]{ new SKColor(5, 180, 121,25), new SKColor(5,180,121,5) }),
                 GeometrySize = 0,
                 LineSmoothness = 1,
-                Stroke = new LinearGradientPaint(new[]{ new SKColor(37, 2, 94), new SKColor(246, 168, 247) }) { StrokeThickness = 3 },
+                Stroke = new LinearGradientPaint(new[]{ new SKColor(5, 180, 121), new SKColor(5, 180, 121) }) { StrokeThickness = 3 },
                 GeometryStroke = new LinearGradientPaint(new[]{ new SKColor(37, 2, 94), new SKColor(246, 168, 247) }) { StrokeThickness = 3 },
 
             }
         };
+
 
         XAxes =
         [

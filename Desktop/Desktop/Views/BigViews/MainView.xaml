@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:md ="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:Desktop.Views"
+        xmlns:local="clr-namespace:Desktop.Views.BigViews"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
