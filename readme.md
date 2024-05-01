@@ -1,4 +1,4 @@
-## User Service Docker deployment:
+## Docker deployment:
 
 ### Step 1: Pulling the Service from Docker Hub
 First, pull the Docker image for the service from Docker Hub using the following command:
