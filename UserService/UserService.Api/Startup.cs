@@ -101,13 +101,16 @@ public class Startup(IConfiguration configuration)
         services.AddScoped<ITokenService, TokenService>();
     }
     
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDbContext appDbContext, AppIdentityDbContext appIdentityDbContext)
     {
         if (env.IsDevelopment())
         {
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+        
+        appDbContext.Database.Migrate();
+        appIdentityDbContext.Database.Migrate();
             
         app.UseRouting();
     
