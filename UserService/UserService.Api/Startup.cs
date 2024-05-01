@@ -55,7 +55,7 @@ public class Startup(IConfiguration configuration)
 
         services.AddIdentity<AppUserIdentity, IdentityRole>(options =>
             {
-                options.SignIn.RequireConfirmedAccount = true;
+                options.SignIn.RequireConfirmedEmail = false;
                 options.User.RequireUniqueEmail = true;
                 options.Password.RequireDigit = true;
                 options.Password.RequiredLength = 8;

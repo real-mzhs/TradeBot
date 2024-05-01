@@ -41,14 +41,14 @@ public class AppUserService(
             throw new InvalidOperationException(
                 $"Failed to create user. Details: {string.Join("; ", result.Errors.Select(e => e.Description))}");
 
-        var code = await userConfirmationService.GenerateConfirmationCodeAsync(userEntity.Id);
-        
-        await emailService.SendEmailAsync(new CreateEmailDto
-        {
-            Email = userEntity.Email,
-            Subject = "Confirm your account",
-            Message = $"Here is your confirmation code: {code}"
-        });
+        // var code = await userConfirmationService.GenerateConfirmationCodeAsync(userEntity.Id);
+        //
+        // await emailService.SendEmailAsync(new CreateEmailDto
+        // {
+        //     Email = userEntity.Email,
+        //     Subject = "Confirm your account",
+        //     Message = $"Here is your confirmation code: {code}"
+        // });
 
         return mapper.Map<GetUserDto>(userEntity);
     }
