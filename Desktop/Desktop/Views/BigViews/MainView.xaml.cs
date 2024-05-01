@@ -38,30 +38,28 @@ namespace Desktop.Views.BigViews
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton==MouseButton.Left)
-            {
-                this.DragMove();
-            }
+                DragMove();
         }
 
-        bool IsMaximized = false;
+        private bool _isMaximized;
 
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
             {
-                if (IsMaximized)
+                if (_isMaximized)
                 {
                     this.WindowState = WindowState.Normal;
                     this.Width = 1280;
                     this.Height = 780;
 
-                    IsMaximized = false;
+                    _isMaximized = false;
                 }
                 else
                 {
                     this.WindowState = WindowState.Maximized;
 
-                    IsMaximized = true;
+                    _isMaximized = true;
                 }
             }
         }

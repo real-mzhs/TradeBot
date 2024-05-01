@@ -12,16 +12,19 @@ public class RegistrationViewModel : ViewModelBase
     private readonly INavigationServices _navigationService;
     private readonly IRegistrationService _registrationService;
     public User CurrentUser { get; set; } = new();
+
     public string Email
     {
         get { return CurrentUser.Email; }
         set { CurrentUser.Email = value; }
     }
+
     public string Password
     {
         get { return CurrentUser.Password; }
         set { CurrentUser.Password = value; }
     }
+
     public string ConfirmPassword { get; set; }
     public DelegateCommand BackCommand { get; set; }
     public DelegateCommand RegistrationCommand { get; set; }
@@ -35,10 +38,7 @@ public class RegistrationViewModel : ViewModelBase
         _registrationService = registrationService;
 
         BackCommand = new DelegateCommand(
-            () =>
-            {
-                _navigationService.NavigateTo<AuthViewModel>();
-            });
+            () => { _navigationService.NavigateTo<AuthViewModel>(); });
 
         RegistrationCommand = new DelegateCommand(
             () =>
@@ -57,13 +57,6 @@ public class RegistrationViewModel : ViewModelBase
             });
 
         AuthCommand = new DelegateCommand(
-          () =>
-          {
-              _navigationService.NavigateTo<AuthViewModel>();
-
-          });
-
-
-
+            () => { _navigationService.NavigateTo<AuthViewModel>(); });
     }
 }

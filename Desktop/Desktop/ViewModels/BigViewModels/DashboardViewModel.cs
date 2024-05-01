@@ -13,6 +13,7 @@ using Desktop.Services.Network.Responses;
 using GalaSoft.MvvmLight.Messaging;
 using Desktop.Messages.DataMessages;
 using Desktop.Models;
+using Desktop.Responses;
 
 namespace Desktop.ViewModels.BigViewModels;
 
@@ -30,7 +31,7 @@ public class DashboardViewModel : ViewModelBase
         get => _coinList;
         set => Set(ref _coinList, value);
     }
-    private DataResponse<CoinResponse> _coinResponse;
+    private DataResponse<IEnumerable<Coin>> _coinResponse;
 
 
     public ObservableCollection<ISeries> Series { get; set; }

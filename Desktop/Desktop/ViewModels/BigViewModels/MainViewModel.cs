@@ -1,4 +1,5 @@
 ﻿using Desktop.Messages.NavigationMessages;
+using Desktop.Services.Classes;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 
@@ -12,19 +13,14 @@ public class MainViewModel : ViewModelBase
     public ViewModelBase CurrentView
     {
         get => _currentView;
-        set
-        {
-            Set(ref _currentView, value);
-        }
+        set => Set(ref _currentView, value);
     }
-
 
     public MainViewModel(IMessenger messenger)
     {
         _messenger = messenger;
-        CurrentView = App.Container.GetInstance<AuthViewModel>();
+        CurrentView = ServiceLocator.GetService<AuthViewModel>();
 
         _messenger.Register<NavigationMessage>(this, message => CurrentView = message.ViewModelType);
-
     }
 }

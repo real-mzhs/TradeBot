@@ -1,6 +1,6 @@
 ﻿using Desktop.Models;
 
-namespace Desktop.Services.Network.Responses;
+namespace Desktop.Responses;
 
 public class StaticDataResponse
 {

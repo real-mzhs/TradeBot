@@ -17,7 +17,8 @@ public class HistoryViewModel : ViewModelBase
     private User User { get; set; }
     public ObservableCollection<TradesHistory> TradesHistory { get; set; }
     public string Text { get; set; }
-    public HistoryViewModel(IHistoryService historyService, IMessenger messenger )
+
+    public HistoryViewModel(IHistoryService historyService, IMessenger messenger)
     {
         _historyService = historyService;
         _messenger = messenger;
@@ -41,8 +42,6 @@ public class HistoryViewModel : ViewModelBase
                 Quantity = 5,
                 Type = PositionType.Buy
             }
-
         };
-
     }
 }

@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight.Messaging;
 using Prism.Commands;
 using System.Collections.ObjectModel;
 using System.Windows;
+using Desktop.Responses;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Desktop.ViewModels.SmallViewModels;
@@ -18,7 +19,7 @@ public class WalletContentViewModel : ViewModelBase
     private readonly IWalletService _walletService;
     private User User { get; set; }
 
-    private Wallet _wallet;
+    private Models.Wallet _wallet;
     public DelegateCommand WidthdrawCommand { get; set; }
     public DelegateCommand DepositCommand { get; set; }
     public DataResponse<WalletResponse> Response { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Desktop.Models;
+using Desktop.Responses;
 using Desktop.Services.Network.Responses;
 
 namespace Desktop.Services.Interfaces;

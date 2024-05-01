@@ -19,8 +19,7 @@ using LiveChartsCore.Drawing;
 namespace Desktop.ViewModels.BigViewModels;
 
 public class TradeViewModel : ViewModelBase
-{    
-
+{
     public ObservableCollection<KlineData> KlineDatas { get; set; }
     private readonly IMarketService _marketService;
     public string Symbol { get; set; } = "BTCUSDT";
@@ -32,6 +31,7 @@ public class TradeViewModel : ViewModelBase
     public ISeries[] PieSeries { get; set; }
 
     public ObservableCollection<FinancialPoint> _financialPoints;
+
     public ObservableCollection<FinancialPoint> FinancialPoints
     {
         get => _financialPoints;
@@ -39,6 +39,7 @@ public class TradeViewModel : ViewModelBase
     }
 
     private ObservableCollection<Coin> _coinList;
+
     public ObservableCollection<Coin> CoinList
     {
         get => _coinList;
@@ -49,21 +50,20 @@ public class TradeViewModel : ViewModelBase
     public TradeViewModel(IMarketService marketService)
     {
         _marketService = marketService;
-        FinancialPoints = new();    
+        FinancialPoints = new();
 
 
         Series = new ISeries[]
-         {
+        {
             new CandlesticksSeries<FinancialPoint>
             {
-
                 UpFill = new SolidColorPaint(SKColor.Parse("#76EACB")),
-                UpStroke = new SolidColorPaint(SKColor.Parse("#76EACB")) { StrokeThickness = 3},
+                UpStroke = new SolidColorPaint(SKColor.Parse("#76EACB")) { StrokeThickness = 3 },
                 DownFill = new SolidColorPaint(SKColor.Parse("#F11C75")),
                 DownStroke = new SolidColorPaint(SKColor.Parse("#F11C75")) { StrokeThickness = 3 },
                 Values = FinancialPoints
             }
-         };
+        };
 
 
         long hoursSpan = TimeSpan.FromHours(0.5).Ticks;
@@ -95,12 +95,11 @@ public class TradeViewModel : ViewModelBase
         };
 
         ChartInitializeAsync();
-
     } //ctor
 
     private async void ChartInitializeAsync()
     {
-        KlineDatas = await _marketService.GetKlineDatasAsync(Symbol, Interval, limit) ;
+        KlineDatas = await _marketService.GetKlineDatasAsync(Symbol, Interval, limit);
         foreach (var item in KlineDatas)
         {
             FinancialPoints.Add(new FinancialPoint()
@@ -131,6 +130,4 @@ public class TradeViewModel : ViewModelBase
         //await binanceStringListener.StartListening($"btcusdt@kline_1m");
         //await binanceStringListener.StartListening($"{ListenSymbol}@kline_{Interval}").GetAwaiter().GetResult();
     }
-
-
 }

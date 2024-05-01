@@ -3,6 +3,7 @@ using Desktop.Services.Network.Responses;
 using RestSharp;
 using Desktop.Services.Network.API;
 using Desktop.Models;
+using Desktop.Responses;
 
 namespace Desktop.Services.Classes;
 
@@ -22,11 +23,11 @@ public class WalletService : IWalletService
         return await _tradeClient.Get<WalletResponse>("/wallet", parameters);
     }
 
-    public async Task<DataResponse<WalletResponse>> UpdateWalletAsync(Wallet wallet)
+    public async Task<DataResponse<WalletResponse>> UpdateWalletAsync(Models.Wallet wallet)
     {
         return await _tradeClient.Put<WalletResponse>("/wallet", wallet);
     }
-    public async Task<DataResponse<WalletResponse>> CreateWalletAsync(Wallet wallet)
+    public async Task<DataResponse<WalletResponse>> CreateWalletAsync(Models.Wallet wallet)
     {
         return await _tradeClient.Post<WalletResponse>("/wallet", wallet);
     }
