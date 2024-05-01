@@ -1,63 +1,40 @@
 ﻿using Desktop.Services.Classes;
-using Desktop.Services.Interfaces;
-using GalaSoft.MvvmLight.Messaging;
-using System.ComponentModel;
-using SimpleInjector;
 using System.Windows;
 using Desktop.ViewModels.BigViewModels;
-using Desktop.ViewModels.SmallViewModels;
 using Desktop.Views.BigViews;
-using Desktop.Services.Network.API;
-using Desktop.Models;
-using Desktop.Services.Network.Responses;
+using Microsoft.Extensions.Hosting;
 
-namespace Desktop
+namespace Desktop;
+
+public partial class App
 {
-    public partial class App : Application
+    private static IHost? AppHost { get; set; }
+
+    public App()
     {
+        var startup = new Startup();
+        AppHost = startup.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
+    }
 
-        public static SimpleInjector.Container Container { get; set; } = new SimpleInjector.Container();
+    protected override async void OnStartup(StartupEventArgs e)
+    {
+        await AppHost!.StartAsync();
 
-        public void Register()
+        ServiceLocator.Initialize(AppHost);
+
+        var mainWindow = new MainView
         {
+            DataContext = ServiceLocator.GetService<MainViewModel>()
+        };
 
-            Container.RegisterSingleton<IMessenger, Messenger>();
-            Container.RegisterSingleton<INavigationServices, NavigationService>();            
-            Container.RegisterSingleton<TokenResponse>();
-            
-            Container.Register<IAuthenticationService, AuthenticationService>();
-            Container.Register<IRegistrationService, RegistrationService>();
-            Container.Register<IWalletService, WalletService>();
-            Container.Register<IHistoryService, HistoryService>();
-            Container.Register<ITradeService, TradeService>();
-            Container.Register<IMarketService, MarketService>();
+        mainWindow.Show();
 
-            Container.Register<MainViewModel>();
-            Container.Register<DashboardViewModel>();
-            Container.Register<HistoryViewModel>();
-            Container.Register<TradeViewModel>();
-            Container.Register<WalletViewModel>();
-            Container.Register<AuthViewModel>();
-            Container.Register<RegistrationViewModel>();
-            Container.Register<BaseViewModel>();
-            Container.Register<RecoveryViewModel>();
-            Container.Register<WalletDepositViewModel>();
-            Container.Register<WalletWidthdrawViewModel>();
-            Container.Register<WalletContentViewModel>();
+        base.OnStartup(e);
+    }
 
-
-            //Container.Verify();
-        }
-
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            Register();
-
-            var window = new MainView();
-
-            window.DataContext = Container.GetInstance<MainViewModel>();
-
-            window.ShowDialog();
-        }
+    protected override async void OnExit(ExitEventArgs e)
+    {
+        await AppHost!.StopAsync();
+        base.OnExit(e);
     }
 }

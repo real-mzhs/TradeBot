@@ -1,4 +1,5 @@
 ﻿using Desktop.Messages.NavigationMessages;
+using Desktop.Services.Classes;
 using Desktop.ViewModels.SmallViewModels;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
@@ -11,14 +12,11 @@ public class WalletViewModel : ViewModelBase
     public ViewModelBase CurrentView
     {
         get => _currentView;
-        set
-        {
-            Set(ref _currentView, value);
-        }
+        set => Set(ref _currentView, value);
     }
     public WalletViewModel(IMessenger _messenger)
     {
-        CurrentView = App.Container.GetInstance<WalletContentViewModel>();
+        CurrentView = ServiceLocator.GetService<WalletContentViewModel>();
         _messenger.Register<WalletNavigationMessage>(this, message => CurrentView = message.ViewModelType);
     }
 }

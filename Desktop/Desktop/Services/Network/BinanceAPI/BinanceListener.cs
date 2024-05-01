@@ -1,53 +1,49 @@
-﻿using System;
-using System.Net.WebSockets;
+﻿using System.Net.WebSockets;
 using System.Text;
-using System.Threading;
 using System.Windows;
 using Newtonsoft.Json;
 
+namespace Desktop.Services.Network.BinanceAPI;
+
 public class BinanceListener<T>
 {
-    public event EventHandler<T> DataReceived;
+    public event EventHandler<T>? DataReceived;
 
     public async Task StartListening(string streamName)
     {
-        var _uri = new Uri($"wss://stream.binance.com:9443/ws/{streamName}");
-        var _cancellationToken = new CancellationToken();
+        var uri = new Uri($"wss://stream.binance.com:9443/ws/{streamName}");
+        var cancellationToken = new CancellationToken();
 
-        using (var client = new ClientWebSocket())
+        using var client = new ClientWebSocket();
+        try
         {
-            try
+            await client.ConnectAsync(uri, cancellationToken);
+
+            var receiveBuffer = new ArraySegment<byte>(new byte[4096]);
+
+            while (client.State == WebSocketState.Open)
             {
-                await client.ConnectAsync(_uri, _cancellationToken);
-
-                var receiveBuffer = new ArraySegment<byte>(new byte[4096]);
-
-                while (client.State == WebSocketState.Open)
+                var result = await client.ReceiveAsync(receiveBuffer, cancellationToken);
+                if (result.MessageType == WebSocketMessageType.Text)
                 {
-                    var result = await client.ReceiveAsync(receiveBuffer, _cancellationToken);
-                    if (result.MessageType == WebSocketMessageType.Text)
-                    {
-                        T eventData = JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(receiveBuffer.Array, 0, result.Count));
-                        OnDataReceived(eventData);
-                    }
+                    var eventData = JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(receiveBuffer.Array, 0, result.Count));
+                    OnDataReceived(eventData);
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Exception: " + ex.ToString());
-            }
-            finally
-            {
-                if (client.State == WebSocketState.Open)
-                   await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "", _cancellationToken);
-            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Exception: " + ex.Message);
+        }
+        finally
+        {
+            if (client.State == WebSocketState.Open)
+                await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "", cancellationToken);
         }
     }
 
-    protected virtual void OnDataReceived(T data)
+    private void OnDataReceived(T data)
     {
         DataReceived?.Invoke(this, data);
     }
 }
-
-

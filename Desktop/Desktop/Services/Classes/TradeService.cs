@@ -3,6 +3,7 @@ using Desktop.Services.Network.Responses;
 using Desktop.Services.Network.API;
 using RestSharp;
 using Desktop.Models;
+using Desktop.Responses;
 
 namespace Desktop.Services.Classes;
 

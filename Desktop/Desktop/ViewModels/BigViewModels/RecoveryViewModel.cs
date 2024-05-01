@@ -4,5 +4,4 @@ namespace Desktop.ViewModels.BigViewModels;
 
 public class RecoveryViewModel : ViewModelBase
 {
-
 }

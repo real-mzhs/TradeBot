@@ -1,4 +1,5 @@
 ﻿using Desktop.Messages.NavigationMessages;
+using Desktop.Services.Classes;
 using Desktop.Services.Interfaces;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
@@ -8,7 +9,7 @@ namespace Desktop.ViewModels.BigViewModels;
 
 public class BaseViewModel : ViewModelBase
 {
-    private readonly INavigationServices _navigationServices;  
+    private readonly INavigationServices _navigationServices;
     public DelegateCommand DashboardCommand { get; set; }
     public DelegateCommand HistoryCommand { get; set; }
     public DelegateCommand TradeCommand { get; set; }
@@ -20,47 +21,27 @@ public class BaseViewModel : ViewModelBase
     public ViewModelBase CurrentView
     {
         get => _currentView;
-        set
-        {
-            Set(ref _currentView, value);
-        }
+        set { Set(ref _currentView, value); }
     }
 
     public BaseViewModel(INavigationServices navigationServices, IMessenger _messenger)
     {
         _navigationServices = navigationServices;
 
-        CurrentView = App.Container.GetInstance<DashboardViewModel>();
+        CurrentView = ServiceLocator.GetService<DashboardViewModel>();
 
         _messenger.Register<MenuNavigationMessage>(this, message => CurrentView = message.ViewModelType);
 
-
         DashboardCommand = new DelegateCommand(
-            () =>
-            {
-                _navigationServices.MenuNavigateTo<DashboardViewModel>();
-            });
+            () => { _navigationServices.MenuNavigateTo<DashboardViewModel>(); });
         WalletCommand = new DelegateCommand(
-            () =>
-            {
-                _navigationServices.MenuNavigateTo<WalletViewModel>();
-            });
+            () => { _navigationServices.MenuNavigateTo<WalletViewModel>(); });
         TradeCommand = new DelegateCommand(
-            () =>
-            {
-                _navigationServices.MenuNavigateTo<TradeViewModel>();
-            });
+            () => { _navigationServices.MenuNavigateTo<TradeViewModel>(); });
         HistoryCommand = new DelegateCommand(
-            () =>
-            {
-                _navigationServices.MenuNavigateTo<HistoryViewModel>();
-            });
+            () => { _navigationServices.MenuNavigateTo<HistoryViewModel>(); });
 
         ExitCommand = new DelegateCommand(
-            () =>
-            {
-                _navigationServices.NavigateTo<AuthViewModel>();
-            });
-        
+            () => { _navigationServices.NavigateTo<AuthViewModel>(); });
     }
 }

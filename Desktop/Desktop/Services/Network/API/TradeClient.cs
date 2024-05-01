@@ -1,4 +1,5 @@
-﻿using Desktop.Services.Network.Responses;
+﻿using Desktop.Responses;
+using Desktop.Services.Network.Responses;
 using RestSharp;
 
 namespace Desktop.Services.Network.API;

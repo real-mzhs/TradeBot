@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        xmlns:md ="http://materialdesigninxaml.net/winfx/xaml/themes"        
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -12,52 +12,48 @@
         WindowStartupLocation="CenterScreen"
         Title="MainView" Height="780" Width="1280">
 
-    <Border Padding="5" MouseDown="Border_MouseDown" MouseLeftButtonDown="Border_MouseLeftButtonDown" BorderBrush="Transparent" CornerRadius="20" Background="Transparent">
-
+    <Border Padding="5" MouseLeftButtonDown="Border_MouseLeftButtonDown" BorderBrush="Transparent" CornerRadius="20"
+            Background="Transparent">
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.05*"/>
-                <RowDefinition/>
+                <RowDefinition Height="0.05*" />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
-            <ContentControl Grid.RowSpan="2" Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>
+            <ContentControl Grid.RowSpan="2" Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}" />
 
-            <Grid Grid.Row="0">
-                <StackPanel Margin="0,5,10,0"                   
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
-                Orientation="Horizontal">
-                    <Button                    
-                    Height="25"
-                    Click="Minimize_Click"
-                    Name="Minimize"
-                    Style="{DynamicResource MaterialDesignToolButton}">
-                        <md:PackIcon 
-                         Foreground="#7E7E7E"
-                         Height="16"
-                         Width="16"  
-                        Kind="Minimize"/>
+            <Grid Grid.Row="0" MouseDown="Border_MouseDown">
+                <StackPanel Margin="0,5,10,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                    <Button
+                        Height="25"
+                        Click="Minimize_Click"
+                        Name="Minimize"
+                        Style="{DynamicResource MaterialDesignToolButton}">
+                        <md:PackIcon
+                            Foreground="#7E7E7E"
+                            Height="16"
+                            Width="16"
+                            Kind="Minimize" />
                     </Button>
 
-                    <Button                    
-                    Height="25"
-                    Click="Close_Click"
-                    Name="Close"
-                    Style="{DynamicResource MaterialDesignToolButton}">
-                        <md:PackIcon 
-                        Foreground="#7E7E7E"
-                        Height="16"
-                        Width="16"   
-                        Kind="Close"/>
+                    <Button
+                        Height="25"
+                        Click="Close_Click"
+                        Name="Close"
+                        Style="{DynamicResource MaterialDesignToolButton}">
+                        <md:PackIcon
+                            Foreground="#7E7E7E"
+                            Height="16"
+                            Width="16"
+                            Kind="Close" />
                     </Button>
                 </StackPanel>
             </Grid>
 
-
-
         </Grid>
     </Border>
-
-
 </Window>
