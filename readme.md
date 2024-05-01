@@ -15,10 +15,10 @@ docker pull postgres:latest
 ### Step 3: Running Containers
 Now that you have both images downloaded, you can run containers for the service and PostgreSQL.
 ```
+docker run --name postgres-usersevice -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=secret_password -p 5432:5432 -d postgres
+```
+```
 docker run -d --name tradebot-userservice -p 8080:8080 mzdevi/tradebot-userservice:latest
-```
-```
-docker run --name postgres-usersevice -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
 ```
 
 ### Step 4: Verifying Containers
