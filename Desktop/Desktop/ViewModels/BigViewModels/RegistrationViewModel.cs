@@ -47,14 +47,13 @@ public class RegistrationViewModel : ViewModelBase
                 {
                     CheckDataService.CheckUserData(CurrentUser.Email, CurrentUser.Password, ConfirmPassword);
                     var response = _registrationService.RegistrationAsync(CurrentUser);
+                    _navigationService.NavigateTo<AuthViewModel>();
+                    MessageBox.Show("Registration completed successfully.");
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show(e.Message);
                 }
-
-                MessageBox.Show("Registration completed successfully.");
-                _navigationService.NavigateTo<AuthViewModel>();
             });
 
         AuthCommand = new DelegateCommand(

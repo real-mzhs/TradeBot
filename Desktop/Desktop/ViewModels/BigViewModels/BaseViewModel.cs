@@ -28,10 +28,12 @@ public class BaseViewModel : ViewModelBase
 
     public BaseViewModel(INavigationServices navigationServices, IMessenger _messenger)
     {
-        _navigationServices = navigationServices;     
+        _navigationServices = navigationServices;
 
         CurrentView = App.Container.GetInstance<DashboardViewModel>();
+
         _messenger.Register<MenuNavigationMessage>(this, message => CurrentView = message.ViewModelType);
+
 
         DashboardCommand = new DelegateCommand(
             () =>
@@ -42,20 +44,16 @@ public class BaseViewModel : ViewModelBase
             () =>
             {
                 _navigationServices.MenuNavigateTo<WalletViewModel>();
-
-
             });
         TradeCommand = new DelegateCommand(
             () =>
             {
                 _navigationServices.MenuNavigateTo<TradeViewModel>();
-
             });
         HistoryCommand = new DelegateCommand(
             () =>
             {
                 _navigationServices.MenuNavigateTo<HistoryViewModel>();
-
             });
 
         ExitCommand = new DelegateCommand(

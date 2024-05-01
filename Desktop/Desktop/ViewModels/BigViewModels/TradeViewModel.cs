@@ -14,80 +14,42 @@ using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using System.Globalization;
 using System.ComponentModel.DataAnnotations.Schema;
+using LiveChartsCore.Drawing;
 
 namespace Desktop.ViewModels.BigViewModels;
 
 public class TradeViewModel : ViewModelBase
-{
+{    
+
+    public ObservableCollection<KlineData> KlineDatas { get; set; }
+    private readonly IMarketService _marketService;
+    public string Symbol { get; set; } = "BTCUSDT";
+    public string Interval { get; set; } = "1h";
+    public string limit { get; set; } = "24";
+    public Axis[] XAxes { get; set; }
+
+    public ISeries[] Series { get; set; }
+    public ISeries[] PieSeries { get; set; }
+
     public ObservableCollection<FinancialPoint> _financialPoints;
     public ObservableCollection<FinancialPoint> FinancialPoints
     {
         get => _financialPoints;
         set => Set(ref _financialPoints, value);
     }
-    public ObservableCollection<KlineData> _klineDatas;
-    public ObservableCollection<KlineData> KlineDatas
-    {
-        get => _klineDatas;
-        set => Set(ref _klineDatas, value);
-    }
-    private readonly IMarketService _marketService;
+
     private ObservableCollection<Coin> _coinList;
     public ObservableCollection<Coin> CoinList
     {
         get => _coinList;
         set => Set(ref _coinList, value);
     }
-    MarketResponse _marketResponse { get; set; }
-    public string ListenSymbol { get; set; }
-    public string Interval { get; set; }
-    public Axis[] XAxes { get; set; }
 
-    public ISeries[] Series { get; set; }
-    public ISeries[] PieSeries { get; set; }
 
     public TradeViewModel(IMarketService marketService)
     {
         _marketService = marketService;
-        FinancialPoints = new();
-
-        var binanceStringListener = new BinanceListener<StreamKlineEventData>();
-        binanceStringListener.DataReceived += (sender, data) =>
-        {
-            FinancialPoints.Add(new FinancialPoint()
-            {
-                Date = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(data.k.T),
-                High = (double)data.k.h,
-                Open = (double)data.k.o,
-                Close = (double)data.k.c,
-                Low = (double)data.k.l
-            });
-        };
-
-        binanceStringListener.StartListening($"btcusdt@kline_1m");
-        
-        //binanceStringListener.StartListening($"{ListenSymbol}@kline_{Interval}").GetAwaiter().GetResult();
-
-
-
-
-        //KlineDatas = _marketService.GetKlineDatasAsync("BTCUSDT", "1d", "30").GetAwaiter().GetResult();
-        //FinancialPoints = new();
-
-        //foreach (var item in KlineDatas)
-        //{
-        //    FinancialPoints.Add(new FinancialPoint()
-        //    {
-        //        Date = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddMilliseconds(item.KlineCloseTime),
-        //        High = (double)item.HighPrice,
-        //        Open = (double)item.OpenPrice,
-        //        Close = (double)item.ClosePrice,
-        //        Low = (double)item.LowPrice
-        //    });
-        //}
-
-
-
+        FinancialPoints = new();    
 
 
         Series = new ISeries[]
@@ -104,6 +66,19 @@ public class TradeViewModel : ViewModelBase
          };
 
 
+        long hoursSpan = TimeSpan.FromHours(0.5).Ticks;
+        long minutesSpan = TimeSpan.FromMinutes(0.5).Ticks;
+        long daysSpan = TimeSpan.FromDays(0.5).Ticks;
+
+        XAxes = new[]
+        {
+            new Axis
+            {
+                Labeler = value => new DateTime((long)value).ToString("HH:mm"),
+                UnitWidth = hoursSpan
+            }
+        };
+
 
         CoinList = new ObservableCollection<Coin>()
         {
@@ -116,51 +91,46 @@ public class TradeViewModel : ViewModelBase
                 ImagePath = "C:\\Users\\mziya\\Downloads\\TradeBot- (2)\\Desktop\\Desktop\\Images\\pngwing.com (1).png",
                 Cost = 10,
                 Quantity = 5
-            },
-            new Coin
-            {
-                Id = "ETH",
-                Name = "ETHERIUM",
-                Amount = 50,
-                Margin = -2.5,
-                ImagePath = "C:\\Users\\mziya\\Downloads\\TradeBot- (2)\\Desktop\\Desktop\\Images\\pngwing.com (1).png",
-                Cost = 10,
-                Quantity = 5
-            },
-            new Coin
-            {
-                Id = "ETH",
-                Name = "ETHERIUM",
-                Amount = 50,
-                Margin = -2.5,
-                ImagePath = "C:\\Users\\mziya\\Downloads\\TradeBot- (2)\\Desktop\\Desktop\\Images\\pngwing.com (1).png",
-                Cost = 10,
-                Quantity = 5
-            },
-            new Coin
-            {
-                Id = "ETH",
-                Name = "ETHERIUM",
-                Amount = 50,
-                Margin = -2.5,
-                ImagePath = "C:\\Users\\mziya\\Downloads\\TradeBot- (2)\\Desktop\\Desktop\\Images\\pngwing.com (1).png",
-                Cost = 10,
-                Quantity = 5
-            },
-        };
-
-        XAxes = new[]
-       {
-
-            new Axis
-            {
-                Labeler = value => new DateTime((long)value).ToString("dd.MM"),
-                UnitWidth = TimeSpan.FromDays(0.5).Ticks
             }
         };
 
-    }
+        ChartInitializeAsync();
 
+    } //ctor
+
+    private async void ChartInitializeAsync()
+    {
+        KlineDatas = await _marketService.GetKlineDatasAsync(Symbol, Interval, limit) ;
+        foreach (var item in KlineDatas)
+        {
+            FinancialPoints.Add(new FinancialPoint()
+            {
+                Date = DateTime.UnixEpoch.AddMilliseconds(item.KlineCloseTime),
+                High = (double)item.HighPrice,
+                Open = (double)item.OpenPrice,
+                Close = (double)item.ClosePrice,
+                Low = (double)item.LowPrice
+            });
+        }
+
+        //var binanceStringListener = new BinanceListener<StreamKlineEventData>();
+        //binanceStringListener.DataReceived += (sender, data) =>
+        //{
+        //    if (FinancialPoints.Last().Date.Minute <= DateTime.UnixEpoch.AddMilliseconds(data.k.T).Minute)
+        //    {
+        //        FinancialPoints.Add(new FinancialPoint()
+        //        {
+        //            Date = DateTime.UnixEpoch.AddMilliseconds(data.k.T),
+        //            High = (double)data.k.h,
+        //            Open = (double)data.k.o,
+        //            Close = (double)data.k.c,
+        //            Low = (double)data.k.l
+        //        });
+        //    }
+        //};
+        //await binanceStringListener.StartListening($"btcusdt@kline_1m");
+        //await binanceStringListener.StartListening($"{ListenSymbol}@kline_{Interval}").GetAwaiter().GetResult();
+    }
 
 
 }
